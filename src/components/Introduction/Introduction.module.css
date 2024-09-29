@@ -1,0 +1,62 @@
+.introduction {
+  width: 100%;
+  height: 750px;
+  gap: 0px;
+  opacity: 0px;
+  background: linear-gradient(
+    99.88deg,
+    #06194a 41.96%,
+    rgba(6, 25, 74, 0) 99.13%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.introduction img {
+  width: 434px;
+  height: 550px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.attractionBlock {
+  width: 856px;
+  height: 393px;
+  gap: 67px;
+  opacity: 0px;
+}
+
+.attractionBlock p {
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 90px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.attractionBlock button {
+  width: 308px;
+  height: 78px;
+  padding: 21px 59px 21px 59px;
+  gap: 10px;
+  border-radius: 50px;
+  opacity: 1;
+  top: 300px;
+  background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
+  border: 0;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: left;
+  color: #ffffff;
+  box-shadow: 0px 0px 20px 5px rgb(76, 76, 184);
+  transition: box-shadow 0.2s ease; /* плавный переход */
+  margin-top: 30px;
+}
+
+.attractionBlock button:hover {
+  cursor: pointer;
+  background: linear-gradient(96.08deg, #5e26dd 14.66%, #23ddda 88.75%);
+  box-shadow: 0px 0px 25px 10px rgb(76, 76, 184);
+}
