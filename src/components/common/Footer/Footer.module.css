@@ -1,0 +1,109 @@
+.footer {
+  width: 100%;
+  height: 246px;
+  background: linear-gradient(180deg, #0c0124 0%, #081847 100%);
+  height: 246px;
+  gap: 0px;
+  border: 1px 0px 0px 0px;
+  border-top: 1px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.receiveEmailsForm {
+  width: 580px;
+}
+
+.receiveEmailsForm p {
+  width: 548px;
+  height: 72px;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: left;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.receiveEmailsForm input {
+  width: 496px;
+  height: 30px;
+  padding: 6px 7px 6px 7px;
+  gap: 10px;
+  border: 0;
+  opacity: 0px;
+  border-bottom: 1px solid #b1b1b1;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  color: white;
+  background: none;
+}
+
+.receiveEmailsForm button {
+  width: 61px;
+  height: 27px;
+  opacity: 0px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+  color: #ffffff;
+  border: none;
+  margin-left: 18px;
+  background: none;
+}
+
+.receiveEmailsForm button:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    180deg,
+    #23ddd9 0%,
+    #5f23dd 100%
+  ); /* Градиент для текста */
+  -webkit-background-clip: text; /* Обрезаем фон по форме текста */
+  background-clip: text; /* Для других браузеров */
+  -webkit-text-fill-color: transparent;
+}
+
+.additionalInfo {
+  width: 546px;
+  height: 120px;
+  gap: 83px;
+  opacity: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.additionalInfo div {
+  width: 116px;
+  height: 120px;
+  gap: 11px;
+  opacity: 0px;
+}
+
+.additionalInfo h3 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.additionalInfo ul li {
+  list-style: none;
+  margin-bottom: 4px;
+}
+
+.additionalInfo ul li {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  color: #b1b1b1;
+}
+
+.additionalInfo ul li:hover {
+  cursor: pointer;
+  color: #dcdcdc;
+}

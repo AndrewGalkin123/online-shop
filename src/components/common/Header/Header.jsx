@@ -16,7 +16,7 @@ const Header = () => {
             <a href="#">New collections</a>
           </li>
           <li>
-            <a href="#">Best Selling</a>
+            <a href="#">Best Sellings</a>
           </li>
           <li>
             <a href="#">Sale</a>
