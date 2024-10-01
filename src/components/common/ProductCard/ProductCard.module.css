@@ -1,0 +1,79 @@
+.card {
+  width: 388px;
+  height: 506px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 388px;
+  height: 426px;
+  object-fit: cover;
+}
+
+.purchaseBox {
+  width: 100%;
+  height: 80px;
+  padding: 15px 20px 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.cardDescription {
+  width: 180px;
+  height: 60px;
+  gap: 4px;
+  opacity: 0px;
+}
+
+.cardTitle {
+  width: 180px;
+  height: 24px;
+  gap: 0px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}
+
+.prices {
+  width: 130px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actualPrice {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+.oldPrice {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  color: #aeaeae;
+}
+
+.purchaseBox button {
+  width: 104px;
+  height: 50px;
+  padding: 10px 30px 10px 30px;
+  gap: 10px;
+  border-radius: 50px;
+  border: none;
+  background-color: #5e26dd;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  color: #fff;
+}
+
+.purchaseBox button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 2px rgb(143, 143, 240);
+}

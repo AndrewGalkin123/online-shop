@@ -1,0 +1,42 @@
+.offer {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 56px;
+}
+
+.galleryControls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.offerTitle {
+  font-size: 32px;
+  color: white;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 67.5px;
+  text-align: center;
+}
+
+.galleryControls button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  font-size: 24px;
+}
+
+.productCards {
+  display: flex;
+  justify-content: center; /* Центрируем карточки по горизонтали */
+  flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
+  gap: 20px; /* Расстояние между карточками */
+  max-width: 1740px; /* Максимальная ширина блока */
+  margin: 0 auto; /* Центрируем блок на странице */
+}
