@@ -25,17 +25,15 @@ nav ul {
 }
 
 nav ul li a {
-  text-decoration: none;
   font-family: "Aoboshi One";
   font-size: 18px;
   font-weight: 400;
   text-align: center;
   color: white;
   background: none;
-  transition: all 0.5s ease-in-out;
 }
 
-nav ul li a:hover {
+nav ul li:hover {
   cursor: pointer;
   background: linear-gradient(
     180deg,

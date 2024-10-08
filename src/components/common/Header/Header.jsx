@@ -3,8 +3,15 @@ import icon from "./icon.png";
 import cart from "./bag-cross.png";
 import selected from "./heart.png";
 import { Link } from "react-router-dom";
+import Catalog from "../Catalog/Catalog";
+import { useState } from "react";
 
 const Header = () => {
+  const [isCatalogOpen, setCatalogOpen] = useState(false);
+
+  const toggleCatalog = () => {
+    setCatalogOpen(!isCatalogOpen);
+  };
   return (
     <header className={styles.header}>
       <Link to="/">
@@ -13,7 +20,7 @@ const Header = () => {
       <nav className={styles.navigation}>
         <ul>
           <li>
-            <Link to="*">Catalog</Link>
+            <Link onClick={toggleCatalog}>Catalog</Link>
           </li>
           <li>
             <Link to="/newcollection">New collections</Link>
@@ -30,6 +37,7 @@ const Header = () => {
         <img src={cart} alt="cart" />
         <img src={selected} alt="selected" />
       </div>
+      <Catalog isOpen={isCatalogOpen} toggleCatalog={toggleCatalog} />
     </header>
   );
 };
