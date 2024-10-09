@@ -38,17 +38,17 @@
 }
 
 .prices {
-  width: 130px;
+  width: 140px;
   height: 32px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .actualPrice {
   font-size: 24px;
   font-weight: 400;
   line-height: 36px;
+  margin-right: 10px;
 }
 
 .oldPrice {

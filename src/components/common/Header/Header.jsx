@@ -23,13 +23,13 @@ const Header = () => {
             <Link onClick={toggleCatalog}>Catalog</Link>
           </li>
           <li>
-            <Link to="/newcollection">New collections</Link>
+            <Link to="/">New collections</Link>
           </li>
           <li>
             <Link to="#">Best Sellings</Link>
           </li>
           <li>
-            <Link to="/sale">Sale</Link>
+            <Link to="/anime">Sale</Link>
           </li>
         </ul>
       </nav>

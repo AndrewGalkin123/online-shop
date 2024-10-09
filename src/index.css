@@ -9,28 +9,3 @@
 a {
   text-decoration: none;
 }
-
-.title {
-  font-size: 45px;
-  font-weight: 400;
-  line-height: 67.5px;
-  text-align: center;
-  background: linear-gradient(180deg, #23ddda 0%, #5f23dd 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 50px;
-}
-
-.catalog {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 100px;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 колонки с равной шириной */
-  gap: 22px; /* Отступы между элементами */
-}
