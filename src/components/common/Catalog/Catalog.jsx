@@ -1,4 +1,5 @@
 import styles from "./Catalog.module.css";
+import { Link } from "react-router-dom";
 
 const Catalog = ({ isOpen, toggleCatalog }) => {
   return (
@@ -6,54 +7,100 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
       <div className={styles.category}>
         <h3>Figures</h3>
         <ul>
-          <li>Action figures of characters</li>
-          <li>Static figures</li>
-          <li>Nendoroids</li>
-          <li>Mecha (robots)</li>
+          <Link to="">
+            <li>Action figures of characters</li>
+          </Link>
+          <Link to="">
+            <li>Anime dolls</li>
+          </Link>
+          <Link to="/forAdults">
+            <li>For Adults (18+)</li>
+          </Link>
+          <Link to="">
+            <li>Mecha (robots)</li>
+          </Link>
         </ul>
       </div>
       <div className={styles.category}>
         <h3>Merchandise</h3>
         <ul>
-          <li>Keychains</li>
-          <li>Pins</li>
-          <li>Posters</li>
-          <li>Statues</li>
-          <li>Stickers</li>
+          <Link to="">
+            <li>Keychains</li>
+          </Link>
+          <Link to="">
+            <li>Pins</li>
+          </Link>
+          <Link to="">
+            <li>Posters</li>
+          </Link>
+          <Link to="">
+            <li>Statues</li>
+          </Link>
+          <Link to="">
+            <li>Stickers</li>
+          </Link>
         </ul>
       </div>
       <div className={styles.category}>
         <h3>Clothing and Accessories</h3>
         <ul>
-          <li>T-shirts and hoodies with anime prints</li>
-          <li>Hats and caps</li>
-          <li>Backpacks and bags</li>
-          <li>Scarves, gloves, and socks</li>
+          <Link to="">
+            <li>T-shirts and hoodies with anime prints</li>
+          </Link>
+          <Link to="">
+            <li>Hats and caps</li>
+          </Link>
+          <Link to="">
+            <li>Backpacks and bags</li>
+          </Link>
+          <Link to="">
+            <li>Scarves, gloves, and socks</li>
+          </Link>
         </ul>
       </div>
       <div className={styles.category}>
         <h3>Manga and Artbooks</h3>
         <ul>
-          <li>Manga (in different languages)</li>
-          <li>Anime and manga artbooks</li>
-          <li>Illustrations and posters</li>
+          <Link to="">
+            <li>Manga (in different languages)</li>
+          </Link>
+          <Link to="">
+            <li>Anime and manga artbooks</li>
+          </Link>
+          <Link to="">
+            <li>Illustrations and posters</li>
+          </Link>
         </ul>
       </div>
       <div className={styles.category}>
         <h3>Cosplay and Accessories</h3>
         <ul>
-          <li>Character costumes</li>
-          <li>Wigs</li>
-          <li>Contact lenses</li>
-          <li>Cosplay accessories (swords, shields, masks)</li>
+          <Link to="">
+            <li>Character costumes</li>
+          </Link>
+          <Link to="">
+            <li>Wigs</li>
+          </Link>
+          <Link to="">
+            <li>Contact lenses</li>
+          </Link>
+          <Link to="">
+            <li>Cosplay accessories (swords, shields, masks)</li>
+          </Link>
         </ul>
       </div>
       <div className={styles.category}>
         <h3>Collectibles</h3>
         <ul>
-          <li>Rare editions</li>
-          <li>Limited edition figures and posters</li>
-          <li>Autographs from creators</li>
+          <Link to="">
+            <li>Rare editions</li>
+          </Link>
+          <Link to="">
+            <li>Limited edition figures and posters</li>
+          </Link>
+          <Link to="">
+            <li>Autographs from creators</li>
+          </Link>
         </ul>
       </div>
       <button className={styles.closeButton} onClick={toggleCatalog}>
