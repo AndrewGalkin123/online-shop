@@ -1,6 +1,14 @@
+import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
-const ProductCard = ({ imageSrc, cardTitle, price, onSale, originalPrice }) => {
+const ProductCard = ({
+  imageSrc,
+  cardTitle,
+  price,
+  onSale,
+  originalPrice,
+  id,
+}) => {
   return (
     <div className={styles.card}>
       <img src={imageSrc} />
@@ -10,15 +18,17 @@ const ProductCard = ({ imageSrc, cardTitle, price, onSale, originalPrice }) => {
           {onSale ? (
             <div className={styles.prices}>
               <p className={styles.actualPrice}>{price}¥</p>
+              <s className={styles.oldPrice}>{originalPrice}¥</s>
             </div>
           ) : (
             <div className={styles.prices}>
               <p className={styles.actualPrice}>{price}¥</p>
-              <s className={styles.oldPrice}>{originalPrice}¥</s>
             </div>
           )}
         </div>
-        <button>BUY</button>
+        <Link to={`${id}`}>
+          <button>BUY</button>
+        </Link>
       </div>
     </div>
   );
