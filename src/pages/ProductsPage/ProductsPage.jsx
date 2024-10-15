@@ -30,6 +30,7 @@ const ProductsPage = () => {
             price={el.price}
             originalPrice={el.originalPrice}
             id={el.id}
+            category={el.category}
           />
         ))}
       </div>

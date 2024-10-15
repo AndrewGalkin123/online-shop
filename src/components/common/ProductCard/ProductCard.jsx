@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
 const ProductCard = ({
@@ -8,7 +8,10 @@ const ProductCard = ({
   onSale,
   originalPrice,
   id,
+  category,
 }) => {
+  const location = useLocation();
+  const isCategoryPage = location.pathname.includes(category);
   return (
     <div className={styles.card}>
       <img src={imageSrc} />
@@ -26,7 +29,7 @@ const ProductCard = ({
             </div>
           )}
         </div>
-        <Link to={`${id}`}>
+        <Link to={isCategoryPage ? `${id}` : `${category}/${id}`}>
           <button>BUY</button>
         </Link>
       </div>

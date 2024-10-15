@@ -4,7 +4,6 @@ export const products = [
     name: "Rem",
     price: 999,
     originalPrice: 1299,
-
     inStock: true,
     onSale: true,
     category: "sale",
@@ -15,7 +14,6 @@ export const products = [
     name: "Kise",
     price: 899,
     originalPrice: 1099,
-
     inStock: true,
     onSale: true,
     category: "sale",
@@ -26,7 +24,6 @@ export const products = [
     name: "Kakashi",
     price: 1499,
     originalPrice: 1499,
-
     inStock: false,
     onSale: false,
     category: "bestSellings",
@@ -37,7 +34,6 @@ export const products = [
     name: "Toka",
     price: 999,
     originalPrice: 999,
-
     inStock: true,
     onSale: false,
     category: "bestSellings",
@@ -48,7 +44,6 @@ export const products = [
     name: "Asuka",
     price: 1099,
     originalPrice: 1399,
-
     inStock: true,
     onSale: true,
     category: "sale",
@@ -59,7 +54,6 @@ export const products = [
     name: "Usopp",
     price: 899,
     originalPrice: 1099,
-
     inStock: true,
     onSale: true,
     category: "sale",
