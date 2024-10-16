@@ -17,7 +17,7 @@ const ProductsPage = () => {
   const filteredProducts = products.filter(
     (product) => product.category === category.products
   );
-  console.log(filteredProducts);
+
   return (
     <div className={styles.catalog}>
       <h1 className={styles.title}>{title(category.products)}</h1>

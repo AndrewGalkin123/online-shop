@@ -1,7 +1,6 @@
 import styles from "./Header.module.css";
 import icon from "./icon.png";
 import cart from "./bag-cross.png";
-import selected from "./heart.png";
 import { Link } from "react-router-dom";
 import Catalog from "../Catalog/Catalog";
 import { useState } from "react";
@@ -35,7 +34,7 @@ const Header = () => {
       </nav>
       <div className={styles.purchases}>
         <img src={cart} alt="cart" />
-        <img src={selected} alt="selected" />
+        <img src="/images/heart.png" alt="selected" />
       </div>
       <Catalog isOpen={isCatalogOpen} toggleCatalog={toggleCatalog} />
     </header>

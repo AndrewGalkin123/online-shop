@@ -3,6 +3,7 @@
   height: 506px;
   display: flex;
   flex-direction: column;
+  color: black;
 }
 
 .card img {
