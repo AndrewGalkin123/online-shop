@@ -1,28 +1,57 @@
 import { products } from "../../data/products";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./ProductPage.module.css";
+import { convertPath } from "../../utils/utils";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const ProductPage = () => {
-  const nav = useLocation();
   const location = useParams();
   const product = products.find((el) => el.id === Number(location.product));
-  console.log(location);
+  const [mainImageSrc, setMainImageSrc] = useState(product.imageSrc[0]);
+
+  const handleImageClick = (event) => {
+    const eventTargetSrc = mainImageSrc;
+    setMainImageSrc(event.target.src); // Setting image
+    event.target.src = eventTargetSrc;
+  };
   return (
-    <main>
-      <p style={{ color: "#fff" }}>{location.products + "/" + product.name}</p>
+    <main className={styles.main}>
+      <div className={styles.path}>
+        <Link to="/">Home/ </Link>
+        <Link to={`/${location.products}`}>
+          {convertPath(location.products)}
+        </Link>
+        {"/ " + product.name}
+      </div>
       <div className={styles.product}>
-        {/* делать подмену фоток от индекса */}
-        <div className={styles.image}>
-          <img src={product.imageSrc}></img>
-          <div className={styles.controlButtons}>
-            <button>&#8592;</button> {/* Кнопка "Назад" */}
-            <button>&#8594;</button> {/* Кнопка "Вперед" */}
+        <div className={styles.imagesContainer}>
+          <div className={styles.images}>
+            <img id={styles.mainImage} src={mainImageSrc} alt="mainImage" />
+            <img
+              onClick={handleImageClick}
+              className={styles.miniImages}
+              src={product.imageSrc[1]}
+              alt="miniImage"
+            />
+            <img
+              onClick={handleImageClick}
+              className={styles.miniImages}
+              src={product.imageSrc[2]}
+              alt="miniImage"
+            />
+            <img
+              onClick={handleImageClick}
+              className={styles.miniImages}
+              src={product.imageSrc[3]}
+              alt="miniImage"
+            />
           </div>
         </div>
         <div className={styles.productDetails}>
           <div className={styles.infoAboutProduct}>
             <h1>
-              {product.name + " from the popular smartphone game `Azur Lane`"}
+              {product.name + " from the popular smartphone game 'Azur Lane'"}
             </h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
@@ -44,8 +73,14 @@ const ProductPage = () => {
                 </div>
               </div>
             ) : (
-              <div className={styles.prices}>
-                <p className={styles.actualPrice}>{product.price}¥</p>
+              <div style={{ display: "flex" }}>
+                <div className={styles.prices}>
+                  <p className={styles.actualPrice}>{product.price}¥</p>
+                </div>
+                <div className={styles.shoppingBox}>
+                  <img src="/images/bag-cross-gradient.png" alt="bag"></img>
+                  <img src="/images/heart-gradient.png" alt="heart"></img>
+                </div>
               </div>
             )}
 

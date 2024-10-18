@@ -7,7 +7,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/rem.jpeg",
+    imageSrc: ["/images/sale/rem.jpeg"],
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/kise.jpg",
+    imageSrc: ["/images/sale/kise.jpg"],
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export const products = [
     inStock: false,
     onSale: false,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/kakashi.jpg",
+    imageSrc: ["/images/bestSellings/kakashi.jpg"],
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/toka.jpg",
+    imageSrc: ["/images/bestSellings/toka.jpg"],
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/asuka.jpg",
+    imageSrc: ["/images/sale/asuka.jpg"],
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/usopp.jpg",
+    imageSrc: ["/images/sale/usopp.jpg"],
   },
   {
     id: 7,
@@ -68,7 +68,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/ryan.jpg",
+    imageSrc: ["/images/bestSellings/ryan.jpg"],
   },
   {
     id: 8,
@@ -78,7 +78,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/honoka.jpg",
+    imageSrc: ["/images/sale/honoka.jpg"],
   },
   {
     id: 9,
@@ -88,7 +88,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/zoro.jpg",
+    imageSrc: ["/images/bestSellings/zoro.jpg"],
   },
   {
     id: 10,
@@ -98,7 +98,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/evangelionRobot.jpg",
+    imageSrc: ["/images/bestSellings/evangelionRobot.jpg"],
   },
   {
     id: 11,
@@ -108,7 +108,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/leopard.jpg",
+    imageSrc: ["/images/sale/leopard.jpg"],
   },
   {
     id: 12,
@@ -118,7 +118,7 @@ export const products = [
     inStock: false,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/Saito.jpg",
+    imageSrc: ["/images/sale/Saito.jpg"],
   },
   {
     id: 13,
@@ -128,7 +128,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/moon.jpg",
+    imageSrc: ["/images/sale/moon.jpg"],
   },
   {
     id: 14,
@@ -138,7 +138,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/Mirai.jpg",
+    imageSrc: ["/images/sale/Mirai.jpg"],
   },
   {
     id: 15,
@@ -148,7 +148,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/Harumi.jpg",
+    imageSrc: ["/images/bestSellings/Harumi.jpg"],
   },
   {
     id: 16,
@@ -158,7 +158,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/doflamingo.jpg",
+    imageSrc: ["/images/sale/doflamingo.jpg"],
   },
   {
     id: 17,
@@ -168,7 +168,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/hanuka.jpg",
+    imageSrc: ["/images/bestSellings/hanuka.jpg"],
   },
   {
     id: 18,
@@ -178,7 +178,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/luffy.jpg",
+    imageSrc: ["/images/sale/luffy.jpg"],
   },
   {
     id: 19,
@@ -188,7 +188,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/teacher.jpg",
+    imageSrc: ["/images/bestSellings/teacher.jpg"],
   },
   {
     id: 20,
@@ -198,7 +198,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "sale",
-    imageSrc: "/images/sale/llen.jpg",
+    imageSrc: ["/images/sale/llen.jpg"],
   },
   {
     id: 21,
@@ -208,7 +208,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/Sato.jpg",
+    imageSrc: ["/images/bestSellings/Sato.jpg"],
   },
   {
     id: 22,
@@ -218,7 +218,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/Seyka.jpg",
+    imageSrc: ["/images/bestSellings/Seyka.jpg"],
   },
   {
     id: 23,
@@ -228,7 +228,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "bestSellings",
-    imageSrc: "/images/bestSellings/Mako.jpg",
+    imageSrc: ["/images/bestSellings/Mako.jpg"],
   },
   {
     id: 24,
@@ -238,7 +238,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "newCollection",
-    imageSrc: "/images/newCollection/Kaname1.jpg",
+    imageSrc: ["/images/newCollection/Kaname1.jpg"],
   },
   {
     id: 25,
@@ -248,7 +248,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "newCollection",
-    imageSrc: "/images/newCollection/hikari.jpg",
+    imageSrc: ["/images/newCollection/hikari.jpg"],
   },
   {
     id: 26,
@@ -258,7 +258,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "newCollection",
-    imageSrc: "/images/newCollection/Yuki.jpg",
+    imageSrc: ["/images/newCollection/Yuki.jpg"],
   },
   {
     id: 27,
@@ -268,7 +268,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "newCollection",
-    imageSrc: "/images/newCollection/Yune.jpg",
+    imageSrc: ["/images/newCollection/Yune.jpg"],
   },
   {
     id: 28,
@@ -278,7 +278,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "newCollection",
-    imageSrc: "/images/newCollection/Katsune.jpg",
+    imageSrc: ["/images/newCollection/Katsune.jpg"],
   },
   {
     id: 29,
@@ -288,7 +288,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "newCollection",
-    imageSrc: "/images/newCollection/Katsumi.jpg",
+    imageSrc: ["/images/newCollection/Katsumi.jpg"],
   },
   {
     id: 30,
@@ -298,7 +298,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "newCollection",
-    imageSrc: "/images/newCollection/hikamori.jpg",
+    imageSrc: ["/images/newCollection/hikamori.jpg"],
   },
   {
     id: 31,
@@ -308,7 +308,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Akari.jpg",
+    imageSrc: ["/images/forAdults/Akari.jpg"],
   },
 
   {
@@ -319,7 +319,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Hana.jpg",
+    imageSrc: ["/images/forAdults/Hana.jpg"],
   },
 
   {
@@ -330,7 +330,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Itsuki.jpg",
+    imageSrc: ["/images/forAdults/Itsuki.jpg"],
   },
   {
     id: 34,
@@ -340,7 +340,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Karin.jpg",
+    imageSrc: ["/images/forAdults/Karin.jpg"],
   },
   {
     id: 35,
@@ -350,7 +350,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Kito.jpg",
+    imageSrc: ["/images/forAdults/Kito.jpg"],
   },
   {
     id: 36,
@@ -360,7 +360,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Kumo.jpg",
+    imageSrc: ["/images/forAdults/Kumo.jpg"],
   },
   {
     id: 37,
@@ -370,7 +370,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Kuno.jpg",
+    imageSrc: ["/images/forAdults/Kuno.jpg"],
   },
   {
     id: 38,
@@ -380,7 +380,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Haruto.jpg",
+    imageSrc: ["/images/forAdults/Haruto.jpg"],
   },
   {
     id: 39,
@@ -390,7 +390,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Itika.jpg",
+    imageSrc: ["/images/forAdults/Itika.jpg"],
   },
   {
     id: 40,
@@ -400,7 +400,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Kyoka.jpg",
+    imageSrc: ["/images/forAdults/Kyoka.jpg"],
   },
   {
     id: 41,
@@ -410,7 +410,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/May.jpg",
+    imageSrc: ["/images/forAdults/May.jpg"],
   },
   {
     id: 42,
@@ -420,7 +420,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Minato.jpg",
+    imageSrc: ["/images/forAdults/Minato.jpg"],
   },
 
   {
@@ -431,7 +431,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Ray.jpg",
+    imageSrc: ["/images/forAdults/Ray.jpg"],
   },
   {
     id: 44,
@@ -441,7 +441,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Rike.jpg",
+    imageSrc: ["/images/forAdults/Rike.jpg"],
   },
   {
     id: 45,
@@ -451,7 +451,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Rin.jpg",
+    imageSrc: ["/images/forAdults/Rin.jpg"],
   },
   {
     id: 46,
@@ -461,7 +461,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Sora.jpg",
+    imageSrc: ["/images/forAdults/Sora.jpg"],
   },
   {
     id: 47,
@@ -471,7 +471,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Tachi.jpg",
+    imageSrc: ["/images/forAdults/Tachi.jpg"],
   },
   {
     id: 48,
@@ -481,7 +481,7 @@ export const products = [
     inStock: true,
     onSale: true,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Yui.jpg",
+    imageSrc: ["/images/forAdults/Yui.jpg"],
   },
   {
     id: 49,
@@ -491,7 +491,7 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Yudzu.jpg",
+    imageSrc: ["/images/forAdults/Yudzu.jpg"],
   },
 
   {
@@ -502,6 +502,36 @@ export const products = [
     inStock: true,
     onSale: false,
     category: "forAdults",
-    imageSrc: "/images/forAdults/Yuki.jpg",
+    imageSrc: ["/images/forAdults/Yuki.jpg"],
+  },
+  {
+    id: 51,
+    name: "Yoko",
+    price: 1599,
+    originalPrice: 1999,
+    inStock: true,
+    onSale: false,
+    category: "forAdults",
+    imageSrc: [
+      "/images/forAdults/Yoko1.jpg",
+      "/images/forAdults/Yoko2.jpg",
+      "/images/forAdults/Yoko3.jpg",
+      "/images/forAdults/Yoko4.jpg",
+    ],
+  },
+  {
+    id: 52,
+    name: "Yori",
+    price: 1599,
+    originalPrice: 1999,
+    inStock: true,
+    onSale: false,
+    category: "forAdults",
+    imageSrc: [
+      "/images/forAdults/Yori1.jpg",
+      "/images/forAdults/Yori2.jpg",
+      "/images/forAdults/Yori3.jpg",
+      "/images/forAdults/Yori4.jpg",
+    ],
   },
 ];
