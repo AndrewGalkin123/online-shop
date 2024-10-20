@@ -1,0 +1,92 @@
+.buying {
+  width: 90%;
+  height: 180px;
+  border-radius: 10px;
+  border: 2px solid #4a1dae;
+  margin-bottom: 30px;
+  position: relative;
+  color: #fff;
+  min-height: 180px;
+}
+
+.buying .productImg {
+  position: absolute;
+  width: 180px;
+  height: 160px;
+  background-color: #4a1dae;
+  left: 10px;
+  top: 8px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.buying .productInfo {
+  position: absolute;
+  top: 8px;
+  left: 214px;
+}
+
+.buying .productInfo h3 {
+  font-size: 16px;
+  font-weight: 400;
+}
+.buying .productInfo p {
+  font-size: 12px;
+  margin-top: 18px;
+  font-weight: 400;
+}
+
+.buying .quantity {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  left: 408px;
+  top: 120px;
+  height: 40px;
+  width: 118px;
+}
+
+.buying .quantity input {
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #5e26dd;
+  border-width: 1px;
+  text-align: center;
+  gap: 10px;
+  height: 40px;
+  width: 70px;
+  color: #5e26dd;
+}
+
+.buying .quantity div {
+  color: #fff;
+  font-size: 26px;
+  height: 100%;
+}
+
+.buying .quantity div p {
+  color: #5e26dd;
+}
+
+.buying .quantity div:hover {
+  cursor: pointer;
+}
+
+.buying .prices {
+  position: absolute;
+
+  right: 26px;
+  bottom: 26px;
+}
+
+.buying .prices .oldPrice {
+  color: #0a4e4c;
+  font-size: 12px;
+}
+
+.buying .prices .actualPrice {
+  color: #23ddd9;
+  font-size: 18px;
+}

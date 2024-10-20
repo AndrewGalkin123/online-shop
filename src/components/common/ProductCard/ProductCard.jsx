@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./ProductCard.module.css";
+import { useContext } from "react";
+import { CartContext } from "../../../context/CartContext";
 
 const ProductCard = ({
   imageSrc,
@@ -12,6 +14,7 @@ const ProductCard = ({
 }) => {
   const location = useLocation();
   const isCategoryPage = location.pathname.includes(category);
+  const { addToCart } = useContext(CartContext);
   return (
     <Link to={isCategoryPage ? `${id}` : `${category}/${id}`}>
       <div className={styles.card}>
@@ -31,7 +34,21 @@ const ProductCard = ({
             )}
           </div>
           <Link>
-            <button>BUY</button>
+            <button
+              onClick={() =>
+                addToCart({
+                  id: id,
+                  name: cardTitle,
+                  price: price,
+                  originalPrice: originalPrice,
+                  onSale: onSale,
+                  category: category,
+                  imageSrc: imageSrc,
+                })
+              }
+            >
+              BUY
+            </button>
           </Link>
         </div>
       </div>

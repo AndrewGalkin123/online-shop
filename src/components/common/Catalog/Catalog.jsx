@@ -95,8 +95,8 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
           <Link to="">
             <li>Rare editions</li>
           </Link>
-          <Link to="">
-            <li>Limited edition figures and posters</li>
+          <Link to="/limitedEditionFigures">
+            <li>Limited edition figures</li>
           </Link>
           <Link to="">
             <li>Autographs from creators</li>

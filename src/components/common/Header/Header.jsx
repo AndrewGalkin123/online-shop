@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import Catalog from "../Catalog/Catalog";
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({ setCartStatus }) => {
   const [isCatalogOpen, setCatalogOpen] = useState(false);
 
+  const handleCartClick = () => {
+    setCartStatus(true);
+  };
   const toggleCatalog = () => {
     setCatalogOpen(!isCatalogOpen);
   };
@@ -33,8 +36,10 @@ const Header = () => {
         </ul>
       </nav>
       <div className={styles.purchases}>
-        <img src={cart} alt="cart" />
-        <img src="/images/heart.png" alt="selected" />
+        <img onClick={handleCartClick} src={cart} alt="cart" />
+        <Link to="/favourites">
+          <img src="/images/heart.png" alt="selected" />
+        </Link>
       </div>
       <Catalog isOpen={isCatalogOpen} toggleCatalog={toggleCatalog} />
     </header>

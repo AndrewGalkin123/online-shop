@@ -1,0 +1,166 @@
+.blurBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2); /* Затемнение */
+  backdrop-filter: blur(5px); /* Эффект размытия */
+  z-index: 9; /* Поднять над всем контентом */
+  display: none;
+}
+
+.basket {
+  background: #0c0124;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #5f23dd;
+  border-width: 3px;
+  height: 720px;
+  width: 750px;
+  position: relative;
+  overflow: hidden;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%);
+  display: none;
+  z-index: 10;
+}
+
+.visible {
+  display: block;
+}
+
+.basket .basketHeader {
+  border-style: solid;
+  border-color: #5e26dd;
+  border-width: 0px 0px 2px 0px;
+  width: 750px;
+  height: 63px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.basket img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 671px;
+  top: 22px;
+  overflow: visible;
+  cursor: pointer;
+}
+.basket .title {
+  background: linear-gradient(
+    180deg,
+    rgba(35, 221, 218, 1) 0%,
+    rgba(95, 35, 221, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: left;
+
+  font-size: 24px;
+  line-height: 150%;
+  font-weight: 400;
+  position: absolute;
+  left: 28px;
+  top: 14px;
+}
+
+.basket .buyings {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  width: 100%;
+  position: relative;
+  top: 100px;
+  height: 450px;
+  overflow: scroll;
+}
+
+.basket .confirmBlock {
+  background: #e4ffff;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(
+    180deg,
+    rgba(35, 221, 217, 1) 0%,
+    rgba(94, 38, 221, 1) 100%
+  );
+  border-image-slice: 0;
+  width: 306px;
+  height: 114px;
+  position: absolute;
+  left: 390px;
+  bottom: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.basket .totalAmount {
+  color: #5e26dd;
+  text-align: left;
+  font-size: var(--h3-font-size, 24px);
+  line-height: var(--h3-line-height, 150%);
+  font-weight: var(--h3-font-weight, 400);
+  text-transform: uppercase;
+}
+
+.basket .checkoutButton {
+  color: #ffffff;
+  text-align: left;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+  width: 174px;
+  height: 50px;
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
+  border: 1px solid #5e26dd;
+  transition: all 0.3s;
+}
+
+.basket .checkoutButton:hover {
+  cursor: pointer;
+  background: linear-gradient(96.08deg, #5e26dd 14.66%, #23ddda 88.75%);
+  box-shadow: 0px 0px 25px 10px rgb(76, 76, 184);
+}
+
+.basket .continueShoppingButton {
+  color: #5e26dd;
+  text-align: left;
+  font-size: 12px;
+  line-height: 150%;
+  font-weight: 400;
+  position: relative;
+  background: #ede7f2;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #4a1dae;
+  border-width: 2px;
+  padding: 14px 50px 14px 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 30px;
+  bottom: 40px;
+  box-shadow: 0px 0px 16.1px 0px rgba(95, 35, 221, 1);
+  overflow: hidden;
+}
+
+.basket .continueShoppingButton:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 20.1px 4px rgba(95, 35, 221, 1);
+}
