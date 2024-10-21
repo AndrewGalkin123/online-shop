@@ -6,7 +6,7 @@ import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import Home from "./pages/HomePage/HomePage";
 import Cart from "./components/common/Cart/Cart";
-import { useState, useEffect } from "react";
+
 import { CartProvider } from "./context/CartContext";
 
 function NotFound() {
@@ -14,25 +14,11 @@ function NotFound() {
 }
 
 function App() {
-  const [isCartVisible, setCartStatus] = useState(false);
-
-  useEffect(() => {
-    // when cart is visible we cant scroll
-    if (isCartVisible) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-    return () => {
-      document.body.classList.remove("no-scroll");
-    };
-  }, [isCartVisible]);
-
   return (
     <BrowserRouter>
       <CartProvider>
-        <Header setCartStatus={setCartStatus} />
-        <Cart isVisible={isCartVisible} setCartStatus={setCartStatus} />
+        <Header />
+        <Cart />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />

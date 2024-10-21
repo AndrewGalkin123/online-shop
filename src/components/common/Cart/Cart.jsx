@@ -8,39 +8,37 @@ const CHAT_ID = "1066918561"; // chat id where should info be sent
 // function to send message
 function sendMessageToTelegram(cartItems, totalAmount) {
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+  if (cartItems.length > 0) {
+    const message = `New order:\n\n${cartItems
+      .map((item, index) => `${index + 1}. ${item.name} - ${item.quantity} pcs`)
+      .join("\n")}\n\nTotal: ${totalAmount()}¥`;
 
-  const message = `New order:\n\n${cartItems
-    .map((item, index) => `${index + 1}. ${item.name} - ${item.quantity} pcs`)
-    .join("\n")}\n\nTotal: ${totalAmount}¥`;
+    const data = {
+      chat_id: CHAT_ID,
+      text: message,
+    };
 
-  const data = {
-    chat_id: CHAT_ID,
-    text: message,
-  };
-
-  // Отправляем запрос в Telegram
-  fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      console.log("Message sent:", result);
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("Message sent:", result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    alert("Order has been sent to us!");
+  }
 }
 
-const Cart = ({ isVisible, setCartStatus }) => {
-  const { cartItems, getTotalPrice, clearCart } = useContext(CartContext);
-  const totalAmount = cartItems.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0
-  );
+const Cart = () => {
+  const { cartItems, getTotalPrice, clearCart, isCartVisible, setCartStatus } =
+    useContext(CartContext);
 
   const handleCloseCartClick = () => {
     setCartStatus(false);
@@ -48,9 +46,8 @@ const Cart = ({ isVisible, setCartStatus }) => {
 
   //Function to send order when checout is clicked
   const handleCheckoutClick = () => {
-    sendMessageToTelegram(cartItems, totalAmount);
+    sendMessageToTelegram(cartItems, getTotalPrice);
     clearCart();
-    alert("Order has been sent to us!");
     handleCloseCartClick();
   };
 
@@ -58,7 +55,9 @@ const Cart = ({ isVisible, setCartStatus }) => {
     <div>
       <div
         className={
-          isVisible ? `${styles.basket} ${styles.visible}` : `${styles.basket}`
+          isCartVisible
+            ? `${styles.basket} ${styles.visible}`
+            : `${styles.basket}`
         }
       >
         <div className={styles.basketHeader}>
@@ -94,7 +93,7 @@ const Cart = ({ isVisible, setCartStatus }) => {
       </div>
       <div
         className={
-          isVisible
+          isCartVisible
             ? `${styles.blurBackground} ${styles.visible}`
             : `${styles.blurBackground}`
         }
