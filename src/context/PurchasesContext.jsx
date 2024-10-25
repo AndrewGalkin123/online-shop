@@ -1,18 +1,26 @@
 import React, { createContext, useState, useEffect } from "react";
 
-export const CartContext = createContext();
+export const PurchasesContext = createContext();
 
-export function CartProvider({ children }) {
+export function PurchasesProvider({ children }) {
   const [cartItems, setCartItems] = useState(() => {
     const savedCart = localStorage.getItem("cartItems");
     return savedCart ? JSON.parse(savedCart) : [];
   });
   const [isCartVisible, setCartStatus] = useState(false);
+  const [selectedItems, setSelectedItems] = useState(() => {
+    const savedSelected = localStorage.getItem("selectedItems");
+    return savedSelected ? JSON.parse(savedSelected) : [];
+  });
 
   //  Updating localstorage when we are adding cartItem
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
+
+  useEffect(() => {
+    localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+  }, [selectedItems]);
 
   useEffect(() => {
     // when cart is visible we cant scroll
@@ -29,6 +37,19 @@ export function CartProvider({ children }) {
     setCartItems([]);
   };
 
+  const addToSelected = (product) => {
+    setSelectedItems((prevSelectedItems) => {
+      const existingProduct = prevSelectedItems.find(
+        (item) => item.id === product.id
+      );
+      if (existingProduct) {
+        return prevSelectedItems.filter((el) => el.id !== product.id);
+      } else {
+        return [...prevSelectedItems, { ...product }];
+      }
+    });
+  };
+
   const addToCart = (product) => {
     setCartItems((prevCartItems) => {
       const existingProduct = prevCartItems.find(
@@ -36,7 +57,6 @@ export function CartProvider({ children }) {
       );
 
       if (existingProduct) {
-        console.log(existingProduct);
         return prevCartItems.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
@@ -50,6 +70,7 @@ export function CartProvider({ children }) {
 
   const buyNow = (product) => {
     addToCart(product);
+    setCartStatus(true);
   };
 
   const updateQuantity = (productId, delta) => {
@@ -72,7 +93,7 @@ export function CartProvider({ children }) {
   };
 
   return (
-    <CartContext.Provider
+    <PurchasesContext.Provider
       value={{
         cartItems,
         addToCart,
@@ -82,9 +103,11 @@ export function CartProvider({ children }) {
         isCartVisible,
         setCartStatus,
         buyNow,
+        addToSelected,
+        selectedItems,
       }}
     >
       {children}
-    </CartContext.Provider>
+    </PurchasesContext.Provider>
   );
 }

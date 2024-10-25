@@ -1,7 +1,7 @@
 import CartProduct from "./ProductInCart/CartProduct";
 import styles from "./Cart.module.css";
 import { useContext } from "react";
-import { CartContext } from "../../../context/CartContext";
+import { PurchasesContext } from "../../../context/PurchasesContext";
 
 const BOT_TOKEN = "7725618525:AAH9QyLTH4UG1iVdF5VaBBj1ERvdU6ctCPo"; // TG-Bot Token
 const CHAT_ID = "1066918561"; // chat id where should info be sent
@@ -38,7 +38,7 @@ function sendMessageToTelegram(cartItems, totalAmount) {
 
 const Cart = () => {
   const { cartItems, getTotalPrice, clearCart, isCartVisible, setCartStatus } =
-    useContext(CartContext);
+    useContext(PurchasesContext);
 
   const handleCloseCartClick = () => {
     setCartStatus(false);

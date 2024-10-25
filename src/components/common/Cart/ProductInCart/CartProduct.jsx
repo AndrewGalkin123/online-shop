@@ -1,9 +1,9 @@
 import styles from "./CartProduct.module.css";
 import { useContext } from "react";
-import { CartContext } from "../../../../context/CartContext";
+import { PurchasesContext } from "../../../../context/PurchasesContext";
 
 const CartProduct = ({ product }) => {
-  const { updateQuantity } = useContext(CartContext);
+  const { updateQuantity } = useContext(PurchasesContext);
   return (
     <div className={styles.buying}>
       <img className={styles.productImg} alt="product" src={product.imageSrc} />

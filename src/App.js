@@ -7,7 +7,7 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import Home from "./pages/HomePage/HomePage";
 import Cart from "./components/common/Cart/Cart";
 
-import { CartProvider } from "./context/CartContext";
+import { PurchasesProvider } from "./context/PurchasesContext";
 
 function NotFound() {
   return <h2>404 - Not Found</h2>;
@@ -16,7 +16,7 @@ function NotFound() {
 function App() {
   return (
     <BrowserRouter>
-      <CartProvider>
+      <PurchasesProvider>
         <Header />
         <Cart />
         <Routes>
@@ -26,7 +26,7 @@ function App() {
           <Route path="/:products/:product" element={<ProductPage />} />
         </Routes>
         <Footer />
-      </CartProvider>
+      </PurchasesProvider>
     </BrowserRouter>
   );
 }

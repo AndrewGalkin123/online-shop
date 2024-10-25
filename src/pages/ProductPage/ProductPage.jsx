@@ -3,18 +3,24 @@ import { useParams } from "react-router-dom";
 import styles from "./ProductPage.module.css";
 import { convertPath } from "../../utils/utils";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { PurchasesContext } from "../../context/PurchasesContext";
 
 const ProductPage = () => {
   const location = useParams();
   const product = products.find((el) => el.id === Number(location.product));
-  const [mainImageSrc, setMainImageSrc] = useState(product.imageSrc[0]);
 
+  const { buyNow, addToCart, addToSelected, selectedItems } =
+    useContext(PurchasesContext);
+
+  const [mainImageSrc, setMainImageSrc] = useState(product.imageSrc[0]);
+  const isSelected = selectedItems.some((item) => item.id === product.id);
   const handleImageClick = (event) => {
     const eventTargetSrc = mainImageSrc;
     setMainImageSrc(event.target.src); // Setting image
     event.target.src = eventTargetSrc;
   };
+
   return (
     <main className={styles.main}>
       <div className={styles.path}>
@@ -68,8 +74,20 @@ const ProductPage = () => {
                   <p className={styles.actualPrice}>{product.price}¥</p>
                 </div>
                 <div className={styles.shoppingBox}>
-                  <img src="/images/bag-cross-gradient.png" alt="bag"></img>
-                  <img src="/images/heart-gradient.png" alt="heart"></img>
+                  <img
+                    onClick={() => addToCart(product)}
+                    src="/images/bag-cross-gradient.png"
+                    alt="bag"
+                  ></img>
+                  <img
+                    onClick={() => addToSelected(product)}
+                    src={
+                      isSelected
+                        ? "/images/heart-saved.png"
+                        : "/images/heart-gradient.png"
+                    }
+                    alt="heart"
+                  ></img>
                 </div>
               </div>
             ) : (
@@ -78,13 +96,25 @@ const ProductPage = () => {
                   <p className={styles.actualPrice}>{product.price}¥</p>
                 </div>
                 <div className={styles.shoppingBox}>
-                  <img src="/images/bag-cross-gradient.png" alt="bag"></img>
-                  <img src="/images/heart-gradient.png" alt="heart"></img>
+                  <img
+                    onClick={() => addToCart(product)}
+                    src="/images/bag-cross-gradient.png"
+                    alt="bag"
+                  ></img>
+                  <img
+                    onClick={() => addToSelected(product)}
+                    src={
+                      isSelected
+                        ? "/images/heart-saved.png"
+                        : "/images/heart-gradient.png"
+                    }
+                    alt="heart"
+                  ></img>
                 </div>
               </div>
             )}
 
-            <button>BUY NOW</button>
+            <button onClick={() => buyNow(product)}>BUY NOW</button>
           </div>
         </div>
       </div>

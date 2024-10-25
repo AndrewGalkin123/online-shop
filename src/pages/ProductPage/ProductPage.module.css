@@ -78,6 +78,11 @@
   height: 70px;
 }
 
+.shoppingBox img:hover {
+  filter: brightness(140%);
+  cursor: pointer;
+}
+
 .purchaseBox {
   display: flex;
   flex-direction: column;

@@ -4,11 +4,11 @@ import cart from "./bag-cross.png";
 import { Link } from "react-router-dom";
 import Catalog from "../Catalog/Catalog";
 import { useContext, useState } from "react";
-import { CartContext } from "../../../context/CartContext";
+import { PurchasesContext } from "../../../context/PurchasesContext";
 
 const Header = () => {
   const [isCatalogOpen, setCatalogOpen] = useState(false);
-  const { setCartStatus } = useContext(CartContext);
+  const { setCartStatus } = useContext(PurchasesContext);
   const handleCartClick = () => {
     setCartStatus(true);
   };
