@@ -6,7 +6,11 @@ const CartProduct = ({ product }) => {
   const { updateQuantity } = useContext(PurchasesContext);
   return (
     <div className={styles.buying}>
-      <img className={styles.productImg} alt="product" src={product.imageSrc} />
+      <img
+        className={styles.productImg}
+        alt="product"
+        src={product.imageSrc[0]}
+      />
       <div className={styles.productInfo}>
         <h3>{product.name}</h3>
         <p>Moineau from the popular smartphone game "Azur Lane"</p>

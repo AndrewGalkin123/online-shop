@@ -1,6 +1,7 @@
 import styles from "./Header.module.css";
 import icon from "./icon.png";
 import cart from "./bag-cross.png";
+import burgerMenu from "./menu.png";
 import { Link } from "react-router-dom";
 import Catalog from "../Catalog/Catalog";
 import { useContext, useState } from "react";
@@ -8,19 +9,27 @@ import { PurchasesContext } from "../../../context/PurchasesContext";
 
 const Header = () => {
   const [isCatalogOpen, setCatalogOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const { setCartStatus } = useContext(PurchasesContext);
+
   const handleCartClick = () => {
     setCartStatus(true);
   };
+
   const toggleCatalog = () => {
     setCatalogOpen(!isCatalogOpen);
   };
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className={styles.header}>
       <Link to="/">
         <img className={styles.icon} src={icon} alt="Icon" />
       </Link>
-      <nav className={styles.navigation}>
+      <nav className={`${styles.navigation} ${isMenuOpen ? styles.open : ""}`}>
         <ul>
           <li>
             <Link onClick={toggleCatalog}>Catalog</Link>
@@ -34,6 +43,17 @@ const Header = () => {
           <li>
             <Link to="/sale">Sale</Link>
           </li>
+          {/* Показываем Cart и Favourites только при открытом меню на мобильных */}
+          {isMenuOpen && (
+            <>
+              <li>
+                <Link onClick={handleCartClick}>Cart</Link>
+              </li>
+              <li>
+                <Link to="/favourites">Favourites</Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
       <div className={styles.purchases}>
@@ -42,6 +62,9 @@ const Header = () => {
           <img src="/images/heart.png" alt="selected" />
         </Link>
       </div>
+      <button className={styles.burger} onClick={toggleMenu}>
+        <img src={burgerMenu} alt="menu" />
+      </button>
       <Catalog isOpen={isCatalogOpen} toggleCatalog={toggleCatalog} />
     </header>
   );

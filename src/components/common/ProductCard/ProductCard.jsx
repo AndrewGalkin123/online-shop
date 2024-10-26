@@ -22,13 +22,13 @@ const ProductCard = ({
   const handleBuyClick = (e) => {
     e.stopPropagation(); // Остановить событие, чтобы не перейти на страницу товара
     buyNow({
-      id,
+      id: id,
       name: cardTitle,
-      price,
-      originalPrice,
-      onSale,
-      category,
-      imageSrc,
+      price: price,
+      originalPrice: originalPrice,
+      onSale: onSale,
+      category: category,
+      imageSrc: imageSrc ? [imageSrc] : [],
     });
   };
 

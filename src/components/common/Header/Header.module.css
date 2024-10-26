@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .icon {
@@ -12,10 +13,11 @@
   height: 65px;
 }
 
-.nav {
+.navigation {
   width: 600px;
   height: 27px;
-  margin-left: 238px;
+  display: flex;
+  align-items: center;
 }
 
 nav ul {
@@ -35,13 +37,9 @@ nav ul li a {
 
 nav ul li:hover {
   cursor: pointer;
-  background: linear-gradient(
-    180deg,
-    #23ddd9 0%,
-    #5f23dd 100%
-  ); /* Градиент для текста */
-  -webkit-background-clip: text; /* Обрезаем фон по форме текста */
-  background-clip: text; /* Для других браузеров */
+  background: linear-gradient(180deg, #23ddd9 0%, #5f23dd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -54,4 +52,57 @@ nav ul li:hover {
   width: 24px;
   height: 24px;
   cursor: pointer;
+}
+
+/* Стили для кнопки-гамбургера */
+.burger {
+  display: none;
+  font-size: 38px;
+
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(180deg, #23ddd9 0%, #5f23dd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Медиа-запрос для экранов шириной до 768px */
+@media (max-width: 768px) {
+  .header {
+    padding: 0px 60px;
+  }
+
+  .navigation {
+    display: none; /* Скрываем навигацию */
+  }
+
+  .navigation.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 120px;
+    right: 0;
+    width: 220px;
+    height: 280px;
+    background-color: #0c0124;
+    opacity: 0.9;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .purchases {
+    display: none;
+  }
 }

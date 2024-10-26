@@ -7,16 +7,16 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
       <div className={styles.category}>
         <h3>Figures</h3>
         <ul>
-          <Link to="">
-            <li>Action figures of characters</li>
+          <Link to="/nendoroids">
+            <li>Nendoroids</li>
           </Link>
-          <Link to="">
+          <Link to="/animeDolls">
             <li>Anime dolls</li>
           </Link>
           <Link to="/forAdults">
             <li>For Adults (18+)</li>
           </Link>
-          <Link to="">
+          <Link to="/mecha">
             <li>Mecha (robots)</li>
           </Link>
         </ul>

@@ -69,8 +69,6 @@
 .additionalInfo {
   width: 546px;
   height: 120px;
-  gap: 83px;
-  opacity: 0px;
   display: flex;
   justify-content: space-between;
 }
@@ -78,8 +76,6 @@
 .additionalInfo div {
   width: 116px;
   height: 120px;
-  gap: 11px;
-  opacity: 0px;
 }
 
 .additionalInfo h3 {
@@ -106,4 +102,29 @@
 .additionalInfo ul li:hover {
   cursor: pointer;
   color: #dcdcdc;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    padding: 40px;
+  }
+
+  .receiveEmailsForm {
+    width: 100%;
+  }
+
+  .additionalInfo {
+    height: auto;
+    width: 100%;
+    margin-top: 40px;
+  }
+  .additionalInfo div {
+    width: 33.3%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
 }
