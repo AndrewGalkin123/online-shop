@@ -56,9 +56,7 @@ const ProductPage = () => {
         </div>
         <div className={styles.productDetails}>
           <div className={styles.infoAboutProduct}>
-            <h1>
-              {product.name + " from the popular smartphone game 'Azur Lane'"}
-            </h1>
+            <h1>{product.name}</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
               similique nihil veritatis sunt veniam eligendi earum illo eum

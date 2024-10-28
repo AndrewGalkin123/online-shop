@@ -19,21 +19,21 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3>CONTACTS</h3>
-          <ul>
-            <li>+380955776137</li>
-            <li>+420723239477</li>
-            <li>127788127788a@gmail.com</li>
-            <li>halkian1@uhk.cz</li>
-          </ul>
-        </div>
-        <div>
           <h3>SOCIAL</h3>
           <ul>
             <li>Telegram</li>
             <li>X (Twitter)</li>
             <li>Instagram</li>
             <li>YouTube</li>
+          </ul>
+        </div>
+        <div>
+          <h3>CONTACTS</h3>
+          <ul>
+            <li>+380955776137</li>
+            <li>+420723239477</li>
+            <li>127788127788a@gmail.com</li>
+            <li>halkian1@uhk.cz</li>
           </ul>
         </div>
       </div>

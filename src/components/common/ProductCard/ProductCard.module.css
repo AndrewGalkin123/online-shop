@@ -92,3 +92,35 @@
     padding: 15px 10px;
   }
 }
+
+@media (max-width: 425px) {
+  .card {
+    width: 100%; /* Используем всю ширину экрана */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .card img {
+    height: 250px; /* Уменьшаем высоту изображения */
+  }
+
+  .purchaseBox {
+    padding: 10px; /* Уменьшаем отступы внутри коробки */
+  }
+
+  .cardTitle {
+    font-size: 14px; /* Уменьшаем размер текста */
+  }
+
+  .prices .actualPrice {
+    font-size: 18px; /* Уменьшаем размер текущей цены */
+  }
+
+  .prices .oldPrice {
+    font-size: 14px; /* Уменьшаем размер старой цены */
+  }
+
+  .purchaseBox button {
+    width: 80px; /* Уменьшаем ширину кнопки */
+    font-size: 16px; /* Уменьшаем размер текста */
+  }
+}

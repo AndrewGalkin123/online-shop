@@ -65,6 +65,10 @@ const Header = () => {
       <button className={styles.burger} onClick={toggleMenu}>
         <img src={burgerMenu} alt="menu" />
       </button>
+      {/* Оверлей, который затемняет фон при открытии меню */}
+      {isMenuOpen && (
+        <div className={styles.overlay} onClick={toggleMenu}></div>
+      )}
       <Catalog isOpen={isCatalogOpen} toggleCatalog={toggleCatalog} />
     </header>
   );

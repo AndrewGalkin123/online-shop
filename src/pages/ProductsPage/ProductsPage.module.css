@@ -22,3 +22,9 @@
   grid-template-columns: repeat(4, 1fr); /* 4 колонки с равной шириной */
   gap: 22px; /* Отступы между элементами */
 }
+
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

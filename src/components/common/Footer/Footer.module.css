@@ -12,12 +12,10 @@
 }
 
 .receiveEmailsForm {
-  width: 580px;
+  width: 40%;
 }
 
 .receiveEmailsForm p {
-  width: 548px;
-  height: 72px;
   font-size: 24px;
   font-weight: 400;
   text-align: left;
@@ -26,7 +24,7 @@
 }
 
 .receiveEmailsForm input {
-  width: 496px;
+  width: 80%;
   height: 30px;
   padding: 6px 7px 6px 7px;
   gap: 10px;
@@ -73,11 +71,6 @@
   justify-content: space-between;
 }
 
-.additionalInfo div {
-  width: 116px;
-  height: 120px;
-}
-
 .additionalInfo h3 {
   font-size: 24px;
   font-weight: 400;
@@ -108,8 +101,8 @@
   .footer {
     flex-direction: column;
     justify-content: center;
+    padding: 20px 20px 20px 80px;
     height: auto;
-    padding: 40px;
   }
 
   .receiveEmailsForm {
@@ -126,5 +119,23 @@
     height: auto;
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 425px) {
+  .footer {
+    padding: 30px 10px;
+  }
+  .receiveEmailsForm p {
+    font-size: 20px;
+  }
+  .additionalInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .additionalInfo div {
+    width: 50%;
+    margin-top: 20px;
   }
 }

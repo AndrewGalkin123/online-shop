@@ -1,10 +1,29 @@
 import ProductCard from "../../common/ProductCard/ProductCard";
 import styles from "./Offer.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import next from "./next.png";
+import prev from "./prev.png";
 
 const Offer = ({ title, products }) => {
   const [currentPage, setCurrentPage] = useState(0); // состояние для отслеживания текущей страницы
-  const itemsPerPage = 4; // Количество элементов на странице
+  const [itemsPerPage, setItemsPerPage] = useState(
+    window.innerWidth <= 425 ? 1 : window.innerWidth <= 768 ? 2 : 4
+  );
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth <= 425) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth <= 768) {
+        setItemsPerPage(2);
+      } else {
+        setItemsPerPage(4);
+      }
+    };
+
+    window.addEventListener("resize", updateItemsPerPage);
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
 
   // Рассчитываем индекс первого и последнего элемента на текущей странице
   const startIndex = currentPage * itemsPerPage;
@@ -32,8 +51,12 @@ const Offer = ({ title, products }) => {
       <div className={styles.galleryControls}>
         <h2 className={styles.offerTitle}>{title}</h2>
         <div>
-          <button onClick={handlePrev}>&#8592;</button> {/* Кнопка "Назад" */}
-          <button onClick={handleNext}>&#8594;</button> {/* Кнопка "Вперед" */}
+          <button onClick={handlePrev}>
+            <img src={prev} />
+          </button>
+          <button onClick={handleNext}>
+            <img src={next} />
+          </button>
         </div>
       </div>
 
@@ -41,7 +64,7 @@ const Offer = ({ title, products }) => {
         {currentProducts.map((el) => (
           <ProductCard
             key={el.id}
-            imageSrc={el.imageSrc}
+            imageSrc={el.imageSrc[0]}
             cardTitle={el.name}
             price={el.price}
             onSale={el.onSale}
