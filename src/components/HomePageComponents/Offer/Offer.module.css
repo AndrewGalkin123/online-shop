@@ -1,40 +1,30 @@
 .offer {
   display: flex;
   flex-direction: column;
-  padding: 40px 56px;
+  padding: 4%; /* Относительные единицы для отступов */
 }
 
 .galleryControls {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 36px;
+  align-items: center; /* Вертикальное выравнивание элементов */
+  margin-bottom: 2rem; /* Отступ снизу */
 }
 
 .offerTitle {
-  font-size: 32px;
+  font-size: 2.5rem; /* Использование rem для масштабируемости */
   color: white;
-  font-size: 45px;
   font-weight: 400;
-  line-height: 67.5px;
   text-align: center;
-}
-
-.galleryControls {
-  display: flex;
-  align-items: center;
 }
 
 .galleryControls button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  width: 14px;
-  height: 16px;
-  color: #fff;
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 20px;
-  font-size: 24px;
+  width: 1rem; /* Замените на относительные единицы */
+  height: 1rem; /* Замените на относительные единицы */
+  margin-right: 1rem; /* Отступ между кнопками */
 }
 
 .galleryControls button img {
@@ -46,8 +36,8 @@
   display: flex;
   justify-content: center; /* Центрируем карточки по горизонтали */
   flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
-  gap: 20px; /* Расстояние между карточками */
-  max-width: 1740px; /* Максимальная ширина блока */
+  gap: 10px; /* Расстояние между карточками */
+  max-width: 100%; /* Убедитесь, что блок занимает всю ширину */
   margin: 0 auto; /* Центрируем блок на странице */
 }
 

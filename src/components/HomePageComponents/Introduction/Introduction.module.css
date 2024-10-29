@@ -1,139 +1,79 @@
+:root {
+  --gradient-primary: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
+  --gradient-secondary: linear-gradient(
+    96.08deg,
+    #5e26dd 14.66%,
+    #23ddda 88.75%
+  );
+  --background-dark: #06194a;
+  --button-shadow-color: rgb(76, 76, 184);
+  --text-color: #ffffff;
+  --card-background: #fff;
+}
+
 .introduction {
   width: 100%;
-  height: 750px;
-
-  opacity: 0px;
+  min-height: 50vh;
   background: linear-gradient(
     99.88deg,
-    #06194a 41.96%,
+    var(--background-dark) 41.96%,
     rgba(6, 25, 74, 0) 99.13%
   );
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding: 1rem;
 }
 
-.card {
-  width: 634px;
-  height: 750px;
-  display: flex;
-  flex-direction: column;
-  color: black;
-}
-
-.card img {
-  width: 100%;
-  height: 644px;
-  object-fit: cover;
-}
-
-.purchaseBox {
-  width: 100%;
-  height: 106px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-
-  background-color: #fff;
-}
-
-.cardDescription {
-  width: 284px;
-  height: 76px;
-  gap: 4px;
-  opacity: 0px;
-}
-
-.cardTitle {
-  width: 100%;
-  height: 24px;
-  gap: 0px;
-  font-size: 24px;
-  line-height: 24px;
-  text-align: left;
-  font-weight: 100;
-}
-
-.prices {
-  width: 140px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.actualPrice {
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 36px;
-  margin-right: 10px;
-}
-
-.oldPrice {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 27px;
-  color: #aeaeae;
-}
-
-.purchaseBox button {
-  width: 162px;
-  height: 62px;
-  padding: 10px 30px 10px 30px;
-  gap: 10px;
+.button {
+  padding: 0.75rem 2rem;
+  min-width: 200px;
+  min-height: 70px;
   border-radius: 50px;
   border: none;
-  background-color: #5e26dd;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 30px;
-  text-align: left;
-  color: #fff;
-}
-
-.purchaseBox button:hover {
+  color: var(--text-color);
+  transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.2s ease; /* Добавлено свойство transform */
   cursor: pointer;
-  box-shadow: 0px 0px 10px 2px rgb(143, 143, 240);
+  font-size: 1rem; /* Увеличиваем размер шрифта для лучшей читаемости */
+  font-weight: bold; /* Сделать текст более выразительным */
+  background: var(--gradient-primary); /* Фон кнопки по умолчанию */
+  box-shadow: 0px 0px 10px 2px var(--button-shadow-color); /* Увеличенный эффект тени */
 }
 
+/* Основные стили для кнопок */
+.buttonPrimary {
+  background: var(--gradient-primary);
+}
+
+.buttonPrimary:hover {
+  background: var(--gradient-secondary);
+  box-shadow: 0px 0px 25px 10px var(--button-shadow-color);
+  transform: translateY(-1px); /* Поднимаем кнопку при наведении */
+}
+
+/* Дополнительный эффект для кнопок */
+.buttonPrimary:active {
+  transform: translateY(1px); /* Немного опускаем кнопку при нажатии */
+  box-shadow: 0px 0px 10px 2px var(--button-shadow-color); /* Уменьшаем тень при нажатии */
+}
 .attractionBlock {
-  width: 856px;
-  height: 393px;
-  opacity: 0px;
+  max-width: 62%;
+  color: var(--text-color);
 }
 
 .attractionBlock p {
-  font-size: 60px;
+  font-size: clamp(2rem, 5vw, 3.75rem); /* Адаптивный размер текста */
   font-weight: 400;
-  line-height: 90px;
+  line-height: 1.2;
   text-align: left;
-  color: #ffffff;
 }
 
-.attractionBlock button {
-  width: 308px;
-  height: 78px;
-  padding: 21px 59px 21px 59px;
-  gap: 10px;
-  border-radius: 50px;
-  opacity: 1;
-  top: 300px;
-  background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
-  border: 0;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 36px;
-  text-align: left;
-  color: #ffffff;
-  box-shadow: 0px 0px 20px 5px rgb(76, 76, 184);
-  transition: box-shadow 0.2s ease; /* плавный переход */
-  margin-top: 30px;
+.attractionBlock .button {
+  margin-top: 1rem;
 }
 
-.attractionBlock button:hover {
-  cursor: pointer;
-  background: linear-gradient(96.08deg, #5e26dd 14.66%, #23ddda 88.75%);
-  box-shadow: 0px 0px 25px 10px rgb(76, 76, 184);
+.product {
+  max-width: 38%;
 }
 
 @media (max-width: 768px) {
@@ -152,73 +92,5 @@
   .attractionBlock p {
     font-size: 36px;
     text-align: center;
-  }
-}
-
-@media (max-width: 425px) {
-  .introduction {
-    padding: 20px 10px;
-    height: 600px;
-  }
-
-  .attractionBlock p {
-    font-size: 24px;
-    line-height: 40px;
-    text-align: center;
-  }
-
-  .attractionBlock button {
-    width: 230px;
-    height: 54px;
-    font-size: 14px;
-    line-height: 0;
-  }
-
-  .card {
-    width: 340px;
-    height: 340px;
-  }
-
-  .card img {
-    height: 280px;
-  }
-
-  .card .purchaseBox {
-    height: 50px;
-    padding: 6px 20px 6px 10px;
-    align-items: center;
-  }
-
-  .cardTitle {
-    font-size: 12px;
-    height: 18px;
-  }
-
-  .prices {
-    margin-top: 2px;
-    height: 18px;
-  }
-
-  .actualPrice {
-    font-size: 12px;
-    margin-right: 5px;
-  }
-
-  .oldPrice {
-    font-size: 10px;
-  }
-
-  .purchaseBox button {
-    height: 28px;
-    font-size: 12px;
-    padding: 5px;
-    width: 100px;
-    line-height: 0;
-    text-align: center;
-  }
-
-  .cardDescription {
-    height: 100%;
-    margin-left: 14px;
   }
 }
