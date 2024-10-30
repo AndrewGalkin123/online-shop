@@ -5,8 +5,10 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.receiveEmailsForm}>
         <p>DO YOU WANT TO RECEIVE NOTIFICATIONS ABOUT OUR NEWS AND MORE?</p>
-        <input type="text" placeholder="Your email"></input>
-        <button>Submit</button>
+        <div className={styles.submitForm}>
+          <input type="text" placeholder="Your email"></input>
+          <button>Submit</button>
+        </div>
       </div>
       <div className={styles.additionalInfo}>
         <div>

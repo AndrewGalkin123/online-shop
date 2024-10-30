@@ -13,8 +13,13 @@
 
 .receiveEmailsForm {
   width: 40%;
+  display: flex;
+  flex-direction: column;
 }
 
+.submitForm {
+  display: flex;
+}
 .receiveEmailsForm p {
   font-size: 24px;
   font-weight: 400;
@@ -23,7 +28,7 @@
   margin-bottom: 40px;
 }
 
-.receiveEmailsForm input {
+.receiveEmailsForm .submitForm input {
   width: 80%;
   height: 30px;
   padding: 6px 7px 6px 7px;
@@ -39,9 +44,9 @@
   background: none;
 }
 
-.receiveEmailsForm button {
-  width: 61px;
-  height: 27px;
+.receiveEmailsForm .submitForm button {
+  width: 20%;
+  height: auto;
   opacity: 0px;
   font-size: 18px;
   font-weight: 400;
@@ -52,7 +57,7 @@
   background: none;
 }
 
-.receiveEmailsForm button:hover {
+.receiveEmailsForm .submitForm button:hover {
   cursor: pointer;
   background: linear-gradient(
     180deg,
@@ -97,23 +102,24 @@
   color: #dcdcdc;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .footer {
     flex-direction: column;
+    padding: 20px;
     justify-content: center;
-    padding: 20px 20px 20px 80px;
     height: auto;
   }
-
   .receiveEmailsForm {
     width: 100%;
   }
-
   .additionalInfo {
     height: auto;
     width: 100%;
     margin-top: 40px;
   }
+}
+
+@media (max-width: 768px) {
   .additionalInfo div {
     width: 33.3%;
     height: auto;
@@ -122,10 +128,7 @@
   }
 }
 
-@media (max-width: 425px) {
-  .footer {
-    padding: 30px 10px;
-  }
+@media (max-width: 500px) {
   .receiveEmailsForm p {
     font-size: 20px;
   }

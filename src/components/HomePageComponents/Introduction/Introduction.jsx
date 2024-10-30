@@ -1,6 +1,5 @@
 import styles from "./Introduction.module.css";
-import animeFigure from "./Leviathan1.jpg";
-import ProductCard from "../../../components/common/ProductCard/ProductCard";
+import animeFigure from "./Frame 89.png";
 
 const Introduction = () => {
   return (
@@ -13,15 +12,7 @@ const Introduction = () => {
         </button>
       </div>
       <div className={styles.product}>
-        <ProductCard
-          imageSrc={animeFigure}
-          cardTitle="Leviathan Yukano"
-          price={1099}
-          originalPrice={1399}
-          onSale={true}
-          id={46}
-          category="forAdults"
-        />
+        <img src={animeFigure} />
       </div>
     </article>
   );

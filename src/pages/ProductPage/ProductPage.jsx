@@ -15,107 +15,78 @@ const ProductPage = () => {
 
   const [mainImageSrc, setMainImageSrc] = useState(product.imageSrc[0]);
   const isSelected = selectedItems.some((item) => item.id === product.id);
+
   const handleImageClick = (event) => {
     const eventTargetSrc = mainImageSrc;
-    setMainImageSrc(event.target.src); // Setting image
+    setMainImageSrc(event.target.src);
     event.target.src = eventTargetSrc;
   };
 
   return (
     <main className={styles.main}>
-      <div className={styles.path}>
-        <Link to="/">Home/ </Link>
+      <nav className={styles.path}>
+        <Link to="/">Home / </Link>
         <Link to={`/${location.products}`}>
           {convertPath(location.products)}
         </Link>
         {"/ " + product.name}
-      </div>
-      <div className={styles.product}>
+      </nav>
+      <section className={styles.product}>
         <div className={styles.imagesContainer}>
-          <div className={styles.images}>
-            <img id={styles.mainImage} src={mainImageSrc} alt="mainImage" />
+          <img className={styles.mainImage} src={mainImageSrc} alt="main" />
+          <div className={styles.miniImages}>
             <img
               onClick={handleImageClick}
-              className={styles.miniImages}
+              className={styles.miniImage}
               src={product.imageSrc[1]}
               alt="miniImage"
             />
             <img
               onClick={handleImageClick}
-              className={styles.miniImages}
+              className={styles.miniImage}
               src={product.imageSrc[2]}
               alt="miniImage"
             />
             <img
               onClick={handleImageClick}
-              className={styles.miniImages}
+              className={styles.miniImage}
               src={product.imageSrc[3]}
               alt="miniImage"
             />
           </div>
         </div>
         <div className={styles.productDetails}>
-          <div className={styles.infoAboutProduct}>
-            <h1>{product.name}</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-              similique nihil veritatis sunt veniam eligendi earum illo eum
-              iusto, debitis adipisci fugit delectus aperiam dolorem at.
-              Laudantium eligendi soluta ducimus.
-            </p>
-          </div>
+          <h1>
+            {product.name} from popular anime {product.animeName}
+          </h1>
+          <p>{product.description}</p>
           <div className={styles.purchaseBox}>
-            {product.onSale ? (
-              <div style={{ display: "flex" }}>
-                <div className={styles.prices}>
-                  <s className={styles.oldPrice}>{product.originalPrice}¥</s>
-                  <p className={styles.actualPrice}>{product.price}¥</p>
-                </div>
-                <div className={styles.shoppingBox}>
-                  <img
-                    onClick={() => addToCart(product)}
-                    src="/images/bag-cross-gradient.png"
-                    alt="bag"
-                  ></img>
-                  <img
-                    onClick={() => addToSelected(product)}
-                    src={
-                      isSelected
-                        ? "/images/heart-saved.png"
-                        : "/images/heart-gradient.png"
-                    }
-                    alt="heart"
-                  ></img>
-                </div>
-              </div>
-            ) : (
-              <div style={{ display: "flex" }}>
-                <div className={styles.prices}>
-                  <p className={styles.actualPrice}>{product.price}¥</p>
-                </div>
-                <div className={styles.shoppingBox}>
-                  <img
-                    onClick={() => addToCart(product)}
-                    src="/images/bag-cross-gradient.png"
-                    alt="bag"
-                  ></img>
-                  <img
-                    onClick={() => addToSelected(product)}
-                    src={
-                      isSelected
-                        ? "/images/heart-saved.png"
-                        : "/images/heart-gradient.png"
-                    }
-                    alt="heart"
-                  ></img>
-                </div>
-              </div>
-            )}
-
-            <button onClick={() => buyNow(product)}>BUY NOW</button>
+            <div className={styles.prices}>
+              {product.onSale && (
+                <s className={styles.oldPrice}>{product.originalPrice}¥</s>
+              )}
+              <span className={styles.actualPrice}>{product.price}¥</span>
+            </div>
+            <div className={styles.shoppingBox}>
+              <img
+                onClick={() => addToCart(product)}
+                src="/images/bag-cross-gradient.png"
+                alt="bag"
+              />
+              <img
+                onClick={() => addToSelected(product)}
+                src={
+                  isSelected
+                    ? "/images/heart-saved.png"
+                    : "/images/heart-gradient.png"
+                }
+                alt="heart"
+              />
+            </div>
           </div>
+          <button onClick={() => buyNow(product)}>BUY NOW</button>
         </div>
-      </div>
+      </section>
       <div className={styles.additionalProducts}></div>
     </main>
   );

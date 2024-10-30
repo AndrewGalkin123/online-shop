@@ -36,7 +36,7 @@
 .cardTitle {
   font-size: 16px;
   font-weight: 400;
-  line-height: 24px;
+
   text-align: left;
 }
 
@@ -48,14 +48,14 @@
 .actualPrice {
   font-size: 24px;
   font-weight: 400;
-  line-height: 36px;
+
   margin-right: 10px;
 }
 
 .oldPrice {
   font-size: 18px;
   font-weight: 400;
-  line-height: 27px;
+
   color: #aeaeae;
 }
 
@@ -77,9 +77,83 @@
   box-shadow: 0px 0px 10px 2px rgb(143, 143, 240);
 }
 
-/* Адаптивность для мобильных устройств */
+@media (max-width: 1024px) {
+  .cardTitle {
+    font-size: 0.9em;
+  }
+  .actualPrice {
+    font-size: 0.9rem;
+  }
+
+  .oldPrice {
+    font-size: 0.8rem;
+  }
+  .purchaseBox button {
+    width: 100%; /* Замените фиксированное значение на 100% */
+    max-width: 80px; /* Максимальная ширина кнопки */
+    height: 40px;
+    padding: 10px; /* Уберите боковое заполнение */
+    border-radius: 50px;
+    border: none;
+    background-color: #5e26dd;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+  }
+}
+@media (max-width: 1024px) {
+  .card {
+    max-height: 400px;
+  }
+  .card img {
+    height: 82%; /* Автоматическая высота для изображения */
+    min-height: 325px;
+  }
+}
+
 @media (max-width: 768px) {
   .card {
-    width: 95%; /* Увеличьте ширину для мобильных устройств */
+    max-width: 100%; /* Полная ширина на маленьких экранах */
+  }
+
+  .cardTitle {
+    font-size: 0.775em;
+  }
+
+  .actualPrice {
+    font-size: 1.25rem;
+  }
+
+  .oldPrice {
+    font-size: 1rem;
+  }
+
+  .purchaseBox button {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    max-height: 300px;
+  }
+  .card img {
+    min-height: 220px;
+    object-fit: cover;
+  }
+  .purchaseBox button {
+    display: none;
+  }
+  .purchaseBox {
+    min-height: 50px;
+    padding: 10px;
+  }
+  .actualPrice {
+    font-size: 10px;
+  }
+
+  .oldPrice {
+    font-size: 14px;
   }
 }

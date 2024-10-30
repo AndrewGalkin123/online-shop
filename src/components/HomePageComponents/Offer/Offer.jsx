@@ -7,15 +7,15 @@ import prev from "./prev.png";
 const Offer = ({ title, products }) => {
   const [currentPage, setCurrentPage] = useState(0); // состояние для отслеживания текущей страницы
   const [itemsPerPage, setItemsPerPage] = useState(
-    window.innerWidth <= 425 ? 1 : window.innerWidth <= 768 ? 2 : 4
+    window.innerWidth <= 768 ? 2 : window.innerWidth <= 1300 ? 3 : 4
   );
 
   useEffect(() => {
     const updateItemsPerPage = () => {
-      if (window.innerWidth <= 425) {
-        setItemsPerPage(1);
-      } else if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 768) {
         setItemsPerPage(2);
+      } else if (window.innerWidth <= 1300) {
+        setItemsPerPage(3);
       } else {
         setItemsPerPage(4);
       }

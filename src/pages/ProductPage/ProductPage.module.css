@@ -1,7 +1,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  padding: 5%;
+  padding: 2% 5%;
   color: #fff;
 }
 
@@ -16,30 +16,36 @@
 
 .product {
   display: flex;
-  flex-direction: column; /* По умолчанию в столбец для мобильных */
+  flex-direction: row; /* По умолчанию в столбец для мобильных */
   gap: 20px; /* Добавлено расстояние между элементами */
+  margin-bottom: 40px;
 }
 
 .imagesContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 440px;
 }
 
 .mainImage {
+  height: 500px;
   width: 100%;
-  height: auto; /* Для адаптивности */
-  max-width: 450px; /* Максимальная ширина для изображений */
   object-fit: cover;
 }
 
 .miniImages {
   display: flex;
-  gap: 10px; /* Добавлено расстояние между мини-изображениями */
+  justify-content: space-between;
+  gap: 3%;
+  width: 100%;
+  margin-top: 10px;
+  max-height: 100px;
+  height: auto;
 }
 
 .miniImage {
-  width: 100px; /* Ширина мини-изображений */
+  width: 31.3%; /* Ширина мини-изображений */
   height: auto;
   cursor: pointer;
   object-fit: cover;
@@ -53,52 +59,55 @@
 .productDetails {
   display: flex;
   flex-direction: column;
-  padding: 0 20px; /* Уменьшено расстояние с боков */
+  padding: 0 50px; /* Уменьшено расстояние с боков */
 }
 
 .productDetails h1 {
+  max-width: 900px;
   font-weight: 400;
   font-size: 36px;
-  margin: 0;
+  margin-bottom: 10px;
 }
 
 .productDetails p {
   max-width: 600px;
-  font-size: 16px;
 }
 
 .purchaseBox {
   display: flex;
-  flex-direction: column;
-  gap: 10px; /* Добавлено расстояние между элементами */
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 3rem; /* Добавлено расстояние между элементами */
 }
 
 .prices {
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
 }
 
 .actualPrice {
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 400;
   color: #23ddd9;
+  line-height: 36px;
 }
 
 .oldPrice {
   font-size: 20px;
+  font-weight: 400;
   color: #0a4e4c;
-  text-decoration: line-through;
 }
 
 .shoppingBox {
   display: flex;
-  align-items: center;
   gap: 10px; /* Добавлено расстояние между иконками */
 }
 
 .shoppingBox img {
-  width: 50px; /* Уменьшена ширина иконок */
-  height: 50px; /* Уменьшена высота иконок */
+  width: 60px; /* Уменьшена ширина иконок */
+  height: 60px; /* Уменьшена высота иконок */
   cursor: pointer;
   transition: filter 0.2s; /* Плавный эффект при наведении */
 }
@@ -107,7 +116,7 @@
   filter: brightness(140%);
 }
 
-.purchaseBox button {
+.productDetails button {
   width: 100%; /* Занимает всю ширину */
   max-width: 390px; /* Максимальная ширина для кнопки */
   height: 50px;
@@ -116,39 +125,80 @@
   background-color: #5e26dd;
   color: #ffffff;
   font-size: 20px;
+  margin-top: 1rem;
 }
 
-.purchaseBox button:hover {
+.productDetails button:hover {
   cursor: pointer;
   border: 1px solid #23ddd9;
   box-shadow: 0 0 10px rgba(143, 143, 240, 0.5);
 }
 
-/* Мобильные стили */
-@media (min-width: 768px) {
-  .product {
-    flex-direction: row; /* В ряд для больших экранов */
+@media (max-width: 1024px) {
+  .productDetails {
+    padding: 0 12px; /* Уменьшено расстояние с боков для мобильных */
   }
-
-  .imagesContainer {
-    flex-direction: column;
+  .productDetails h1 {
+    font-size: 30px;
   }
-
-  .mainImage {
-    max-width: 450px; /* Максимальная ширина для больших экранов */
+  .productDetails p {
+    font-size: 14px;
   }
 }
 
-@media (min-width: 1024px) {
-  .main {
-    padding: 2%;
+@media (max-width: 768px) {
+  .imagesContainer {
+    width: 50%;
+  }
+  .productDetails {
+    padding: 0 10px; /* Уменьшено расстояние с боков для мобильных */
+    width: 50%;
+  }
+  .productDetails button {
+    width: 100%;
+    max-width: none;
+  }
+  .purchaseBox {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 600px) {
+  .product {
+    flex-direction: column;
+    align-items: center;
+  }
+  .imagesContainer {
+    width: 100%;
+    max-height: 60vh;
+  }
+  .mainImage {
+    max-height: 40vh;
+  }
+  .productDetails {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .path {
+    font-size: 14px; /* Уменьшение размера шрифта для мобильных */
   }
 
   .productDetails h1 {
-    font-size: 46px; /* Большой шрифт для заголовка */
+    font-size: 28px; /* Уменьшение размера заголовка */
   }
 
   .actualPrice {
-    font-size: 40px;
+    font-size: 28px; /* Уменьшение размера цены */
+  }
+
+  .oldPrice {
+    font-size: 16px; /* Уменьшение размера старой цены */
+  }
+
+  .productDetails button {
+    font-size: 18px; /* Уменьшение размера шрифта кнопки */
+    margin-bottom: 20px;
   }
 }
