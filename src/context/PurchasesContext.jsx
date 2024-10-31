@@ -55,13 +55,8 @@ export function PurchasesProvider({ children }) {
       const existingProduct = prevCartItems.find(
         (item) => item.id === product.id
       );
-
       if (existingProduct) {
-        return prevCartItems.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
+        return prevCartItems.filter((el) => el.id !== product.id);
       } else {
         return [...prevCartItems, { ...product, quantity: 1 }];
       }

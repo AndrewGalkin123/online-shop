@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -14,28 +15,52 @@ const Footer = () => {
         <div>
           <h3>EXPLORE</h3>
           <ul>
-            <li>New Collection</li>
-            <li>Best Sellings</li>
-            <li>Sale</li>
-            <li>About Us</li>
+            <li>
+              <Link to="/newCollection">New Collection</Link>
+            </li>
+            <li>
+              <Link to="/bestSellings">Best Sellings</Link>
+            </li>
+            <li>
+              <Link to="/sale">Sale</Link>
+            </li>
+            <li>
+              <Link to="/aboutUs">About Us</Link>
+            </li>
           </ul>
         </div>
         <div>
           <h3>SOCIAL</h3>
           <ul>
-            <li>Telegram</li>
-            <li>X (Twitter)</li>
-            <li>Instagram</li>
-            <li>YouTube</li>
+            <li>
+              <Link to="">Telegram</Link>
+            </li>
+            <li>
+              <Link to="">X (Twitter</Link>)
+            </li>
+            <li>
+              <Link to="">Instagram</Link>
+            </li>
+            <li>
+              <Link to="https://www.youtube.com/@CodeCraft100">YouTube</Link>
+            </li>
           </ul>
         </div>
         <div>
           <h3>CONTACTS</h3>
           <ul>
-            <li>+380955776137</li>
-            <li>+420723239477</li>
-            <li>127788127788a@gmail.com</li>
-            <li>halkian1@uhk.cz</li>
+            <li>
+              <Link to="">+380955776137</Link>
+            </li>
+            <li>
+              <Link to="">+420723239477</Link>
+            </li>
+            <li>
+              <Link to="">127788127788a@gmail.com</Link>
+            </li>
+            <li>
+              <Link to="">halkian1@uhk.cz</Link>
+            </li>
           </ul>
         </div>
       </div>

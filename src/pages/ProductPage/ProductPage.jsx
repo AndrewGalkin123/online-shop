@@ -10,12 +10,12 @@ const ProductPage = () => {
   const location = useParams();
   const product = products.find((el) => el.id === Number(location.product));
 
-  const { buyNow, addToCart, addToSelected, selectedItems } =
+  const { buyNow, addToCart, addToSelected, selectedItems, cartItems } =
     useContext(PurchasesContext);
 
   const [mainImageSrc, setMainImageSrc] = useState(product.imageSrc[0]);
   const isSelected = selectedItems.some((item) => item.id === product.id);
-
+  const isInCart = cartItems.some((item) => item.id === product.id);
   const handleImageClick = (event) => {
     const eventTargetSrc = mainImageSrc;
     setMainImageSrc(event.target.src);
@@ -73,8 +73,16 @@ const ProductPage = () => {
             </div>
             <div className={styles.shoppingBox}>
               <img
-                onClick={() => addToCart(product)}
-                src="/images/bag-cross-gradient.png"
+                onClick={() => {
+                  if (!cartItems.includes(product)) {
+                    addToCart(product);
+                  }
+                }}
+                src={
+                  isInCart
+                    ? "/images/bag-cross.png"
+                    : "/images/bag-cross-gradient.png"
+                }
                 alt="bag"
               />
               <img
