@@ -31,8 +31,7 @@
 }
 
 .navigation ul li a {
-  font-family: "Aoboshi One";
-  font-size: clamp(1rem, 1vw + 1rem, 1.1rem);
+  font-size: 1rem;
   font-weight: 400;
   text-align: center;
   color: white;
@@ -83,10 +82,19 @@
   z-index: 5; /* Чтобы он отображался поверх всего контента */
 }
 
+@media (max-width: 1044px) {
+  .navigation ul {
+    gap: 3rem;
+  }
+  .navigation ul li a {
+    font-size: 0.9rem;
+  }
+}
+
 /* Медиа-запрос для экранов шириной до 768px */
 @media (max-width: 768px) {
   .header {
-    padding: 0px 30px;
+    padding: 0px 1rem;
   }
 
   .navigation {
@@ -99,7 +107,8 @@
     position: absolute;
     top: 120px;
     right: 0;
-    width: 220px;
+    min-width: 200px;
+    max-width: 50%;
     height: 280px;
     background-color: #0c0124;
     padding: 20px;
@@ -128,5 +137,9 @@
   .header {
     padding: 0 4px;
     height: 90px;
+  }
+
+  .navigation.open {
+    top: 90px;
   }
 }

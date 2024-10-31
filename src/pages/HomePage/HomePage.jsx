@@ -2,10 +2,10 @@ import Introduction from "../../components/HomePageComponents/Introduction/Intro
 import Offer from "../../components/HomePageComponents/Offer/Offer";
 import { newCollection, sale, bestSellings } from "./offersProducts";
 
-const Home = () => {
+const Home = ({ setCatalogStatus }) => {
   return (
     <main>
-      <Introduction />
+      <Introduction setCatalogStatus={setCatalogStatus} />
       <Offer title="NEW COLLECTION" products={newCollection} />
       <Offer title="SALE" products={sale} />
       <Offer title="BEST SELLINGS" products={bestSellings} />

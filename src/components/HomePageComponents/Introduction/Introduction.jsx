@@ -1,13 +1,18 @@
 import styles from "./Introduction.module.css";
 import animeFigure from "./Frame 89.png";
 
-const Introduction = () => {
+const Introduction = ({ setCatalogStatus }) => {
   return (
     <article className={styles.introduction}>
       <div className={styles.attractionBlock}>
         <p>IMMERSE YOURSELF IN THE WORLD OF JAPANESE CULTURE WITH NEKON</p>
 
-        <button className={`${styles.button} ${styles.buttonPrimary}`}>
+        <button
+          onClick={() => {
+            setCatalogStatus(true);
+          }}
+          className={`${styles.button} ${styles.buttonPrimary}`}
+        >
           OUR CATALOG
         </button>
       </div>

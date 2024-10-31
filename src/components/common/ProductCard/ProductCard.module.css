@@ -137,6 +137,7 @@
 @media (max-width: 600px) {
   .card {
     max-height: 300px;
+    min-height: 300px;
   }
   .card img {
     min-height: 220px;

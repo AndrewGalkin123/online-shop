@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Catalog.module.css";
 import { Link } from "react-router-dom";
 
 const Catalog = ({ isOpen, toggleCatalog }) => {
   const [openCategories, setOpenCategories] = useState({});
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const catalogRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -12,8 +13,27 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+
+    // Обработчик клика вне каталога
+    const handleClickOutside = (event) => {
+      if (catalogRef.current && !catalogRef.current.contains(event.target)) {
+        toggleCatalog(); // Закрыть каталог при клике вне его
+      }
+    };
+
+    if (isOpen) {
+      // Если каталог открыт, добавляем обработчик клика
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      // Если каталог закрыт, удаляем обработчик
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousedown", handleClickOutside); // Удаляем обработчик при размонтировании
+    };
+  }, [isOpen, toggleCatalog]); // Добавляем isOpen в зависимости
 
   const toggleCategory = (category) => {
     if (isMobile) {
@@ -25,7 +45,10 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
   };
 
   return (
-    <div className={`${styles.catalog} ${isOpen ? styles.catalogOpen : ""}`}>
+    <div
+      ref={catalogRef}
+      className={`${styles.catalog} ${isOpen ? styles.catalogOpen : ""}`}
+    >
       <div className={styles.category}>
         <h3 onClick={() => toggleCategory("figures")}>Figures</h3>
         {(isMobile && openCategories.figures) || !isMobile ? (
@@ -39,9 +62,6 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
             <Link to="/forAdults">
               <li>For Adults (18+)</li>
             </Link>
-            <Link to="/mecha">
-              <li>Mecha (robots)</li>
-            </Link>
           </ul>
         ) : null}
       </div>
@@ -50,20 +70,14 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
         <h3 onClick={() => toggleCategory("merchandise")}>Merchandise</h3>
         {(isMobile && openCategories.merchandise) || !isMobile ? (
           <ul className={openCategories.merchandise ? styles.show : ""}>
-            <Link to="">
+            <Link to="/keychains">
               <li>Keychains</li>
             </Link>
-            <Link to="">
+            <Link to="/pins">
               <li>Pins</li>
             </Link>
-            <Link to="">
+            <Link to="/posters">
               <li>Posters</li>
-            </Link>
-            <Link to="">
-              <li>Statues</li>
-            </Link>
-            <Link to="">
-              <li>Stickers</li>
             </Link>
           </ul>
         ) : null}
@@ -75,12 +89,10 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
         </h3>
         {(isMobile && openCategories.clothing) || !isMobile ? (
           <ul className={openCategories.clothing ? styles.show : ""}>
-            <Link to="">
-              <li>T-shirts and hoodies with anime prints</li>
+            <Link to="/t-shirts">
+              <li>T-shirts with anime prints</li>
             </Link>
-            <Link to="">
-              <li>Hats and caps</li>
-            </Link>
+
             <Link to="">
               <li>Backpacks and bags</li>
             </Link>
@@ -101,30 +113,8 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
             <Link to="">
               <li>Anime and manga artbooks</li>
             </Link>
-            <Link to="">
+            <Link to="/posters">
               <li>Illustrations and posters</li>
-            </Link>
-          </ul>
-        ) : null}
-      </div>
-
-      <div className={styles.category}>
-        <h3 onClick={() => toggleCategory("cosplay")}>
-          Cosplay and Accessories
-        </h3>
-        {(isMobile && openCategories.cosplay) || !isMobile ? (
-          <ul className={openCategories.cosplay ? styles.show : ""}>
-            <Link to="">
-              <li>Character costumes</li>
-            </Link>
-            <Link to="">
-              <li>Wigs</li>
-            </Link>
-            <Link to="">
-              <li>Contact lenses</li>
-            </Link>
-            <Link to="">
-              <li>Cosplay accessories (swords, shields, masks)</li>
             </Link>
           </ul>
         ) : null}

@@ -33,8 +33,8 @@ const ProductCard = ({
   };
 
   return (
-    <div className={styles.card} onClick={handleCardClick}>
-      <img src={imageSrc} alt={cardTitle} />
+    <div className={styles.card}>
+      <img onClick={handleCardClick} src={imageSrc} alt={cardTitle} />
       <div className={styles.purchaseBox}>
         <div className={styles.cardDescription}>
           <p className={styles.cardTitle}>{cardTitle}</p>

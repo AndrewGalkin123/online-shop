@@ -34,26 +34,30 @@ const ProductPage = () => {
       <section className={styles.product}>
         <div className={styles.imagesContainer}>
           <img className={styles.mainImage} src={mainImageSrc} alt="main" />
-          <div className={styles.miniImages}>
-            <img
-              onClick={handleImageClick}
-              className={styles.miniImage}
-              src={product.imageSrc[1]}
-              alt="miniImage"
-            />
-            <img
-              onClick={handleImageClick}
-              className={styles.miniImage}
-              src={product.imageSrc[2]}
-              alt="miniImage"
-            />
-            <img
-              onClick={handleImageClick}
-              className={styles.miniImage}
-              src={product.imageSrc[3]}
-              alt="miniImage"
-            />
-          </div>
+          {product.imageSrc.length > 3 ? (
+            <div className={styles.miniImages}>
+              <img
+                onClick={handleImageClick}
+                className={styles.miniImage}
+                src={product.imageSrc[1]}
+                alt="miniImage"
+              />
+              <img
+                onClick={handleImageClick}
+                className={styles.miniImage}
+                src={product.imageSrc[2]}
+                alt="miniImage"
+              />
+              <img
+                onClick={handleImageClick}
+                className={styles.miniImage}
+                src={product.imageSrc[3]}
+                alt="miniImage"
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className={styles.productDetails}>
           <h1>

@@ -22,6 +22,7 @@ const ProductsPage = () => {
       <div className={styles.products}>
         {filteredProducts.map((el) => (
           <ProductCard
+            key={el.id}
             imageSrc={el.imageSrc[0]}
             onSale={el.onSale}
             cardTitle={el.name}

@@ -61,19 +61,26 @@ const Cart = () => {
         }
       >
         <div className={styles.basketHeader}>
+          <div className={styles.title}>Basket</div>
           <img
+            className={styles.closeButton}
             onClick={handleCloseCartClick}
             src="https://png.klev.club/uploads/posts/2024-04/png-klev-club-vmnn-p-belii-krestik-png-20.png"
             alt="cross"
           />
-          <div className={styles.title}>Basket</div>
         </div>
         <div className={styles.buyings}>
           {cartItems.map((product) => (
             <CartProduct key={product.id} product={product} />
           ))}
         </div>
-        <div>
+        <div className={styles.controlContainer}>
+          <button
+            onClick={handleCloseCartClick}
+            className={styles.continueShoppingButton}
+          >
+            Continue shopping
+          </button>
           <div className={styles.confirmBlock}>
             <div className={styles.totalAmount}>{getTotalPrice()}¥</div>
             <button
@@ -83,12 +90,6 @@ const Cart = () => {
               CHECKOUT
             </button>
           </div>
-          <button
-            onClick={handleCloseCartClick}
-            className={styles.continueShoppingButton}
-          >
-            Continue shopping
-          </button>
         </div>
       </div>
       <div

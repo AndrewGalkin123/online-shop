@@ -22,7 +22,9 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 1rem;
+  flex-wrap: wrap; /* Для адаптивного перехода блоков на новую строку */
+  padding: 1rem 2rem;
+  gap: 2rem; /* Промежуток между блоками */
 }
 
 .button {
@@ -61,7 +63,7 @@
 }
 
 .attractionBlock p {
-  font-size: clamp(2rem, 5vw, 3.75rem); /* Адаптивный размер текста */
+  font-size: clamp(1.5rem, 5vw, 3.75rem);
   font-weight: 400;
   line-height: 1.2;
   text-align: left;
@@ -73,7 +75,7 @@
 
 .product {
   max-width: 38%;
-  height: auto;
+  height: 100%;
 }
 
 .product img {
@@ -82,21 +84,30 @@
   max-height: 50vh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .introduction {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 910px) {
+  .introduction {
+    padding: 1rem;
     flex-direction: column;
-    height: auto;
-    padding: 20px;
+    text-align: center;
+    gap: 1.5rem;
   }
 
   .attractionBlock {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    max-width: 100%;
   }
-  .attractionBlock p {
-    font-size: 36px;
-    text-align: center;
+
+  .product {
+    max-width: 80%;
+    max-height: 340px;
+  }
+
+  .product img {
+    max-height: 340px;
   }
 }

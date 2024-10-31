@@ -7,8 +7,7 @@ import Catalog from "../Catalog/Catalog";
 import { useContext, useState } from "react";
 import { PurchasesContext } from "../../../context/PurchasesContext";
 
-const Header = () => {
-  const [isCatalogOpen, setCatalogOpen] = useState(false);
+const Header = ({ isCatalogOpen, setCatalogStatus }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { setCartStatus } = useContext(PurchasesContext);
 
@@ -17,11 +16,13 @@ const Header = () => {
   };
 
   const toggleCatalog = () => {
-    setCatalogOpen(!isCatalogOpen);
+    setCatalogStatus(!isCatalogOpen);
+    setMenuOpen(false);
   };
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
+    setCatalogStatus(false);
   };
 
   return (

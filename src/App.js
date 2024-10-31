@@ -6,7 +6,7 @@ import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import Home from "./pages/HomePage/HomePage";
 import Cart from "./components/common/Cart/Cart";
-
+import { useState } from "react";
 import { PurchasesProvider } from "./context/PurchasesContext";
 
 function NotFound() {
@@ -14,13 +14,20 @@ function NotFound() {
 }
 
 function App() {
+  const [isCatalogOpen, setCatalogStatus] = useState(false);
   return (
     <BrowserRouter>
       <PurchasesProvider>
-        <Header />
+        <Header
+          isCatalogOpen={isCatalogOpen}
+          setCatalogStatus={setCatalogStatus}
+        />
         <Cart />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home setCatalogStatus={setCatalogStatus} />}
+          />
           <Route path="*" element={<NotFound />} />
           <Route path="/:products" element={<ProductsPage />} />
           <Route path="/:products/:product" element={<ProductPage />} />
