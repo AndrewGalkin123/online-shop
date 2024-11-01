@@ -30,6 +30,7 @@ const ProductsPage = () => {
             originalPrice={el.originalPrice}
             id={el.id}
             category={el.category}
+            animatedCartoon={el.animatedCartoon}
           />
         ))}
       </div>

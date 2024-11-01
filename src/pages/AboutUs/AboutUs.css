@@ -1,0 +1,56 @@
+.about-us {
+  max-width: 1000px; /* Maximum width of the container */
+  margin: 0 auto; /* Center the page */
+  padding: 20px; /* Padding around the content */
+  font-family: "Arial", sans-serif; /* Font for the text */
+  line-height: 1.6; /* Line height for better readability */
+  color: #333; /* Text color */
+  background: linear-gradient(
+    99.88deg,
+    #06194a 41.96%,
+    rgba(6, 25, 74, 0) 99.13%
+  ); /* Background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  color: white;
+}
+
+.about-us h1 {
+  text-align: center; /* Center the heading */
+  font-size: 2.5rem; /* Heading size */
+  margin-bottom: 20px; /* Bottom margin for the heading */
+}
+
+.about-us p {
+  margin-bottom: 15px; /* Bottom margin for paragraphs */
+  font-size: 1.1rem; /* Text size */
+}
+
+.about-us p:last-child {
+  margin-bottom: 0; /* Remove bottom margin for the last paragraph */
+}
+
+@media (max-width: 768px) {
+  .about-us {
+    padding: 15px; /* Reduce padding on smaller screens */
+  }
+
+  .about-us h1 {
+    font-size: 2rem; /* Reduce heading size */
+  }
+
+  .about-us p {
+    font-size: 1rem; /* Reduce paragraph text size */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us h1 {
+    font-size: 1.8rem; /* Further reduce heading size */
+  }
+
+  .about-us p {
+    font-size: 0.9rem; /* Further reduce paragraph text size */
+    margin-bottom: 10px; /* Reduce bottom margin for paragraphs */
+  }
+}

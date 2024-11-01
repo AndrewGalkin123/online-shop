@@ -8,6 +8,8 @@ import Home from "./pages/HomePage/HomePage";
 import Cart from "./components/common/Cart/Cart";
 import { useState } from "react";
 import { PurchasesProvider } from "./context/PurchasesContext";
+import AboutUs from "./pages/AboutUs/AboutUsPage";
+import Modal from "./components/Modal/Modal";
 
 function NotFound() {
   return <h2>404 - Not Found</h2>;
@@ -15,9 +17,15 @@ function NotFound() {
 
 function App() {
   const [isCatalogOpen, setCatalogStatus] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true); // State to control the modal
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Function to close the modal
+  };
   return (
     <BrowserRouter>
       <PurchasesProvider>
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
         <Header
           isCatalogOpen={isCatalogOpen}
           setCatalogStatus={setCatalogStatus}
@@ -28,6 +36,7 @@ function App() {
             path="/"
             element={<Home setCatalogStatus={setCatalogStatus} />}
           />
+          <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/:products" element={<ProductsPage />} />
           <Route path="/:products/:product" element={<ProductPage />} />
