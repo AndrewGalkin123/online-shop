@@ -15,7 +15,8 @@ const CartProduct = ({ product }) => {
       <div className={styles.productDetails}>
         <h3 className={styles.productName}>{product.name}</h3>
         <p className={styles.productDesc}>
-          {product.name} from the popular smartphone game "{product.animeName}"
+          {product.name} from the popular animated cartoon{" "}
+          {product.animatedCartoon}
         </p>
         <div className={styles.productControls}>
           <div className={styles.quantityControl}>
@@ -31,9 +32,9 @@ const CartProduct = ({ product }) => {
           </div>
           <div className={styles.productPrice}>
             {product.onSale && (
-              <s className={styles.oldPrice}>${product.originalPrice}</s>
+              <s className={styles.oldPrice}>¥{product.originalPrice}</s>
             )}
-            <p className={styles.actualPrice}>${product.price}</p>
+            <p className={styles.actualPrice}>¥{product.price}</p>
           </div>
         </div>
       </div>

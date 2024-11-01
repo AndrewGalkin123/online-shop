@@ -1,14 +1,5 @@
 :root {
-  --gradient-primary: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
-  --gradient-secondary: linear-gradient(
-    96.08deg,
-    #5e26dd 14.66%,
-    #23ddda 88.75%
-  );
-  --background-dark: #06194a;
   --button-shadow-color: rgb(76, 76, 184);
-  --text-color: #ffffff;
-  --card-background: #fff;
 }
 
 .introduction {
@@ -16,50 +7,20 @@
   min-height: 60vh;
   background: linear-gradient(
     99.88deg,
-    var(--background-dark) 41.96%,
+    #06194a 41.96%,
     rgba(6, 25, 74, 0) 99.13%
   );
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-wrap: wrap; /* Для адаптивного перехода блоков на новую строку */
+  flex-wrap: wrap; /* For adaptive */
   padding: 1rem 2rem;
-  gap: 2rem; /* Промежуток между блоками */
+  gap: 2rem; /* Gap between blocks */
 }
 
-.button {
-  padding: 0.75rem 4rem;
-  min-width: 200px;
-  min-height: 70px;
-  border-radius: 50px;
-  border: none;
-  color: var(--text-color);
-  transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.2s ease; /* Добавлено свойство transform */
-  cursor: pointer;
-  font-size: 1.2rem; /* Увеличиваем размер шрифта для лучшей читаемости */
-
-  background: var(--gradient-primary); /* Фон кнопки по умолчанию */
-  box-shadow: 0px 0px 10px 2px var(--button-shadow-color); /* Увеличенный эффект тени */
-}
-
-/* Основные стили для кнопок */
-.buttonPrimary {
-  background: var(--gradient-primary);
-}
-
-.buttonPrimary:hover {
-  background: var(--gradient-secondary);
-  box-shadow: 0px 0px 25px 10px var(--button-shadow-color);
-}
-
-/* Дополнительный эффект для кнопок */
-.buttonPrimary:active {
-  transform: translateY(1px); /* Немного опускаем кнопку при нажатии */
-  box-shadow: 0px 0px 10px 2px var(--button-shadow-color); /* Уменьшаем тень при нажатии */
-}
 .attractionBlock {
   max-width: 62%;
-  color: var(--text-color);
+  color: #ffffff;
 }
 
 .attractionBlock p {
@@ -71,6 +32,34 @@
 
 .attractionBlock .button {
   margin-top: 2rem;
+}
+
+.button {
+  padding: 0.75rem 4rem;
+  min-width: 200px;
+  min-height: 70px;
+  border-radius: 50px;
+  border: none;
+  color: #ffffff;
+  transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  font-size: 1.2rem;
+  background: linear-gradient(
+    96.08deg,
+    #23ddd9 14.66%,
+    #5f23dd 88.75%
+  ); /* Фон кнопки по умолчанию */
+  box-shadow: 0px 0px 10px 2px var(--button-shadow-color); /* Увеличенный эффект тени */
+}
+
+.button:hover {
+  background: linear-gradient(96.08deg, #5e26dd 14.66%, #23ddda 88.75%);
+  box-shadow: 0px 0px 25px 10px var(--button-shadow-color);
+}
+
+.button:active {
+  transform: translateY(1px); /* Немного опускаем кнопку при нажатии */
+  box-shadow: 0px 0px 10px 2px var(--button-shadow-color); /* Уменьшаем тень при нажатии */
 }
 
 .product {
@@ -109,5 +98,12 @@
 
   .product img {
     max-height: 340px;
+  }
+}
+
+@media (max-width: 320px) {
+  .attractionBlock .button {
+    max-width: 90%;
+    min-width: unset;
   }
 }

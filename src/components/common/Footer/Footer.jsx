@@ -7,8 +7,14 @@ const Footer = () => {
       <div className={styles.receiveEmailsForm}>
         <p>DO YOU WANT TO RECEIVE NOTIFICATIONS ABOUT OUR NEWS AND MORE?</p>
         <div className={styles.submitForm}>
-          <input type="text" placeholder="Your email"></input>
-          <button>Submit</button>
+          <input id="emailInput" type="email" placeholder="Your email"></input>
+          <button
+            onClick={() => {
+              document.getElementById("emailInput").value = "";
+            }}
+          >
+            Submit
+          </button>
         </div>
       </div>
       <div className={styles.additionalInfo}>
@@ -36,7 +42,7 @@ const Footer = () => {
               <Link to="">Telegram</Link>
             </li>
             <li>
-              <Link to="">X (Twitter</Link>)
+              <Link to="">X (Twitter)</Link>)
             </li>
             <li>
               <Link to="">Instagram</Link>

@@ -26,9 +26,6 @@ function sendMessageToTelegram(cartItems, totalAmount) {
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((result) => {
-        console.log("Message sent:", result);
-      })
       .catch((error) => {
         console.error("Error:", error);
       });

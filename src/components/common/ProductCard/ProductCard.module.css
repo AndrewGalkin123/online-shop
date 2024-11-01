@@ -1,17 +1,17 @@
 .card {
-  width: 100%; /* Замените фиксированное значение на процент */
-  max-width: 388px; /* Максимальная ширина для больших экранов */
+  width: 100%;
+  max-width: 388px;
   max-height: 505px;
   display: flex;
   flex-direction: column;
   color: black;
-  overflow: hidden; /* Чтобы предотвратить выход изображения за границы карточки */
-  margin: 0 auto; /* Центрируем карточку */
+  overflow: hidden;
+  margin: 0 auto;
 }
 
 .card img {
   width: 100%;
-  height: 82%; /* Автоматическая высота для изображения */
+  height: 82%;
   min-height: 425px;
   object-fit: cover;
 }
@@ -28,15 +28,14 @@
 }
 
 .cardDescription {
-  width: 100%; /* Используйте 100% для адаптивности */
-  height: auto; /* Автоматическая высота */
+  width: 100%; /* using 100% for responsivity */
+  height: auto;
   gap: 4px;
 }
 
 .cardTitle {
   font-size: 16px;
   font-weight: 400;
-
   text-align: left;
 }
 
@@ -48,22 +47,20 @@
 .actualPrice {
   font-size: 24px;
   font-weight: 400;
-
   margin-right: 10px;
 }
 
 .oldPrice {
   font-size: 18px;
   font-weight: 400;
-
   color: #aeaeae;
 }
 
 .purchaseBox button {
-  width: 100%; /* Замените фиксированное значение на 100% */
-  max-width: 104px; /* Максимальная ширина кнопки */
+  width: 100%;
+  max-width: 104px;
   height: 50px;
-  padding: 10px; /* Уберите боковое заполнение */
+  padding: 10px;
   border-radius: 50px;
   border: none;
   background-color: #5e26dd;
@@ -89,10 +86,10 @@
     font-size: 0.8rem;
   }
   .purchaseBox button {
-    width: 100%; /* Замените фиксированное значение на 100% */
-    max-width: 80px; /* Максимальная ширина кнопки */
+    width: 100%;
+    max-width: 80px;
     height: 40px;
-    padding: 10px; /* Уберите боковое заполнение */
+    padding: 10px;
     border-radius: 50px;
     border: none;
     background-color: #5e26dd;
@@ -106,14 +103,14 @@
     max-height: 400px;
   }
   .card img {
-    height: 82%; /* Автоматическая высота для изображения */
+    height: 82%;
     min-height: 325px;
   }
 }
 
 @media (max-width: 768px) {
   .card {
-    max-width: 100%; /* Полная ширина на маленьких экранах */
+    max-width: 100%; /* Full width on small screens */
   }
 
   .cardTitle {
@@ -156,5 +153,23 @@
 
   .oldPrice {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .card {
+    max-height: 230px;
+    min-height: 230px;
+  }
+
+  .card img {
+    min-height: 180px;
+  }
+  .purchaseBox {
+    min-height: 50px;
+    padding: 5px;
+  }
+  .oldPrice {
+    font-size: 12px;
   }
 }

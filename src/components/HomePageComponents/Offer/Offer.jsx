@@ -5,11 +5,12 @@ import next from "./next.png";
 import prev from "./prev.png";
 
 const Offer = ({ title, products }) => {
-  const [currentPage, setCurrentPage] = useState(0); // состояние для отслеживания текущей страницы
+  const [currentPage, setCurrentPage] = useState(0); // tracking current page
   const [itemsPerPage, setItemsPerPage] = useState(
     window.innerWidth <= 768 ? 2 : window.innerWidth <= 1300 ? 3 : 4
   );
 
+  // get elements amount according to innerWidth
   useEffect(() => {
     const updateItemsPerPage = () => {
       if (window.innerWidth <= 768) {
@@ -25,21 +26,21 @@ const Offer = ({ title, products }) => {
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
-  // Рассчитываем индекс первого и последнего элемента на текущей странице
+  // First and last index
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  // Извлекаем текущие продукты для отображения
+  // Getting current products
   const currentProducts = products.slice(startIndex, endIndex);
 
-  // Функция для переключения на предыдущую страницу
+  // Function to switch to prev page
   const handlePrev = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Функция для переключения на следующую страницу
+  //  Function to switch to next page
   const handleNext = () => {
     if (endIndex < products.length) {
       setCurrentPage(currentPage + 1);
@@ -52,10 +53,10 @@ const Offer = ({ title, products }) => {
         <h2 className={styles.offerTitle}>{title}</h2>
         <div>
           <button onClick={handlePrev}>
-            <img src={prev} />
+            <img src={prev} alt="prev" />
           </button>
           <button onClick={handleNext}>
-            <img src={next} />
+            <img src={next} alt="next" />
           </button>
         </div>
       </div>
@@ -71,6 +72,7 @@ const Offer = ({ title, products }) => {
             originalPrice={el.originalPrice}
             id={el.id}
             category={el.category}
+            animatedCartoon={el.animatedCartoon}
           />
         ))}
       </div>

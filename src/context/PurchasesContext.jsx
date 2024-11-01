@@ -52,14 +52,27 @@ export function PurchasesProvider({ children }) {
 
   const addToCart = (product) => {
     setCartItems((prevCartItems) => {
+      // Checking if product exists
       const existingProduct = prevCartItems.find(
         (item) => item.id === product.id
       );
+
       if (existingProduct) {
-        return prevCartItems.filter((el) => el.id !== product.id);
+        // If it exists : quantity++
+        return prevCartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
       } else {
         return [...prevCartItems, { ...product, quantity: 1 }];
       }
+    });
+  };
+
+  const removeFromCart = (product) => {
+    setCartItems((prevCartItems) => {
+      return prevCartItems.filter((item) => item.id !== product.id);
     });
   };
 
@@ -100,6 +113,7 @@ export function PurchasesProvider({ children }) {
         buyNow,
         addToSelected,
         selectedItems,
+        removeFromCart,
       }}
     >
       {children}

@@ -1,10 +1,10 @@
 const newCollection = [
   {
     id: 24,
-    name: "Hayami",
+    name: "Nakamura Hayami",
     price: 1299,
     originalPrice: 1399,
-    inStock: true,
+    animatedCartoon: "Iron Path",
     onSale: false,
     category: "newCollection",
     imageSrc: [
@@ -16,10 +16,10 @@ const newCollection = [
   },
   {
     id: 25,
-    name: "Shinra",
+    name: "Takahashi Shinra",
     price: 1399,
     originalPrice: 1499,
-    inStock: true,
+    animatedCartoon: "Frost Veil",
     onSale: true,
     category: "newCollection",
     imageSrc: [
@@ -31,10 +31,10 @@ const newCollection = [
   },
   {
     id: 26,
-    name: "Elwyn",
+    name: "Kato Elwyn",
     price: 1099,
     originalPrice: 1399,
-    inStock: true,
+    animatedCartoon: "Arcane Pulse",
     onSale: true,
     category: "newCollection",
     imageSrc: [
@@ -46,10 +46,10 @@ const newCollection = [
   },
   {
     id: 27,
-    name: "Kureha",
+    name: "Ito Kureha",
     price: 899,
     originalPrice: 1399,
-    inStock: true,
+    animatedCartoon: "Song of Eternity",
     onSale: true,
     category: "newCollection",
     imageSrc: [
@@ -62,10 +62,10 @@ const newCollection = [
 
   {
     id: 28,
-    name: "Xecty",
+    name: "Yoshida Xecty",
     price: 999,
     originalPrice: 1399,
-    inStock: true,
+    animatedCartoon: "Steel Spirit",
     onSale: false,
     category: "newCollection",
     imageSrc: [
@@ -77,10 +77,12 @@ const newCollection = [
   },
   {
     id: 29,
-    name: "Hikamori",
+    name: "Saito Hikamori",
     price: 599,
     originalPrice: 1399,
-    inStock: true,
+
+    animatedCartoon: "Waves of Destiny",
+
     onSale: false,
     category: "newCollection",
     imageSrc: [
@@ -92,10 +94,12 @@ const newCollection = [
   },
   {
     id: 38,
-    name: "Ikki",
+    name: "Inoue Ikki",
     price: 1999,
     originalPrice: 1999,
-    inStock: true,
+
+    animatedCartoon: "Twilight Requiem",
+
     onSale: false,
     category: "newCollection",
     imageSrc: [
@@ -107,10 +111,12 @@ const newCollection = [
   },
   {
     id: 39,
-    name: "Celestia",
+    name: "Aoki Celestia",
     price: 1999,
     originalPrice: 1999,
-    inStock: true,
+
+    animatedCartoon: "Petal Dreams",
+
     onSale: false,
     category: "newCollection",
     imageSrc: [
@@ -128,7 +134,8 @@ const sale = [
     name: "Senhime Tanaka",
     price: 999,
     originalPrice: 1299,
-    inStock: true,
+    animatedCartoon: "Samurai Legends",
+
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -143,7 +150,7 @@ const sale = [
     name: "Kamael Sato",
     price: 899,
     originalPrice: 1099,
-    inStock: true,
+    animatedCartoon: "Celestial Guardians",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -158,7 +165,7 @@ const sale = [
     name: "Reimu Hakurei",
     price: 1099,
     originalPrice: 1399,
-    inStock: true,
+    animatedCartoon: "Steel Chronicles",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -173,7 +180,7 @@ const sale = [
     name: "Yukimura Sanada",
     price: 899,
     originalPrice: 1099,
-    inStock: true,
+    animatedCartoon: "Eclipse Chronicles",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -188,7 +195,7 @@ const sale = [
     name: "Hatsune Miku",
     price: 1199,
     originalPrice: 1499,
-    inStock: true,
+    animatedCartoon: "Frost Guardians",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -203,7 +210,8 @@ const sale = [
     name: "Miya Sakamoto",
     price: 1099,
     originalPrice: 1399,
-    inStock: true,
+
+    animatedCartoon: "Spirit of the Forest",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -218,7 +226,8 @@ const sale = [
     name: "Jin Xue",
     price: 1099,
     originalPrice: 1999,
-    inStock: false,
+    animatedCartoon: "Mystic Echo",
+
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -233,7 +242,8 @@ const sale = [
     name: "Raquel Lolita",
     price: 1999,
     originalPrice: 2199,
-    inStock: true,
+
+    animatedCartoon: "Phantom Knights",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -248,7 +258,8 @@ const sale = [
     name: "Louise Gothic",
     price: 999,
     originalPrice: 1099,
-    inStock: true,
+
+    animatedCartoon: "Flames of Valor",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -263,7 +274,8 @@ const sale = [
     name: "Melissa Seraphy",
     price: 1099,
     originalPrice: 1399,
-    inStock: true,
+
+    animatedCartoon: "Realm of Shadows",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -278,7 +290,8 @@ const sale = [
     name: "Haruhi Taniguchi",
     price: 999,
     originalPrice: 1299,
-    inStock: true,
+
+    animatedCartoon: "Echoes of Thunder",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -293,7 +306,8 @@ const sale = [
     name: "LLenn Mori",
     price: 1099,
     originalPrice: 1399,
-    inStock: true,
+
+    animatedCartoon: "Blaze Frontier",
     onSale: true,
     category: "sale",
     imageSrc: [
@@ -311,7 +325,7 @@ const bestSellings = [
     name: "Komi Nakamura",
     price: 999,
     originalPrice: 999,
-    inStock: false,
+    animatedCartoon: "Shadow of Destiny",
     onSale: false,
     category: "bestSellings",
     imageSrc: [
@@ -326,7 +340,7 @@ const bestSellings = [
     name: "Toka Yamada",
     price: 999,
     originalPrice: 999,
-    inStock: true,
+    animatedCartoon: "Arcane Fables",
     onSale: false,
     category: "bestSellings",
     imageSrc: [
@@ -341,7 +355,8 @@ const bestSellings = [
     name: "Ryan Suzuki",
     price: 1299,
     originalPrice: 1599,
-    inStock: true,
+
+    animatedCartoon: "Techno Future",
     onSale: true,
     category: "bestSellings",
     imageSrc: [
@@ -356,7 +371,7 @@ const bestSellings = [
     name: "Mafi Takahashi",
     price: 999,
     originalPrice: 999,
-    inStock: true,
+    animatedCartoon: "Sky Warriors",
     onSale: false,
     category: "bestSellings",
     imageSrc: [
@@ -371,7 +386,7 @@ const bestSellings = [
     name: "Mirei Matsumoto",
     price: 999,
     originalPrice: 1299,
-    inStock: true,
+    animatedCartoon: "Moonlight Chronicles",
     onSale: true,
     category: "bestSellings",
     imageSrc: [
@@ -386,7 +401,8 @@ const bestSellings = [
     name: "Harumi Yoshida",
     price: 1199,
     originalPrice: 1499,
-    inStock: true,
+
+    animatedCartoon: "Ironheart Warriors",
     onSale: true,
     category: "bestSellings",
     imageSrc: [
@@ -401,7 +417,9 @@ const bestSellings = [
     name: "Hanuka Yamamoto",
     price: 799,
     originalPrice: 999,
-    inStock: true,
+
+    animatedCartoon: "Winds of Freedom",
+
     onSale: true,
     category: "bestSellings",
     imageSrc: [
@@ -416,7 +434,8 @@ const bestSellings = [
     name: "Yuki Matsuda",
     price: 499,
     originalPrice: 699,
-    inStock: true,
+
+    animatedCartoon: "Petal Reverie",
     onSale: true,
     category: "bestSellings",
     imageSrc: [
@@ -428,10 +447,11 @@ const bestSellings = [
   },
   {
     id: 21,
-    name: "Sato",
+    name: "Yamada Sato",
     price: 1099,
     originalPrice: 1399,
-    inStock: true,
+
+    animatedCartoon: "Crystal Wings",
     onSale: true,
     category: "bestSellings",
     imageSrc: [
@@ -443,10 +463,11 @@ const bestSellings = [
   },
   {
     id: 22,
-    name: "Seyka",
+    name: "Tanaka Seyka",
     price: 1099,
     originalPrice: 1399,
-    inStock: true,
+
+    animatedCartoon: "Soul Requiem",
     onSale: true,
     category: "bestSellings",
     imageSrc: [
@@ -458,10 +479,11 @@ const bestSellings = [
   },
   {
     id: 23,
-    name: "Mako",
+    name: "Suzuki Mako",
     price: 1099,
     originalPrice: 1399,
-    inStock: true,
+
+    animatedCartoon: "Mystic Waves",
     onSale: true,
     category: "bestSellings",
     imageSrc: [
@@ -473,10 +495,11 @@ const bestSellings = [
   },
   {
     id: 37,
-    name: "Xecty",
+    name: "Yoshida Xecty",
     price: 1999,
     originalPrice: 1999,
-    inStock: true,
+
+    animatedCartoon: "Skybound Sonata",
     onSale: false,
     category: "bestSellings",
     imageSrc: [

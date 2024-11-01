@@ -1,7 +1,4 @@
 import styles from "./Header.module.css";
-import icon from "./icon.png";
-import cart from "./bag-cross.png";
-import burgerMenu from "./menu.png";
 import { Link } from "react-router-dom";
 import Catalog from "../Catalog/Catalog";
 import { useContext, useState } from "react";
@@ -28,7 +25,7 @@ const Header = ({ isCatalogOpen, setCatalogStatus }) => {
   return (
     <header className={styles.header}>
       <Link to="/">
-        <img className={styles.icon} src={icon} alt="Icon" />
+        <img className={styles.icon} src="/images/mainIcon.png" alt="Icon" />
       </Link>
       <nav className={`${styles.navigation} ${isMenuOpen ? styles.open : ""}`}>
         <ul>
@@ -44,7 +41,7 @@ const Header = ({ isCatalogOpen, setCatalogStatus }) => {
           <li>
             <Link to="/sale">Sale</Link>
           </li>
-          {/* Показываем Cart и Favourites только при открытом меню на мобильных */}
+          {/* Showing cart and favourites only on mobiles */}
           {isMenuOpen && (
             <>
               <li>
@@ -58,15 +55,15 @@ const Header = ({ isCatalogOpen, setCatalogStatus }) => {
         </ul>
       </nav>
       <div className={styles.purchases}>
-        <img onClick={handleCartClick} src={cart} alt="cart" />
+        <img onClick={handleCartClick} src="/images/bag-cross.png" alt="cart" />
         <Link to="/favourites">
           <img src="/images/heart.png" alt="selected" />
         </Link>
       </div>
       <button className={styles.burger} onClick={toggleMenu}>
-        <img src={burgerMenu} alt="menu" />
+        <img src="/images/burgerMenu.png" alt="menu" />
       </button>
-      {/* Оверлей, который затемняет фон при открытии меню */}
+      {/* darkens the background */}
       {isMenuOpen && (
         <div className={styles.overlay} onClick={toggleMenu}></div>
       )}

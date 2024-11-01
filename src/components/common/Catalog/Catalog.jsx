@@ -14,26 +14,26 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
 
     window.addEventListener("resize", handleResize);
 
-    // Обработчик клика вне каталога
+    // Click handler outside the catalog
     const handleClickOutside = (event) => {
       if (catalogRef.current && !catalogRef.current.contains(event.target)) {
-        toggleCatalog(); // Закрыть каталог при клике вне его
+        toggleCatalog(); // Close a catalog when clicking outside of it
       }
     };
 
     if (isOpen) {
-      // Если каталог открыт, добавляем обработчик клика
+      // If the catalog is open, add a click handler
       document.addEventListener("mousedown", handleClickOutside);
     } else {
-      // Если каталог закрыт, удаляем обработчик
+      // If the catalog is closed, remove a click handler
       document.removeEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      document.removeEventListener("mousedown", handleClickOutside); // Удаляем обработчик при размонтировании
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isOpen, toggleCatalog]); // Добавляем isOpen в зависимости
+  }, [isOpen, toggleCatalog]); // Adding isOpen
 
   const toggleCategory = (category) => {
     if (isMobile) {
@@ -93,10 +93,10 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
               <li>T-shirts with anime prints</li>
             </Link>
 
-            <Link to="">
+            <Link to="/bags">
               <li>Backpacks and bags</li>
             </Link>
-            <Link to="">
+            <Link to="/additionalClothes">
               <li>Scarves, gloves, and socks</li>
             </Link>
           </ul>
@@ -107,10 +107,10 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
         <h3 onClick={() => toggleCategory("manga")}>Manga and Artbooks</h3>
         {(isMobile && openCategories.manga) || !isMobile ? (
           <ul className={openCategories.manga ? styles.show : ""}>
-            <Link to="">
-              <li>Manga (in different languages)</li>
+            <Link to="/manga">
+              <li>Manga</li>
             </Link>
-            <Link to="">
+            <Link to="/artbooks">
               <li>Anime and manga artbooks</li>
             </Link>
             <Link to="/posters">
@@ -124,13 +124,13 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
         <h3 onClick={() => toggleCategory("collectibles")}>Collectibles</h3>
         {(isMobile && openCategories.collectibles) || !isMobile ? (
           <ul className={openCategories.collectibles ? styles.show : ""}>
-            <Link to="">
-              <li>Rare editions</li>
+            <Link to="/rare">
+              <li>Rare</li>
             </Link>
             <Link to="/limitedEditionFigures">
               <li>Limited edition figures</li>
             </Link>
-            <Link to="">
+            <Link to="/autographs">
               <li>Autographs from creators</li>
             </Link>
           </ul>

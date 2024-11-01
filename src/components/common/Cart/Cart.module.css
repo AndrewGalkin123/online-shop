@@ -4,9 +4,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2); /* Затемнение */
-  backdrop-filter: blur(5px); /* Эффект размытия */
-  z-index: 12; /* Поднять над всем контентом */
+  background-color: rgba(0, 0, 0, 0.2); /* darkens */
+  backdrop-filter: blur(5px); /* Blur effect */
+  z-index: 12; /* Raise above all content */
   display: none;
 }
 
@@ -115,9 +115,7 @@
   text-align: left;
   font-size: 18px;
   line-height: 150%;
-
   position: relative;
-
   border-radius: 10px;
   text-align: center;
   background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
@@ -165,6 +163,9 @@
   .basket .confirmBlock {
     width: 100%;
     margin-bottom: 10px;
+  }
+  .basket .checkoutButton {
+    height: 65%;
   }
 }
 

@@ -1,18 +1,18 @@
 .offer {
   display: flex;
   flex-direction: column;
-  padding: 4%; /* Относительные единицы для отступов */
+  padding: 4%;
 }
 
 .galleryControls {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Вертикальное выравнивание элементов */
-  margin-bottom: 2rem; /* Отступ снизу */
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .offerTitle {
-  font-size: 2.5rem; /* Использование rem для масштабируемости */
+  font-size: 2.5rem;
   color: white;
   font-weight: 400;
   text-align: center;
@@ -22,9 +22,9 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  width: 1rem; /* Замените на относительные единицы */
-  height: 1rem; /* Замените на относительные единицы */
-  margin-right: 1rem; /* Отступ между кнопками */
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
 }
 
 .galleryControls button img {
@@ -34,26 +34,27 @@
 
 .productCards {
   display: flex;
-  justify-content: center; /* Центрируем карточки по горизонтали */
-
-  gap: 10px; /* Расстояние между карточками */
-  max-width: 100%; /* Убедитесь, что блок занимает всю ширину */
-  margin: 0 auto; /* Центрируем блок на странице */
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
+/* For tablets */
 @media (max-width: 768px) {
   .offerTitle {
     font-size: 28px;
   }
 }
 
+/* For phones */
 @media (max-width: 425px) {
   .offer {
-    padding: 20px; /* Уменьшаем отступы */
+    padding: 20px;
   }
 
   .offerTitle {
-    font-size: 20px; /* Уменьшаем размер заголовка */
+    font-size: 20px;
     line-height: 32px;
   }
 
@@ -64,6 +65,6 @@
   }
 
   .productCards {
-    gap: 10px; /* Уменьшаем расстояние между карточками */
+    gap: 10px;
   }
 }

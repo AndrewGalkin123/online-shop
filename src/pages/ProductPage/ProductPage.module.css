@@ -16,8 +16,8 @@
 
 .product {
   display: flex;
-  flex-direction: row; /* По умолчанию в столбец для мобильных */
-  gap: 20px; /* Добавлено расстояние между элементами */
+  flex-direction: row;
+  gap: 20px;
   margin-bottom: 40px;
 }
 
@@ -45,21 +45,21 @@
 }
 
 .miniImage {
-  width: 31.3%; /* Ширина мини-изображений */
+  width: 31.3%; /* mini images width */
   height: auto;
   cursor: pointer;
   object-fit: cover;
-  transition: transform 0.2s; /* Плавный эффект при наведении */
+  transition: transform 0.2s;
 }
 
 .miniImage:hover {
-  transform: scale(1.05); /* Увеличение при наведении */
+  transform: scale(1.05);
 }
 
 .productDetails {
   display: flex;
   flex-direction: column;
-  padding: 0 50px; /* Уменьшено расстояние с боков */
+  padding: 0 50px;
 }
 
 .productDetails h1 {
@@ -78,7 +78,7 @@
   flex-direction: row;
   align-items: center;
   margin-top: 1rem;
-  gap: 3rem; /* Добавлено расстояние между элементами */
+  gap: 3rem;
 }
 
 .prices {
@@ -102,14 +102,14 @@
 
 .shoppingBox {
   display: flex;
-  gap: 10px; /* Добавлено расстояние между иконками */
+  gap: 10px;
 }
 
 .shoppingBox img {
-  width: 60px; /* Уменьшена ширина иконок */
-  height: 60px; /* Уменьшена высота иконок */
+  width: 60px;
+  height: 60px;
   cursor: pointer;
-  transition: filter 0.2s; /* Плавный эффект при наведении */
+  transition: filter 0.2s;
 }
 
 .shoppingBox img:hover {
@@ -117,10 +117,10 @@
 }
 
 .productDetails button {
-  width: 100%; /* Занимает всю ширину */
-  max-width: 390px; /* Максимальная ширина для кнопки */
+  width: 100%;
+  max-width: 390px;
   height: 50px;
-  border-radius: 25px; /* Округлые края */
+  border-radius: 25px;
   border: none;
   background-color: #5e26dd;
   color: #ffffff;
@@ -134,9 +134,10 @@
   box-shadow: 0 0 10px rgba(143, 143, 240, 0.5);
 }
 
+/* For small laptops */
 @media (max-width: 1024px) {
   .productDetails {
-    padding: 0 12px; /* Уменьшено расстояние с боков для мобильных */
+    padding: 0 12px;
   }
   .productDetails h1 {
     font-size: 30px;
@@ -146,12 +147,13 @@
   }
 }
 
+/* For tablets */
 @media (max-width: 768px) {
   .imagesContainer {
     width: 50%;
   }
   .productDetails {
-    padding: 0 10px; /* Уменьшено расстояние с боков для мобильных */
+    padding: 0 10px;
     width: 50%;
   }
   .productDetails button {
@@ -181,25 +183,26 @@
   }
 }
 
+/* For small phones */
 @media (max-width: 480px) {
   .path {
-    font-size: 14px; /* Уменьшение размера шрифта для мобильных */
+    font-size: 14px;
   }
 
   .productDetails h1 {
-    font-size: 28px; /* Уменьшение размера заголовка */
+    font-size: 28px;
   }
 
   .actualPrice {
-    font-size: 28px; /* Уменьшение размера цены */
+    font-size: 28px;
   }
 
   .oldPrice {
-    font-size: 16px; /* Уменьшение размера старой цены */
+    font-size: 16px;
   }
 
   .productDetails button {
-    font-size: 18px; /* Уменьшение размера шрифта кнопки */
+    font-size: 18px;
     margin-bottom: 20px;
   }
 }

@@ -11,6 +11,7 @@ const ProductCard = ({
   originalPrice,
   id,
   category,
+  animatedCartoon,
 }) => {
   const { buyNow } = useContext(PurchasesContext);
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const ProductCard = ({
   };
 
   const handleBuyClick = (e) => {
-    e.stopPropagation(); // Остановить событие, чтобы не перейти на страницу товара
+    e.stopPropagation();
     buyNow({
       id: id,
       name: cardTitle,
@@ -28,6 +29,7 @@ const ProductCard = ({
       originalPrice: originalPrice,
       onSale: onSale,
       category: category,
+      animatedCartoon: animatedCartoon,
       imageSrc: imageSrc ? [imageSrc] : [],
     });
   };

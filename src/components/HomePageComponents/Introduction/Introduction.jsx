@@ -1,5 +1,5 @@
 import styles from "./Introduction.module.css";
-import animeFigure from "./Frame 89.png";
+import animeFigure from "./AnimeFigure.png";
 
 const Introduction = ({ setCatalogStatus }) => {
   return (
@@ -11,13 +11,13 @@ const Introduction = ({ setCatalogStatus }) => {
           onClick={() => {
             setCatalogStatus(true);
           }}
-          className={`${styles.button} ${styles.buttonPrimary}`}
+          className={`${styles.button}`}
         >
           OUR CATALOG
         </button>
       </div>
       <div className={styles.product}>
-        <img src={animeFigure} />
+        <img src={animeFigure} alt="AnimeFigure" />
       </div>
     </article>
   );

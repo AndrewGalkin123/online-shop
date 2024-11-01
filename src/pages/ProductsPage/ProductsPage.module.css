@@ -20,18 +20,18 @@
   display: grid;
   width: 100%;
   padding: 0 4%;
-  gap: 22px; /* Отступы между элементами */
+  gap: 22px;
 }
 
 @media (min-width: 1340px) {
   .products {
-    grid-template-columns: repeat(4, 1fr); /* 4 колонки для больших экранов */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 1340px) {
   .products {
-    grid-template-columns: repeat(3, 1fr); /* 4 колонки для больших экранов */
+    grid-template-columns: repeat(3, 1fr);
   }
   .title {
     font-size: 2.2rem;
@@ -40,10 +40,8 @@
 
 @media (max-width: 768px) {
   .products {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* 2 колонки для мобильных устройств */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
   .title {
     font-size: 2rem;
