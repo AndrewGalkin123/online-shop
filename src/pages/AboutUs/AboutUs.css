@@ -10,7 +10,7 @@
     #06194a 41.96%,
     rgba(6, 25, 74, 0) 99.13%
   ); /* Background color */
-  border-radius: 8px; /* Rounded corners */
+
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
   color: white;
 }

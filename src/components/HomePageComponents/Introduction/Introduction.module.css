@@ -44,12 +44,8 @@
   transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
   font-size: 1.2rem;
-  background: linear-gradient(
-    96.08deg,
-    #23ddd9 14.66%,
-    #5f23dd 88.75%
-  ); /* Фон кнопки по умолчанию */
-  box-shadow: 0px 0px 10px 2px var(--button-shadow-color); /* Увеличенный эффект тени */
+  background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
+  box-shadow: 0px 0px 10px 2px var(--button-shadow-color);
 }
 
 .button:hover {
@@ -58,8 +54,8 @@
 }
 
 .button:active {
-  transform: translateY(1px); /* Немного опускаем кнопку при нажатии */
-  box-shadow: 0px 0px 10px 2px var(--button-shadow-color); /* Уменьшаем тень при нажатии */
+  transform: translateY(1px);
+  box-shadow: 0px 0px 10px 2px var(--button-shadow-color);
 }
 
 .product {
@@ -71,6 +67,7 @@
   width: 100%;
   height: 100%;
   max-height: 50vh;
+  min-height: 300px;
 }
 
 @media (max-width: 1200px) {
@@ -79,7 +76,7 @@
   }
 }
 
-@media (max-width: 910px) {
+@media (max-width: 1024px) {
   .introduction {
     padding: 1rem;
     flex-direction: column;
@@ -95,7 +92,6 @@
     max-width: 80%;
     max-height: 340px;
   }
-
   .product img {
     max-height: 340px;
   }

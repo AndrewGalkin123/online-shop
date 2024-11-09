@@ -1,51 +1,21 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import CartProduct from "./ProductInCart/CartProduct";
 import styles from "./Cart.module.css";
-import { useContext } from "react";
 import { PurchasesContext } from "../../../context/PurchasesContext";
 
-const BOT_TOKEN = "7725618525:AAH9QyLTH4UG1iVdF5VaBBj1ERvdU6ctCPo"; // TG-Bot Token
-const CHAT_ID = "1066918561"; // chat id where should info be sent
-// function to send message
-function sendMessageToTelegram(cartItems, totalAmount) {
-  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-  if (cartItems.length > 0) {
-    const message = `New order:\n\n${cartItems
-      .map((item, index) => `${index + 1}. ${item.name} - ${item.quantity} pcs`)
-      .join("\n")}\n\nTotal: ${totalAmount()}¥`;
-
-    const data = {
-      chat_id: CHAT_ID,
-      text: message,
-    };
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-    alert("Order has been sent to us!");
-  }
-}
-
 const Cart = () => {
-  const { cartItems, getTotalPrice, clearCart, isCartVisible, setCartStatus } =
+  const { cartItems, getTotalPrice, isCartVisible, setCartStatus } =
     useContext(PurchasesContext);
+  const navigate = useNavigate();
 
   const handleCloseCartClick = () => {
     setCartStatus(false);
   };
 
-  //Function to send order when checout is clicked
   const handleCheckoutClick = () => {
-    sendMessageToTelegram(cartItems, getTotalPrice);
-    clearCart();
-    handleCloseCartClick();
+    navigate("/checkout"); // redirecting to /checkout
+    setCartStatus(false);
   };
 
   return (
@@ -53,7 +23,7 @@ const Cart = () => {
       <div
         className={
           isCartVisible
-            ? `${styles.basket} ${styles.visible}`
+            ? `${styles.basket} ${styles.visibleBasket}`
             : `${styles.basket}`
         }
       >
@@ -66,33 +36,38 @@ const Cart = () => {
             alt="cross"
           />
         </div>
-        <div className={styles.buyings}>
-          {cartItems.map((product) => (
-            <CartProduct key={product.id} product={product} />
-          ))}
-        </div>
-        <div className={styles.controlContainer}>
-          <button
-            onClick={handleCloseCartClick}
-            className={styles.continueShoppingButton}
-          >
-            Continue shopping
-          </button>
-          <div className={styles.confirmBlock}>
-            <div className={styles.totalAmount}>{getTotalPrice()}¥</div>
+        <div className={styles.mainContent}>
+          <div className={styles.buyings}>
+            {cartItems.map((product) => (
+              <CartProduct key={product.id} product={product} />
+            ))}
+          </div>
+
+          <div className={styles.controlContainer}>
             <button
-              onClick={handleCheckoutClick}
-              className={styles.checkoutButton}
+              onClick={handleCloseCartClick}
+              className={styles.continueShoppingButton}
             >
-              CHECKOUT
+              Continue shopping
             </button>
+
+            <div className={styles.confirmBlock}>
+              <div className={styles.totalAmount}>{getTotalPrice()}¥</div>
+
+              <button
+                className={styles.checkoutButton}
+                onClick={handleCheckoutClick}
+              >
+                CHECKOUT
+              </button>
+            </div>
           </div>
         </div>
       </div>
       <div
         className={
           isCartVisible
-            ? `${styles.blurBackground} ${styles.visible}`
+            ? `${styles.blurBackground} ${styles.visibleBlurBack}`
             : `${styles.blurBackground}`
         }
       ></div>

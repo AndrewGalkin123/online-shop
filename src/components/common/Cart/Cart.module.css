@@ -16,20 +16,27 @@
   border-style: solid;
   border-color: #5f23dd;
   border-width: 3px;
-  height: 70vh;
+  height: 90vh;
   width: 90%;
-  max-width: 750px;
-  position: relative;
-  overflow: hidden;
+  max-width: 960px;
   position: fixed;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%);
-  display: none;
+  top: 50%; /* Center by Y */
+  left: 50%; /* Center by X */
+  transform: translate(-50%, -45%);
+  overflow: scroll;
+  opacity: 0;
   z-index: 13;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
 }
 
-.visible {
+.visibleBasket {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.visibleBlurBack {
   display: block;
 }
 
@@ -43,6 +50,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 3%;
+  background: #0c0124;
+  z-index: 10;
 }
 .basket .closeButton {
   width: 20px;
@@ -60,10 +69,17 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: left;
-
   font-size: 24px;
   line-height: 150%;
   font-weight: 400;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  padding: 3% 5% 2% 5%;
+  gap: 10px;
 }
 
 .basket .buyings {
@@ -71,17 +87,19 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 30px 0;
-  height: 70%;
+  height: 90%;
   overflow: scroll;
+  gap: 15px;
 }
+
 .controlContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 20%;
-  padding: 0 6%;
+  height: 10%;
+  min-height: 100px;
+  max-height: 200px;
 }
 
 .basket .confirmBlock {
@@ -98,7 +116,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 70%;
+  height: 100%;
   width: 45%;
 }
 .basket .totalAmount {
@@ -115,7 +133,6 @@
   text-align: left;
   font-size: 18px;
   line-height: 150%;
-  position: relative;
   border-radius: 10px;
   text-align: center;
   background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
@@ -159,10 +176,12 @@
   .controlContainer {
     flex-direction: column;
   }
-  .continueShoppingButton,
+
   .basket .confirmBlock {
     width: 100%;
-    margin-bottom: 10px;
+  }
+  .continueShoppingButton {
+    display: none;
   }
   .basket .checkoutButton {
     height: 65%;
@@ -172,6 +191,5 @@
 @media (max-width: 500px) {
   .basket {
     height: 95vh;
-    top: 2%;
   }
 }

@@ -16,6 +16,10 @@
   object-fit: cover;
 }
 
+.card img:hover {
+  cursor: pointer;
+}
+
 .purchaseBox {
   width: 100%;
   height: 18%;

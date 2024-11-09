@@ -4,47 +4,43 @@ import { useState, useEffect } from "react";
 import next from "./next.png";
 import prev from "./prev.png";
 
-const Offer = ({ title, products }) => {
-  const [currentPage, setCurrentPage] = useState(0); // tracking current page
-  const [itemsPerPage, setItemsPerPage] = useState(
-    window.innerWidth <= 768 ? 2 : window.innerWidth <= 1300 ? 3 : 4
-  );
-
-  // get elements amount according to innerWidth
-  useEffect(() => {
-    const updateItemsPerPage = () => {
-      if (window.innerWidth <= 768) {
-        setItemsPerPage(2);
-      } else if (window.innerWidth <= 1300) {
-        setItemsPerPage(3);
-      } else {
-        setItemsPerPage(4);
-      }
-    };
-
-    window.addEventListener("resize", updateItemsPerPage);
-    return () => window.removeEventListener("resize", updateItemsPerPage);
-  }, []);
-
-  // First and last index
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  // Getting current products
-  const currentProducts = products.slice(startIndex, endIndex);
-
-  // Function to switch to prev page
-  const handlePrev = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
+// Custom hook to calculate items per page based on screen width
+const useItemsPerPage = () => {
+  const getItemsPerPage = () => {
+    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 1300) return 3;
+    return 4;
   };
 
-  //  Function to switch to next page
+  const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage);
+
+  useEffect(() => {
+    const updateItemsPerPage = () => setItemsPerPage(getItemsPerPage());
+
+    const debouncedResize = debounce(updateItemsPerPage, 100);
+    window.addEventListener("resize", debouncedResize);
+    return () => window.removeEventListener("resize", debouncedResize);
+  }, []);
+
+  return itemsPerPage;
+};
+
+const Offer = ({ title, products }) => {
+  const itemsPerPage = useItemsPerPage();
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // Calculate start and end index based on current page and items per page
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProducts = products.slice(startIndex, endIndex);
+
+  // Handle previous and next page actions
+  const handlePrev = () => {
+    if (currentPage > 0) setCurrentPage(currentPage - 1);
+  };
+
   const handleNext = () => {
-    if (endIndex < products.length) {
-      setCurrentPage(currentPage + 1);
-    }
+    if (endIndex < products.length) setCurrentPage(currentPage + 1);
   };
 
   return (
@@ -52,28 +48,18 @@ const Offer = ({ title, products }) => {
       <div className={styles.galleryControls}>
         <h2 className={styles.offerTitle}>{title}</h2>
         <div>
-          <button onClick={handlePrev}>
-            <img src={prev} alt="prev" />
+          <button onClick={handlePrev} disabled={currentPage === 0}>
+            <img src={prev} alt="Previous" />
           </button>
-          <button onClick={handleNext}>
-            <img src={next} alt="next" />
+          <button onClick={handleNext} disabled={endIndex >= products.length}>
+            <img src={next} alt="Next" />
           </button>
         </div>
       </div>
 
       <div className={styles.productCards}>
         {currentProducts.map((el) => (
-          <ProductCard
-            key={el.id}
-            imageSrc={el.imageSrc[0]}
-            cardTitle={el.name}
-            price={el.price}
-            onSale={el.onSale}
-            originalPrice={el.originalPrice}
-            id={el.id}
-            category={el.category}
-            animatedCartoon={el.animatedCartoon}
-          />
+          <ProductCard key={el.id} product={el} />
         ))}
       </div>
     </div>
@@ -81,3 +67,12 @@ const Offer = ({ title, products }) => {
 };
 
 export default Offer;
+
+// Utility function for debounce
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}

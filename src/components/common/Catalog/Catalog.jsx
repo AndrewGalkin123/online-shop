@@ -1,19 +1,65 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./Catalog.module.css";
 import { Link } from "react-router-dom";
 
+const categories = [
+  {
+    title: "Figures",
+    links: [
+      { to: "/nendoroids", label: "Nendoroids" },
+      { to: "/animeDolls", label: "Anime dolls" },
+      { to: "/forAdults", label: "For Adults (18+)" },
+    ],
+  },
+  {
+    title: "Merchandise",
+    links: [
+      { to: "/keychains", label: "Keychains" },
+      { to: "/pins", label: "Pins" },
+      { to: "/posters", label: "Posters" },
+    ],
+  },
+  {
+    title: "Clothing and Accessories",
+    links: [
+      { to: "/t-shirts", label: "T-shirts with anime prints" },
+      { to: "/bags", label: "Backpacks and bags" },
+      { to: "/additionalClothes", label: "Scarves, gloves, and socks" },
+    ],
+  },
+  {
+    title: "Manga and Artbooks",
+    links: [
+      { to: "/manga", label: "Manga" },
+      { to: "/artbooks", label: "Anime and manga artbooks" },
+      { to: "/posters", label: "Illustrations and posters" },
+    ],
+  },
+  {
+    title: "Collectibles",
+    links: [
+      { to: "/rare", label: "Rare" },
+      { to: "/limitedEditionFigures", label: "Limited edition figures" },
+      { to: "/autographs", label: "Autographs from creators" },
+    ],
+  },
+];
+
 const Catalog = ({ isOpen, toggleCatalog }) => {
   const [openCategories, setOpenCategories] = useState({});
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile] = useState(window.innerWidth <= 768);
   const catalogRef = useRef(null);
 
+  const toggleCategory = (category) => {
+    if (isMobile) {
+      setOpenCategories((prev) => ({
+        ...prev,
+        [category]: !prev[category],
+      }));
+    }
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-
     // Click handler outside the catalog
     const handleClickOutside = (event) => {
       if (catalogRef.current && !catalogRef.current.contains(event.target)) {
@@ -30,113 +76,30 @@ const Catalog = ({ isOpen, toggleCatalog }) => {
     }
 
     return () => {
-      window.removeEventListener("resize", handleResize);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, toggleCatalog]); // Adding isOpen
-
-  const toggleCategory = (category) => {
-    if (isMobile) {
-      setOpenCategories((prev) => ({
-        ...prev,
-        [category]: !prev[category],
-      }));
-    }
-  };
-
   return (
     <div
       ref={catalogRef}
       className={`${styles.catalog} ${isOpen ? styles.catalogOpen : ""}`}
     >
-      <div className={styles.category}>
-        <h3 onClick={() => toggleCategory("figures")}>Figures</h3>
-        {(isMobile && openCategories.figures) || !isMobile ? (
-          <ul className={openCategories.figures ? styles.show : ""}>
-            <Link to="/nendoroids">
-              <li>Nendoroids</li>
-            </Link>
-            <Link to="/animeDolls">
-              <li>Anime dolls</li>
-            </Link>
-            <Link to="/forAdults">
-              <li>For Adults (18+)</li>
-            </Link>
-          </ul>
-        ) : null}
-      </div>
-
-      <div className={styles.category}>
-        <h3 onClick={() => toggleCategory("merchandise")}>Merchandise</h3>
-        {(isMobile && openCategories.merchandise) || !isMobile ? (
-          <ul className={openCategories.merchandise ? styles.show : ""}>
-            <Link to="/keychains">
-              <li>Keychains</li>
-            </Link>
-            <Link to="/pins">
-              <li>Pins</li>
-            </Link>
-            <Link to="/posters">
-              <li>Posters</li>
-            </Link>
-          </ul>
-        ) : null}
-      </div>
-
-      <div className={styles.category}>
-        <h3 onClick={() => toggleCategory("clothing")}>
-          Clothing and Accessories
-        </h3>
-        {(isMobile && openCategories.clothing) || !isMobile ? (
-          <ul className={openCategories.clothing ? styles.show : ""}>
-            <Link to="/t-shirts">
-              <li>T-shirts with anime prints</li>
-            </Link>
-
-            <Link to="/bags">
-              <li>Backpacks and bags</li>
-            </Link>
-            <Link to="/additionalClothes">
-              <li>Scarves, gloves, and socks</li>
-            </Link>
-          </ul>
-        ) : null}
-      </div>
-
-      <div className={styles.category}>
-        <h3 onClick={() => toggleCategory("manga")}>Manga and Artbooks</h3>
-        {(isMobile && openCategories.manga) || !isMobile ? (
-          <ul className={openCategories.manga ? styles.show : ""}>
-            <Link to="/manga">
-              <li>Manga</li>
-            </Link>
-            <Link to="/artbooks">
-              <li>Anime and manga artbooks</li>
-            </Link>
-            <Link to="/posters">
-              <li>Illustrations and posters</li>
-            </Link>
-          </ul>
-        ) : null}
-      </div>
-
-      <div className={styles.category}>
-        <h3 onClick={() => toggleCategory("collectibles")}>Collectibles</h3>
-        {(isMobile && openCategories.collectibles) || !isMobile ? (
-          <ul className={openCategories.collectibles ? styles.show : ""}>
-            <Link to="/rare">
-              <li>Rare</li>
-            </Link>
-            <Link to="/limitedEditionFigures">
-              <li>Limited edition figures</li>
-            </Link>
-            <Link to="/autographs">
-              <li>Autographs from creators</li>
-            </Link>
-          </ul>
-        ) : null}
-      </div>
-
+      {categories.map((category, index) => (
+        <div key={index} className={styles.category}>
+          <h3 onClick={() => toggleCategory(category.title)}>
+            {category.title}
+          </h3>
+          {(isMobile && openCategories[category.title]) || !isMobile ? (
+            <ul className={openCategories[category.title] ? styles.show : ""}>
+              {category.links.map((link, linkIndex) => (
+                <Link key={linkIndex} to={link.to}>
+                  <li>{link.label}</li>
+                </Link>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ))}
       <button className={styles.closeButton} onClick={toggleCatalog}>
         <img
           src="https://png.klev.club/uploads/posts/2024-04/png-klev-club-vmnn-p-belii-krestik-png-20.png"
