@@ -6,6 +6,7 @@ import { PurchasesContext } from "../../../context/PurchasesContext";
 
 const Header = ({ isCatalogOpen, setCatalogStatus }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [hoveredImage, setHoveredImage] = useState(null); // State to track hovered element
   const { setCartStatus } = useContext(PurchasesContext);
 
   const handleCartClick = () => {
@@ -20,6 +21,30 @@ const Header = ({ isCatalogOpen, setCatalogStatus }) => {
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
     setCatalogStatus(false);
+  };
+
+  const handleMouseEnter = (image) => {
+    setHoveredImage(image);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredImage(null); // Reset on mouse leave
+  };
+
+  // Define image paths based on hover state
+  const getImageSrc = (image) => {
+    switch (image) {
+      case "cart":
+        return hoveredImage === "cart"
+          ? "/images/bag-cross-hover-gradient.png"
+          : "/images/bag-cross.png";
+      case "heart":
+        return hoveredImage === "heart"
+          ? "/images/heart-gradient-hover.png"
+          : "/images/heart.png";
+      default:
+        return "";
+    }
   };
 
   return (
@@ -55,9 +80,20 @@ const Header = ({ isCatalogOpen, setCatalogStatus }) => {
         </ul>
       </nav>
       <div className={styles.purchases}>
-        <img onClick={handleCartClick} src="/images/bag-cross.png" alt="cart" />
+        <img
+          onClick={handleCartClick}
+          src={getImageSrc("cart")} // Get image based on hover state
+          alt="cart"
+          onMouseEnter={() => handleMouseEnter("cart")} // Set hover state for cart
+          onMouseLeave={handleMouseLeave} // Reset on mouse leave
+        />
         <Link to="/favourites">
-          <img src="/images/heart.png" alt="selected" />
+          <img
+            src={getImageSrc("heart")} // Get image based on hover state
+            alt="selected"
+            onMouseEnter={() => handleMouseEnter("heart")} // Set hover state for heart
+            onMouseLeave={handleMouseLeave} // Reset on mouse leave
+          />
         </Link>
       </div>
       <button className={styles.burger} onClick={toggleMenu}>
