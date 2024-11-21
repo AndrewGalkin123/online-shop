@@ -94,6 +94,7 @@
   }
   .product img {
     max-height: 340px;
+    max-width: 220px;
   }
 }
 

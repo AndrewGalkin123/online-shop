@@ -173,10 +173,11 @@
   .imagesContainer {
     width: 100%;
     max-height: 60vh;
+    min-height: 540px;
     max-width: unset;
   }
   .mainImage {
-    max-height: 40vh;
+    min-height: 300px;
   }
   .productDetails {
     width: 100%;
