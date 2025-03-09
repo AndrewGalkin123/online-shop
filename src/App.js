@@ -7,14 +7,16 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import Home from "./pages/HomePage/HomePage";
 import Cart from "./components/common/Cart/Cart";
 import { useState } from "react";
-import { PurchasesProvider } from "./context/PurchasesContext";
+import { PurchasesProvider } from "./context/UserContext";
 import AboutUs from "./pages/AboutUs/AboutUsPage";
 import Modal from "./components/Modal/Modal";
 import CheckoutOrderPage from "./pages/CheckoutOrder/CheckoutOrderPage";
+import Auth from "./components/common/Authorization/Auth";
+import {overwriteProducts} from "./script"
 
 // Component to display when a page is not found
 function NotFound() {
-  return <h2>404 - Not Found</h2>;
+  return <button>404 - Not Found</button>;
 }
 
 function App() {
@@ -37,10 +39,10 @@ function App() {
           isCatalogOpen={isCatalogOpen}
           setCatalogStatus={setCatalogStatus}
         />
-
-        {/* Cart component */}
+       
+       
         <Cart />
-
+        <Auth/>
         <Routes>
           {/* Home route */}
           <Route

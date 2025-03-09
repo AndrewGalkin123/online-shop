@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CartProduct from "./ProductInCart/CartProduct";
 import styles from "./Cart.module.css";
-import { PurchasesContext } from "../../../context/PurchasesContext";
+import { UserContext } from "../../../context/UserContext";
+import PoppingMenu from "../PoppingMenu /PoppingMenu";
 
 const Cart = () => {
   const { cartItems, getTotalPrice, isCartVisible, setCartStatus } =
-    useContext(PurchasesContext);
+    useContext(UserContext);
   const navigate = useNavigate();
 
   const handleCloseCartClick = () => {
@@ -19,23 +20,7 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <div
-        className={
-          isCartVisible
-            ? `${styles.basket} ${styles.visibleBasket}`
-            : `${styles.basket}`
-        }
-      >
-        <div className={styles.basketHeader}>
-          <div className={styles.title}>Basket</div>
-          <img
-            className={styles.closeButton}
-            onClick={handleCloseCartClick}
-            src="https://png.klev.club/uploads/posts/2024-04/png-klev-club-vmnn-p-belii-krestik-png-20.png"
-            alt="cross"
-          />
-        </div>
+    <PoppingMenu title="Basket" isVisible={isCartVisible} onClose={handleCloseCartClick}>
         <div className={styles.mainContent}>
           <div className={styles.buyings}>
             {cartItems.map((product) => (
@@ -63,15 +48,7 @@ const Cart = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className={
-          isCartVisible
-            ? `${styles.blurBackground} ${styles.visibleBlurBack}`
-            : `${styles.blurBackground}`
-        }
-      ></div>
-    </div>
+   </PoppingMenu>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { PurchasesContext } from "../../context/PurchasesContext";
+import { UserContext } from "../../context/UserContext";
 import styles from "./CheckoutOrderPage.module.css";
 
 const CheckoutOrderPage = () => {
@@ -8,7 +8,7 @@ const CheckoutOrderPage = () => {
   }, []);
 
   const { cartItems, getTotalPrice, clearCart, sendMessageToTelegram } =
-    useContext(PurchasesContext);
+    useContext(UserContext);
 
   const [customerInfo, setCustomerInfo] = useState({
     name: "",

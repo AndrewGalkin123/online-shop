@@ -1,13 +1,35 @@
-import { products } from "../../data/products";
 import { useParams, Link } from "react-router-dom";
 import styles from "./ProductPage.module.css";
 import { convertPath } from "../../utils/utils";
 import { useContext, useState, useEffect } from "react";
-import { PurchasesContext } from "../../context/PurchasesContext";
+import { UserContext } from "../../context/UserContext";
+import { db } from "../../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const ProductPage = () => {
   const { product: productId } = useParams();
-  const product = products.find((el) => el.id === Number(productId));
+  const [product, setProduct] = useState(null);
+  const [mainImageSrc, setMainImageSrc] = useState(""); 
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const productRef = doc(db, "products", productId);
+        const docSnap = await getDoc(productRef);
+
+        if (docSnap.exists()) {
+          setProduct({ id: docSnap.id, ...docSnap.data() });
+          setMainImageSrc(docSnap.data().imageSrc[0]); 
+        } else {
+          console.log("No product found with this ID");
+        }
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
 
   const {
     buyNow,
@@ -16,11 +38,7 @@ const ProductPage = () => {
     selectedItems,
     cartItems,
     removeFromCart,
-  } = useContext(PurchasesContext);
-
-  const [mainImageSrc, setMainImageSrc] = useState(
-    product ? product.imageSrc[0] : ""
-  );
+  } = useContext(UserContext);
 
   const isSelected = selectedItems.some((item) => item.id === product?.id);
   const isInCart = cartItems.some((item) => item.id === product?.id);
@@ -42,7 +60,7 @@ const ProductPage = () => {
     return (
       <main>
         <p style={{ fontSize: "30px", color: "white", textAlign: "center" }}>
-          Product not found
+          Loading product...
         </p>
       </main>
     );

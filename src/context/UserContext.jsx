@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useCallback } from "react";
 
 // Create context to manage purchases
-export const PurchasesContext = createContext();
+export const UserContext = createContext();
 
 // Provider component for managing the purchase state
 export function PurchasesProvider({ children }) {
@@ -11,8 +11,9 @@ export function PurchasesProvider({ children }) {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  // State for tracking the visibility of the cart
+  // State for tracking the visibility of the cart and auth
   const [isCartVisible, setCartStatus] = useState(false);
+  const [isAuthVisible, setAuthStatus] = useState(false);
 
   // Initialize selected items state, retrieve from localStorage if available
   const [selectedItems, setSelectedItems] = useState(() => {
@@ -37,9 +38,9 @@ export function PurchasesProvider({ children }) {
 
   // Effect hook to toggle the "no-scroll" class on the body when the cart is visible
   useEffect(() => {
-    document.body.classList.toggle("no-scroll", isCartVisible);
+    document.body.classList.toggle("no-scroll", isCartVisible || isAuthVisible);
     return () => document.body.classList.remove("no-scroll");
-  }, [isCartVisible]);
+  }, [isCartVisible,isAuthVisible]);
 
   // Function to clear all items from the cart
   const clearCart = useCallback(() => setCartItems([]), []);
@@ -154,7 +155,7 @@ export function PurchasesProvider({ children }) {
 
   // Return the context provider with the values to be shared across components
   return (
-    <PurchasesContext.Provider
+    <UserContext.Provider
       value={{
         cartItems,
         addToCart,
@@ -163,6 +164,8 @@ export function PurchasesProvider({ children }) {
         clearCart,
         isCartVisible,
         setCartStatus,
+        isAuthVisible,
+        setAuthStatus,
         buyNow,
         addToSelected,
         selectedItems,
@@ -171,6 +174,6 @@ export function PurchasesProvider({ children }) {
       }}
     >
       {children} {/* Render child components inside the provider */}
-    </PurchasesContext.Provider>
+    </UserContext.Provider>
   );
 }

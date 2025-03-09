@@ -15,5 +15,14 @@ a {
 }
 
 main {
-  min-height: 600px;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.content{ 
+  max-width: 1700px;
+  align-self: center;
 }

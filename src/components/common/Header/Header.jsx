@@ -2,16 +2,20 @@ import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import Catalog from "../Catalog/Catalog";
 import { useContext, useState } from "react";
-import { PurchasesContext } from "../../../context/PurchasesContext";
+import { UserContext } from "../../../context/UserContext";
 
 const Header = ({ isCatalogOpen, setCatalogStatus }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [hoveredImage, setHoveredImage] = useState(null); // State to track hovered element
-  const { setCartStatus } = useContext(PurchasesContext);
+  const { setCartStatus, setAuthStatus } = useContext(UserContext);
 
   const handleCartClick = () => {
     setCartStatus(true);
   };
+
+  const handleAuthClick = () => {
+    setAuthStatus(true)
+  }
 
   const toggleCatalog = () => {
     setCatalogStatus(!isCatalogOpen);
@@ -38,6 +42,10 @@ const Header = ({ isCatalogOpen, setCatalogStatus }) => {
         return hoveredImage === "cart"
           ? "/images/bag-cross-hover-gradient.png"
           : "/images/bag-cross.png";
+      case "user":
+        return hoveredImage === "user"
+          ? "/images/user-hover.png"
+          : "/images/user.png";
       case "heart":
         return hoveredImage === "heart"
           ? "/images/heart-gradient-hover.png"
@@ -95,6 +103,13 @@ const Header = ({ isCatalogOpen, setCatalogStatus }) => {
             onMouseLeave={handleMouseLeave} // Reset on mouse leave
           />
         </Link>
+        <img
+          onClick={handleAuthClick}
+          src={getImageSrc("user")} // Get image based on hover state
+          alt="user"
+          onMouseEnter={() => handleMouseEnter("user")} // Set hover state for cart
+          onMouseLeave={handleMouseLeave} // Reset on mouse leave
+        />
       </div>
       <button className={styles.burger} onClick={toggleMenu}>
         <img src="/images/burgerMenu.png" alt="menu" />

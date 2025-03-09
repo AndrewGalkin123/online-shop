@@ -2,7 +2,7 @@
   --button-shadow-color: rgb(76, 76, 184);
 }
 
-.introduction {
+.introductionContainer {
   width: 100%;
   min-height: 60vh;
   background: linear-gradient(
@@ -11,15 +11,20 @@
     rgba(6, 25, 74, 0) 99.13%
   );
   display: flex;
+  justify-content: center;
+}
+
+.introduction { 
+  display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap; /* For adaptive */
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   gap: 2rem; /* Gap between blocks */
 }
 
 .attractionBlock {
-  max-width: 62%;
+  max-width: 1200px;
   color: #ffffff;
 }
 
@@ -59,7 +64,7 @@
 }
 
 .product {
-  max-width: 38%;
+  max-width: 600px;
   height: 100%;
 }
 

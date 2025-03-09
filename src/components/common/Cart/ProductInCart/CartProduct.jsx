@@ -1,10 +1,10 @@
 import styles from "./CartProduct.module.css";
 import { useContext } from "react";
-import { PurchasesContext } from "../../../../context/PurchasesContext";
+import { UserContext } from "../../../../context/UserContext";
 import React from "react";
 
 const CartProduct = ({ product }) => {
-  const { updateQuantity } = useContext(PurchasesContext);
+  const { updateQuantity } = useContext(UserContext);
 
   // Отдельный компонент для управления количеством
   const QuantityControl = () => (

@@ -1,10 +1,10 @@
 import styles from "./ProductCard.module.css";
 import { useContext } from "react";
-import { PurchasesContext } from "../../../context/PurchasesContext";
+import { UserContext } from "../../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { buyNow } = useContext(PurchasesContext);
+  const { buyNow } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleCardClick = () => navigate(`/${product.category}/${product.id}`);

@@ -44,7 +44,7 @@ const Offer = ({ title, products }) => {
   };
 
   return (
-    <div className={styles.offer}>
+    <div className={`${styles.offer} content`}>
       <div className={styles.galleryControls}>
         <h2 className={styles.offerTitle}>{title}</h2>
         <div>

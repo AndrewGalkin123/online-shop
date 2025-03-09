@@ -1,0 +1,82 @@
+/* Общий стиль для формы авторизации */
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 16px;
+    color: #e0e0e0;
+}
+
+input {
+    padding: 12px;
+    height: 60px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+    background-color: #33344a;
+    color: #e0e0e0;
+}
+
+input:focus {
+    border-color: #6a5acd;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(106, 90, 205, 0.5);
+}
+
+.submitButton {
+    padding: 12px;
+    height: 60px;
+    background: linear-gradient(145deg, #6a5acd, #483d8b);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+    box-shadow: 0 6px 15px rgba(106, 90, 205, 0.4);
+}
+
+.submitButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(106, 90, 205, 0.6);
+}
+
+.error {
+    color: #ff6b6b;
+    background-color: rgba(255, 107, 107, 0.1);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.switchMode {
+    text-align: center;
+    color: #bbb;
+}
+
+.switchButton {
+    background: none;
+    border: none;
+    color: #6a5acd;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.switchButton:hover {
+    color: #483d8b;
+}
