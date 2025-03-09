@@ -17,12 +17,15 @@ const ProductsPage = () => {
     const fetchProducts = async () => {
       try {
         const productsRef = collection(db, "products");
-        const q = query(productsRef, orderBy("id", "asc"));
+        const q = query(productsRef);
         const querySnapshot = await getDocs(q);
-        const loadedProducts = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const loadedProducts = querySnapshot.docs
+          .map((doc) => ({
+            id: Number(doc.id), // Преобразование ID в число
+            ...doc.data(),
+          }))
+          .sort((a, b) => a.id - b.id); // Сортировка по числовому ID
+
         setProducts(loadedProducts);
       } catch (error) {
         console.error(error);
