@@ -1,20 +1,19 @@
 import styles from "./Auth.module.css";
 import { UserContext } from "../../../context/UserContext";
 import { useContext, useState } from "react";
-import PoppingMenu from "../PoppingMenu /PoppingMenu";
+import PoppingMenu from "../PoppingMenu/PoppingMenu";
+import defaultAvatar from "./Yori1.jpg";
 
 const Auth = () => {
-	const { isAuthVisible, setAuthStatus, logIn, signUp, user, logout } =
+	const { isAuthVisible, setAuthStatus, logIn, signUp, user, logOut } =
 		useContext(UserContext);
 	const [isLogin, setIsLogin] = useState(false);
-
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [error, setError] = useState("");
-
 	const handleClose = () => {
 		setAuthStatus(false);
 	};
@@ -22,7 +21,6 @@ const Auth = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError("");
-
 		try {
 			if (isLogin) {
 				await logIn(email, password);
@@ -45,8 +43,13 @@ const Auth = () => {
 		>
 			{user ? (
 				<div className={styles.userInfo}>
+					<img
+						src={user.avatar || defaultAvatar}
+						alt="User Avatar"
+						className={styles.avatar}
+					/>
 					<h2>
-						Hello, {user.firstName} {user.lastName}!
+						{user.firstName} {user.lastName}
 					</h2>
 					<p>
 						<strong>Email:</strong> {user.email}
@@ -54,7 +57,7 @@ const Auth = () => {
 					<p>
 						<strong>Phone:</strong> {user.phone}
 					</p>
-					<button onClick={() => logout()} className={styles.logoutButton}>
+					<button onClick={() => logOut()} className={styles.logoutButton}>
 						Log Out
 					</button>
 				</div>
@@ -72,7 +75,6 @@ const Auth = () => {
 									required
 								/>
 							</div>
-
 							<div className={styles.formGroup}>
 								<label htmlFor="lastName">Last Name</label>
 								<input
@@ -83,7 +85,6 @@ const Auth = () => {
 									required
 								/>
 							</div>
-
 							<div className={styles.formGroup}>
 								<label htmlFor="phone">Phone Number</label>
 								<input
@@ -96,7 +97,6 @@ const Auth = () => {
 							</div>
 						</>
 					)}
-
 					<div className={styles.formGroup}>
 						<label htmlFor="email">Email</label>
 						<input
@@ -107,7 +107,6 @@ const Auth = () => {
 							required
 						/>
 					</div>
-
 					<div className={styles.formGroup}>
 						<label htmlFor="password">Password</label>
 						<input
@@ -118,13 +117,10 @@ const Auth = () => {
 							required
 						/>
 					</div>
-
 					{error && <p className={styles.error}>{error}</p>}
-
 					<button type="submit" className={styles.submitButton}>
 						{isLogin ? "Log In" : "Sign Up"}
 					</button>
-
 					<div className={styles.switchMode}>
 						<p>
 							{isLogin

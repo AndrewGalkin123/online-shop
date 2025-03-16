@@ -1,0 +1,135 @@
+/* AdminPanel.module.css */
+
+/* Общие стили */
+.adminPanel {
+	display: flex;
+	min-height: 100vh;
+}
+
+.sidebar {
+	width: 250px;
+	color: #fff;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.sidebar h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.sidebar ul {
+	list-style: none;
+
+	padding-left: 0;
+}
+
+.sidebar li {
+	padding: 10px;
+	background-color: #d9d9d9;
+	margin-bottom: 10px;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+.sidebar li:hover {
+	background-color: #063c71;
+}
+
+.mainContent {
+	flex-grow: 1;
+	padding: 20px;
+}
+
+.tabContent {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabContent h3 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.tabContent input,
+.tabContent select,
+.tabContent button {
+	padding: 10px;
+	margin: 10px 0;
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.tabContent input:focus,
+.tabContent select:focus {
+	outline-color: #3498db;
+	border-color: #3498db;
+}
+
+.tabContent button {
+	background-color: #3498db;
+	color: white;
+	cursor: pointer;
+}
+
+.tabContent button:hover {
+	background-color: #2980b9;
+}
+
+.sidebar ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.sidebar ul li {
+	background-color: #250c70;
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.sidebar ul li button {
+	background-color: #e74c3c;
+	color: white;
+	padding: 5px 10px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.sidebar ul li button:hover {
+	background-color: #c0392b;
+}
+
+.sidebar ul li p {
+	font-size: 16px;
+	margin: 0;
+}
+
+.editForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.editForm input,
+.editForm select {
+	margin-bottom: 15px;
+}
+
+.editForm button {
+	background-color: #2ecc71;
+}
+
+.editForm button:hover {
+	background-color: #27ae60;
+}

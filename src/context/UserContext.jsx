@@ -4,6 +4,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signOut,
+	onAuthStateChanged,
 } from "firebase/auth";
 import { auth, db } from "../firebase";
 
@@ -11,8 +12,38 @@ import { auth, db } from "../firebase";
 export const UserContext = createContext();
 
 // Provider component for managing the purchase state
-export function PurchasesProvider({ children }) {
+export function UserProvider({ children }) {
 	const [user, setUser] = useState(null);
+
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+			if (currentUser) {
+				try {
+					const userDocRef = doc(db, "users", currentUser.uid);
+					const userDoc = await getDoc(userDocRef);
+					if (userDoc.exists()) {
+						setUser({
+							...userDoc.data(),
+							email: currentUser.email,
+							uid: currentUser.uid,
+						});
+					} else {
+						setUser({
+							email: currentUser.email,
+							uid: currentUser.uid,
+							permission: "user",
+						}); // Если данных нет, дефолтное значение
+					}
+				} catch (error) {
+					console.error("Ошибка при получении данных пользователя:", error);
+				}
+			} else {
+				setUser(null);
+			}
+		});
+
+		return () => unsubscribe();
+	}, []);
 
 	// Initialize cart items state, retrieve from localStorage if available
 	const [cartItems, setCartItems] = useState(() => {
@@ -164,26 +195,32 @@ export function PurchasesProvider({ children }) {
 
 	// LogIn function
 	const logIn = async (email, password) => {
-		const userCredential = await signInWithEmailAndPassword(
-			auth,
-			email,
-			password
-		);
-		const user = userCredential.user;
+		try {
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+			const user = userCredential.user;
 
-		const userDocRef = doc(db, "users", user.uid);
-		const userDoc = await getDoc(userDocRef);
-		if (userDoc.exists()) {
-			const userData = userDoc.data();
-			setUser({ ...userData, email: user.email, uid: user.uid });
-		} else {
-			alert("No additional user data found.");
+			// Загружаем данные о пользователе из Firestore
+			const userDocRef = doc(db, "users", user.uid);
+			const userDoc = await getDoc(userDocRef);
+
+			if (userDoc.exists()) {
+				setUser({ ...userDoc.data(), email: user.email, uid: user.uid });
+			} else {
+				setUser({ email: user.email, uid: user.uid, permission: "user" });
+			}
+		} catch (error) {
+			console.error("Ошибка входа:", error);
 		}
 	};
 
 	//logout func
-	const logout = async () => {
+	const logOut = async () => {
 		await signOut(auth);
+		localStorage.removeItem("user");
 		setUser(null);
 	};
 
@@ -228,9 +265,10 @@ export function PurchasesProvider({ children }) {
 				removeFromCart,
 				sendMessageToTelegram,
 				user,
+				setUser,
 				logIn,
 				signUp,
-				logout,
+				logOut,
 			}}
 		>
 			{children} {/* Render child components inside the provider */}

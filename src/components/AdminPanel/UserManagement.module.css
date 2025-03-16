@@ -1,0 +1,114 @@
+.container {
+	margin: auto;
+	padding: 20px;
+	color: #ffffff;
+}
+
+.formWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 20px 0 20px;
+	padding: 15px;
+	background: #27293d;
+	border-radius: 8px;
+}
+
+.formWrapper input,
+select {
+	width: 100%;
+	padding: 10px;
+	border-radius: 6px;
+	border: none;
+	background: #35384c;
+	color: #ffffff;
+	font-size: 16px;
+}
+
+.formWrapper input::placeholder {
+	color: #9a9caf;
+}
+
+.formWrapper select {
+	cursor: pointer;
+}
+
+.addButton,
+.saveButton {
+	height: 50px;
+	background-color: #5a3ea1;
+	border: none;
+	color: white;
+	font-size: 18px;
+	border-radius: 6px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+.addButton:hover,
+.saveButton:hover {
+	background-color: #6c50bb;
+}
+
+.userList {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 15px;
+	padding: 0;
+	list-style: none;
+	margin-top: 10px;
+}
+
+.userCard {
+	background: #2a2d42;
+	padding: 15px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.userCard:hover {
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.userCard p {
+	margin: 0;
+	font-size: 16px;
+	color: #d1d3e0;
+}
+
+.userActions {
+	display: flex;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.userActions button {
+	background: #e74c3c;
+	color: white;
+	border: none;
+	padding: 8px 12px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background 0.3s ease;
+	font-size: 14px;
+}
+
+.userActions button:hover {
+	background: #c0392b;
+}
+
+.editForm {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-top: 20px;
+	width: 100%;
+	padding: 15px;
+	background: #27293d;
+	border-radius: 8px;
+}

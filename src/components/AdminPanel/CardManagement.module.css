@@ -1,0 +1,79 @@
+.container {
+	margin: auto;
+	padding: 20px;
+	border-radius: 10px;
+	color: white;
+}
+
+.formWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.addButton {
+	height: 60px;
+	background-color: #40258f;
+	border: none;
+	color: white;
+	font-size: 20px;
+	border-radius: 6px;
+	transition: all 0.3s;
+}
+
+.addButton:hover {
+	cursor: pointer;
+	background-color: #5539aa;
+}
+
+.cardList {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	padding: 0;
+	margin-top: 10px;
+}
+
+.card {
+	background: #272832;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.card p {
+	margin: 0;
+}
+
+.cardActions {
+	display: flex;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.card button {
+	background: #ff4d4d;
+	color: white;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 3px;
+	transition: background 0.3s ease;
+	font-size: 16px;
+}
+
+.card button:hover {
+	background: #cc0000;
+}
+
+.editForm {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
