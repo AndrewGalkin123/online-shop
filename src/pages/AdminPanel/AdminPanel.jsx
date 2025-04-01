@@ -3,8 +3,8 @@ import { useContext, useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import styles from "./AdminPanel.module.css";
-import CardManagement from "../../components/AdminPanel/CardManagement";
-import UserManagement from "../../components/AdminPanel/UserManagement";
+import CardManagement from "../../components/AdminPanel/CardManagement/CardManagement";
+import UserManagement from "../../components/AdminPanel/UserManagement/UserManagement";
 
 const AdminPanel = () => {
 	const { user } = useContext(UserContext);
@@ -45,12 +45,6 @@ const AdminPanel = () => {
 			<div className={styles.mainContent}>
 				{activeTab === "users" && <UserManagement />}
 				{activeTab === "cards" && <CardManagement />}
-				{activeTab === "settings" && (
-					<div className={styles.tabContent}>
-						<h3>Настройки</h3>
-						<p>Здесь будут настройки сайта.</p>
-					</div>
-				)}
 			</div>
 		</div>
 	);

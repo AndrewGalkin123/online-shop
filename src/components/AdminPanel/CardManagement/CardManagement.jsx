@@ -1,49 +1,20 @@
-import { useState, useEffect } from "react";
-import { db } from "../../firebase";
-import {
-	collection,
-	getDocs,
-	addDoc,
-	deleteDoc,
-	doc,
-	updateDoc,
-} from "firebase/firestore";
+import { useState } from "react";
+import useCards from "../../../hooks/useCards";
 import styles from "./CardManagement.module.css";
 
 const CardManagement = () => {
-	const [cards, setCards] = useState([]);
+	const { cards, addCard, deleteCard, updateCard } = useCards();
 	const [newCard, setNewCard] = useState({
-		title: "",
+		name: "",
 		description: "",
 		price: "",
 		originalPrice: "",
 		category: "",
+		animatedCartoon: "",
+		images: 1,
+		onSale: true,
 	});
 	const [editCard, setEditCard] = useState(null);
-
-	useEffect(() => {
-		const fetchCards = async () => {
-			const cardCollection = collection(db, "products");
-			const cardSnapshot = await getDocs(cardCollection);
-			const cardList = cardSnapshot.docs.map((doc) => ({
-				id: doc.id,
-				...doc.data(),
-			}));
-			setCards(cardList);
-		};
-		fetchCards();
-	}, []);
-
-	const addCard = async () => {
-		await addDoc(collection(db, "products"), newCard);
-		setNewCard({
-			title: "",
-			description: "",
-			price: "",
-			originalPrice: "",
-			category: "",
-		});
-	};
 
 	const showCustomAlert = () => {
 		return new Promise((resolve) => {
@@ -60,22 +31,6 @@ const CardManagement = () => {
 				resolve(false);
 			};
 		});
-	};
-
-	const deleteCard = async (id) => {
-		const userChoice = await showCustomAlert();
-
-		if (userChoice) {
-			await deleteDoc(doc(db, "products", id));
-			setCards(cards.filter((card) => card.id !== id));
-		}
-	};
-
-	const updateCard = async () => {
-		if (editCard) {
-			await updateDoc(doc(db, "products", editCard.id), { ...editCard });
-			setEditCard(null);
-		}
 	};
 
 	return (
@@ -112,12 +67,41 @@ const CardManagement = () => {
 				/>
 				<input
 					type="text"
+					placeholder="Cartoon"
+					value={newCard.animatedCartoon}
+					onChange={(e) =>
+						setNewCard({ ...newCard, animatedCartoon: e.target.value })
+					}
+				/>
+				<input
+					type="text"
 					placeholder="Description"
 					value={newCard.description}
 					onChange={(e) =>
 						setNewCard({ ...newCard, description: e.target.value })
 					}
 				/>
+				<label>On Sale?</label>
+				<select
+					value={newCard.onSale}
+					onChange={(e) =>
+						setNewCard({ ...newCard, onSale: e.target.value === "true" })
+					}
+				>
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</select>
+				<label>Number of images</label>
+				<select
+					value={newCard.images}
+					onChange={(e) =>
+						setNewCard({ ...newCard, images: Number(e.target.value) })
+					}
+				>
+					<option value="1">1</option>
+					<option value="4">4</option>
+				</select>
+
 				<input
 					type="number"
 					placeholder="Price"
@@ -139,7 +123,21 @@ const CardManagement = () => {
 					onChange={(e) => setNewCard({ ...newCard, category: e.target.value })}
 				/>
 
-				<button className={styles.addButton} onClick={addCard}>
+				<button
+					className={styles.addButton}
+					onClick={() => {
+						addCard(newCard);
+						setNewCard({
+							...newCard,
+							name: "",
+							description: "",
+							price: "",
+							originalPrice: "",
+							category: "",
+							animatedCartoon: "",
+						});
+					}}
+				>
 					Add
 				</button>
 			</div>
@@ -162,7 +160,16 @@ const CardManagement = () => {
 								>
 									Edit
 								</button>
-								<button onClick={() => deleteCard(card.id)}>Delete</button>
+								<button
+									onClick={async () => {
+										const isConfirmed = await showCustomAlert();
+										if (isConfirmed) {
+											deleteCard(card.id);
+										}
+									}}
+								>
+									Delete
+								</button>
 							</div>
 						</div>
 						{editCard?.id === card.id && (
@@ -189,7 +196,14 @@ const CardManagement = () => {
 										setEditCard({ ...editCard, price: e.target.value })
 									}
 								/>
-								<button onClick={updateCard}>Save</button>
+								<button
+									onClick={() => {
+										updateCard(editCard);
+										setEditCard(null);
+									}}
+								>
+									Save
+								</button>
 							</div>
 						)}
 					</li>
