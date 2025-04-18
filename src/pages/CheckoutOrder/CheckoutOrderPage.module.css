@@ -1,179 +1,134 @@
 .checkoutPage {
-  max-width: 650px;
-  margin: 30px auto;
-  padding: 25px;
-  background: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: white;
-  border: 1px solid #5f23dd;
+	max-width: 650px;
+	margin: 30px auto;
+	padding: 25px;
+	background: none;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	color: white;
+	border: 1px solid #5f23dd;
 }
 
 .header {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 25px;
-  text-align: center;
-  background: linear-gradient(
-    180deg,
-    rgba(35, 221, 218, 1) 0%,
-    rgba(95, 35, 221, 1) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+	font-size: 28px;
+	font-weight: 600;
+	margin-bottom: 25px;
+	text-align: center;
+	background: linear-gradient(
+		180deg,
+		rgba(35, 221, 218, 1) 0%,
+		rgba(95, 35, 221, 1) 100%
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .orderDetails {
-  border-bottom: 1px solid #5f23dd;
-  padding-bottom: 20px;
-  margin-bottom: 30px;
+	border-bottom: 1px solid #5f23dd;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .sectionTitle {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 12px;
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 12px;
 }
 
 .itemList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #eaeaea;
-  font-size: 16px;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid #eaeaea;
+	font-size: 16px;
 }
 
 .itemName {
-  font-weight: 500;
+	font-weight: 500;
 }
 
 .totalPrice {
-  font-size: 18px;
-  font-weight: 600;
-  text-align: right;
-  margin-top: 15px;
-}
-
-.contactForm {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.inputField {
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: border-color 0.3s;
-}
-
-.inputField:focus {
-  border-color: #4a90e2;
-  outline: none;
+	font-size: 18px;
+	font-weight: 600;
+	text-align: right;
+	margin-top: 15px;
 }
 
 .confirmButton {
-  width: 100%;
-  padding: 14px;
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: 600;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  border-radius: 10px;
-  text-align: center;
-  background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
-  border: 1px solid #5e26dd;
-  transition: all 0.3s;
-}
-
-.confirmButton:hover {
-  background: linear-gradient(96.08deg, #5e26dd 14.66%, #23ddda 88.75%);
-  box-shadow: 0px 0px 15px 5px rgb(76, 76, 184);
-}
-
-.confirmButton:active {
-  background-color: #357ae8;
-}
-
-.confirmButton:focus {
-  outline: 2px solid #4a90e2;
-  outline-offset: 4px;
+	width: 100%;
 }
 
 /* Adaptive styles */
 @media (max-width: 768px) {
-  .checkoutPage {
-    padding: 20px;
-    max-width: 95%;
-  }
+	.checkoutPage {
+		padding: 20px;
+		max-width: 95%;
+	}
 
-  .header {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+	.header {
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
 
-  .sectionTitle {
-    font-size: 18px;
-  }
+	.sectionTitle {
+		font-size: 18px;
+	}
 
-  .item {
-    font-size: 14px;
-    padding: 8px 0;
-  }
+	.item {
+		font-size: 14px;
+		padding: 8px 0;
+	}
 
-  .totalPrice {
-    font-size: 16px;
-  }
+	.totalPrice {
+		font-size: 16px;
+	}
 
-  .inputField {
-    padding: 10px;
-    font-size: 14px;
-  }
+	.inputField {
+		padding: 10px;
+		font-size: 14px;
+	}
 
-  .confirmButton {
-    padding: 12px;
-    font-size: 16px;
-  }
+	.confirmButton {
+		padding: 12px;
+		font-size: 16px;
+	}
 }
 
 @media (max-width: 480px) {
-  .checkoutPage {
-    padding: 15px;
-  }
+	.checkoutPage {
+		padding: 15px;
+	}
 
-  .header {
-    font-size: 22px;
-  }
+	.header {
+		font-size: 22px;
+	}
 
-  .sectionTitle {
-    font-size: 16px;
-  }
+	.sectionTitle {
+		font-size: 16px;
+	}
 
-  .item {
-    font-size: 13px;
-  }
+	.item {
+		font-size: 13px;
+	}
 
-  .totalPrice {
-    font-size: 15px;
-  }
+	.totalPrice {
+		font-size: 15px;
+	}
 
-  .inputField {
-    padding: 8px;
-    font-size: 13px;
-  }
+	.inputField {
+		padding: 8px;
+		font-size: 13px;
+	}
 
-  .confirmButton {
-    padding: 10px;
-    font-size: 15px;
-  }
+	.confirmButton {
+		padding: 10px;
+		font-size: 15px;
+	}
 }

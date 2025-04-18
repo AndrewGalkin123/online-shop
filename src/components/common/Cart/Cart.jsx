@@ -44,7 +44,7 @@ const Cart = () => {
 						<div className={styles.totalAmount}>{getTotalPrice()}¥</div>
 
 						<button
-							className={styles.checkoutButton}
+							className={`gradientButton ${styles.checkoutButton}`}
 							onClick={handleCheckoutClick}
 						>
 							CHECKOUT

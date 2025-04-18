@@ -1,38 +1,3 @@
-.container {
-	margin: auto;
-	padding: 20px;
-	color: #ffffff;
-}
-
-.formWrapper {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-	margin: 20px 0 20px;
-	padding: 15px;
-	background: #27293d;
-	border-radius: 8px;
-}
-
-.formWrapper input,
-select {
-	width: 100%;
-	padding: 10px;
-	border-radius: 6px;
-	border: none;
-	background: #35384c;
-	color: #ffffff;
-	font-size: 16px;
-}
-
-.formWrapper input::placeholder {
-	color: #9a9caf;
-}
-
-.formWrapper select {
-	cursor: pointer;
-}
-
 .addButton,
 .saveButton {
 	height: 50px;

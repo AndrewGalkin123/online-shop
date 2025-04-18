@@ -62,7 +62,10 @@ const Auth = () => {
 					</button>
 				</div>
 			) : (
-				<form className={styles.authForm} onSubmit={handleSubmit}>
+				<form
+					className={`formWrapper ${styles.authForm}`}
+					onSubmit={handleSubmit}
+				>
 					{!isLogin && (
 						<>
 							<div className={styles.formGroup}>

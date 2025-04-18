@@ -1,209 +1,210 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  padding: 2% 5%;
-  color: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 2% 5%;
+	color: #fff;
 }
 
 .path {
-  margin-bottom: 20px;
-  font-size: 16px;
+	margin-bottom: 20px;
+	font-size: 16px;
 }
 
 .path a {
-  color: #fff;
+	color: #fff;
 }
 
 .product {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin-bottom: 40px;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	margin-bottom: 40px;
 }
 
 .imagesContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 440px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 440px;
 }
 
 .mainImage {
-  height: 500px;
-  width: 100%;
-  object-fit: cover;
+	height: 500px;
+	width: 100%;
+	object-fit: cover;
 }
 
 .miniImages {
-  display: flex;
-  justify-content: space-between;
-  gap: 3%;
-  width: 100%;
-  margin-top: 10px;
-  max-height: 100px;
-  height: auto;
+	display: flex;
+	justify-content: space-between;
+	gap: 3%;
+	width: 100%;
+	margin-top: 10px;
+	max-height: 100px;
+	height: auto;
 }
 
 .miniImage {
-  width: 31.3%; /* mini images width */
-  height: auto;
-  cursor: pointer;
-  object-fit: cover;
-  transition: transform 0.2s;
+	width: 31.3%; /* mini images width */
+	height: auto;
+	cursor: pointer;
+	object-fit: cover;
+	transition: transform 0.2s;
 }
 
 .miniImage:hover {
-  transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 .productDetails {
-  display: flex;
-  flex-direction: column;
-  padding: 0 50px;
+	display: flex;
+	flex-direction: column;
+	padding: 0 50px;
 }
 
 .productDetails h1 {
-  max-width: 900px;
-  font-weight: 400;
-  font-size: 36px;
-  margin-bottom: 10px;
+	max-width: 900px;
+	font-weight: 400;
+	font-size: 36px;
+	margin-bottom: 10px;
 }
 
 .productDetails p {
-  max-width: 600px;
+	max-width: 600px;
 }
 
 .purchaseBox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 1rem;
-  gap: 3rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 1rem;
+	gap: 3rem;
 }
 
 .prices {
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
+	padding: 10px 0;
+	display: flex;
+	flex-direction: column;
 }
 
 .actualPrice {
-  font-size: 34px;
-  font-weight: 400;
-  color: #23ddd9;
-  line-height: 36px;
+	font-size: 34px;
+	font-weight: 400;
+	color: #23ddd9;
+	line-height: 36px;
 }
 
 .oldPrice {
-  font-size: 20px;
-  font-weight: 400;
-  color: #0a4e4c;
+	font-size: 20px;
+	font-weight: 400;
+	color: #0a4e4c;
 }
 
 .shoppingBox {
-  display: flex;
-  gap: 10px;
+	display: flex;
+	gap: 10px;
 }
 
 .shoppingBox img {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  transition: filter 0.2s;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+	transition: filter 0.2s;
 }
 
 .shoppingBox img:hover {
-  filter: brightness(140%);
+	filter: brightness(140%);
 }
 
 .productDetails button {
-  width: 100%;
-  max-width: 390px;
-  height: 50px;
-  border-radius: 25px;
-  border: none;
-  background-color: #5e26dd;
-  color: #ffffff;
-  font-size: 20px;
-  margin-top: 1rem;
+	width: 100%;
+	max-width: 390px;
+	height: 50px;
+	border-radius: 25px;
+	border: none;
+	background-color: #5e26dd !important;
+	color: #ffffff;
+	font-size: 20px;
+	margin-top: 1rem;
+	transition: all 0s;
 }
 
 .productDetails button:hover {
-  cursor: pointer;
-  border: 1px solid #23ddd9;
-  box-shadow: 0 0 10px rgba(143, 143, 240, 0.5);
+	cursor: pointer;
+	border: 1px solid #23ddd9;
+	box-shadow: 0 0 10px rgba(143, 143, 240, 0.5);
 }
 
 /* For small laptops */
 @media (max-width: 1024px) {
-  .productDetails {
-    padding: 0 12px;
-  }
-  .productDetails h1 {
-    font-size: 30px;
-  }
-  .productDetails p {
-    font-size: 14px;
-  }
+	.productDetails {
+		padding: 0 12px;
+	}
+	.productDetails h1 {
+		font-size: 30px;
+	}
+	.productDetails p {
+		font-size: 14px;
+	}
 }
 
 /* For tablets */
 @media (max-width: 768px) {
-  .imagesContainer {
-    width: 50%;
-  }
-  .productDetails {
-    padding: 0 10px;
-    width: 50%;
-  }
-  .productDetails button {
-    width: 100%;
-    max-width: none;
-  }
-  .purchaseBox {
-    justify-content: space-between;
-  }
+	.imagesContainer {
+		width: 50%;
+	}
+	.productDetails {
+		padding: 0 10px;
+		width: 50%;
+	}
+	.productDetails button {
+		width: 100%;
+		max-width: none;
+	}
+	.purchaseBox {
+		justify-content: space-between;
+	}
 }
 
 @media (max-width: 600px) {
-  .product {
-    flex-direction: column;
-    align-items: center;
-  }
-  .imagesContainer {
-    width: 100%;
-    max-height: 60vh;
-    min-height: 540px;
-    max-width: unset;
-  }
-  .mainImage {
-    min-height: 300px;
-  }
-  .productDetails {
-    width: 100%;
-  }
+	.product {
+		flex-direction: column;
+		align-items: center;
+	}
+	.imagesContainer {
+		width: 100%;
+		max-height: 60vh;
+		min-height: 540px;
+		max-width: unset;
+	}
+	.mainImage {
+		min-height: 300px;
+	}
+	.productDetails {
+		width: 100%;
+	}
 }
 
 /* For small phones */
 @media (max-width: 480px) {
-  .path {
-    font-size: 14px;
-  }
+	.path {
+		font-size: 14px;
+	}
 
-  .productDetails h1 {
-    font-size: 28px;
-  }
+	.productDetails h1 {
+		font-size: 28px;
+	}
 
-  .actualPrice {
-    font-size: 28px;
-  }
+	.actualPrice {
+		font-size: 28px;
+	}
 
-  .oldPrice {
-    font-size: 16px;
-  }
+	.oldPrice {
+		font-size: 16px;
+	}
 
-  .productDetails button {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
+	.productDetails button {
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
 }

@@ -34,7 +34,7 @@ const CardManagement = () => {
 	};
 
 	return (
-		<div className={styles.container}>
+		<div className="content">
 			<div
 				id="customAlert"
 				style={{
@@ -57,7 +57,7 @@ const CardManagement = () => {
 				</button>
 			</div>
 			<h1>Card Control</h1>
-			<div className={styles.formWrapper}>
+			<div className="formWrapper">
 				<h2>Creating new card</h2>
 				<input
 					type="text"

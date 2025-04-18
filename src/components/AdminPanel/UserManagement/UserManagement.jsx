@@ -1,65 +1,86 @@
-import { useState, useEffect } from "react";
-import { db } from "../../../firebase";
-import {
-	collection,
-	getDocs,
-	addDoc,
-	deleteDoc,
-	doc,
-	updateDoc,
-} from "firebase/firestore";
+import { useState } from "react";
 import styles from "./UserManagement.module.css";
+import useUsers from "../../../hooks/useUsers";
 
 const UserManagement = () => {
-	const [users, setUsers] = useState([]);
+	const { addUser, deleteUser, updateUser, users } = useUsers();
 	const [newUser, setNewUser] = useState({ email: "", permission: "user" });
 	const [editUser, setEditUser] = useState(null);
 
-	useEffect(() => {
-		const fetchUsers = async () => {
-			const userCollection = collection(db, "users");
-			const userSnapshot = await getDocs(userCollection);
-			const userList = userSnapshot.docs.map((doc) => ({
-				id: doc.id,
-				...doc.data(),
-			}));
-			setUsers(userList);
-		};
+	const showCustomAlert = () => {
+		return new Promise((resolve) => {
+			const modal = document.getElementById("customAlert");
+			modal.style.display = "block";
 
-		fetchUsers();
-	}, []);
+			document.getElementById("yesBtn").onclick = () => {
+				modal.style.display = "none";
+				resolve(true);
+			};
 
-	const addUser = async () => {
-		if (!newUser.email.trim()) return;
-		await addDoc(collection(db, "users"), newUser);
-		setNewUser({ email: "", permission: "user" });
-	};
-
-	const deleteUser = async (id) => {
-		await deleteDoc(doc(db, "users", id));
-		setUsers(users.filter((user) => user.id !== id));
-	};
-
-	const updateUser = async () => {
-		if (editUser) {
-			await updateDoc(doc(db, "users", editUser.id), {
-				email: editUser.email,
-				permission: editUser.permission,
-			});
-			setEditUser(null);
-		}
+			document.getElementById("noBtn").onclick = () => {
+				modal.style.display = "none";
+				resolve(false);
+			};
+		});
 	};
 
 	return (
-		<div className={styles.container}>
+		<div className="content">
+			<div
+				id="customAlert"
+				style={{
+					display: "none",
+					position: "fixed",
+					top: "40%",
+					left: "50%",
+					transform: "translate(-50%, -50%)",
+					background: "white",
+					padding: "20px",
+					borderRadius: "5px",
+				}}
+			>
+				<p style={{ color: "black" }}>Are you sure?</p>
+				<button style={{ padding: "20px" }} id="yesBtn">
+					Yes
+				</button>
+				<button style={{ padding: "20px" }} id="noBtn">
+					No
+				</button>
+			</div>
 			<h1>User Management</h1>
-			<div className={styles.formWrapper}>
+			<div className="formWrapper">
 				<h2>Add New User</h2>
 				<input
 					type="email"
 					value={newUser.email}
 					onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
 					placeholder="Email"
+				/>
+				<input
+					type="text"
+					value={newUser.firstName}
+					onChange={(e) =>
+						setNewUser({ ...newUser, firstName: e.target.value })
+					}
+					placeholder="FirstName"
+				/>
+				<input
+					type="text"
+					value={newUser.lastName}
+					onChange={(e) => setNewUser({ ...newUser, lastName: e.target.value })}
+					placeholder="LastName"
+				/>
+				<input
+					type="number"
+					value={newUser.phone}
+					onChange={(e) => setNewUser({ ...newUser, phone: e.target.value })}
+					placeholder="Phone"
+				/>
+				<input
+					type="text"
+					value={newUser.password}
+					onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+					placeholder="Password"
 				/>
 				<select
 					value={newUser.permission}
@@ -70,7 +91,13 @@ const UserManagement = () => {
 					<option value="user">User</option>
 					<option value="admin">Admin</option>
 				</select>
-				<button className={styles.addButton} onClick={addUser}>
+				<button
+					className={styles.addButton}
+					onClick={() => {
+						addUser(newUser);
+						setNewUser({ email: "", permission: "user" });
+					}}
+				>
 					Add User
 				</button>
 			</div>
@@ -84,7 +111,16 @@ const UserManagement = () => {
 						</p>
 						<div className={styles.userActions}>
 							<button onClick={() => setEditUser(user)}>Edit</button>
-							<button onClick={() => deleteUser(user.id)}>Delete</button>
+							<button
+								onClick={async () => {
+									const isConfirmed = await showCustomAlert();
+									if (isConfirmed) {
+										deleteUser(user.id);
+									}
+								}}
+							>
+								Delete
+							</button>
 						</div>
 					</li>
 				))}
@@ -100,6 +136,27 @@ const UserManagement = () => {
 							setEditUser({ ...editUser, email: e.target.value })
 						}
 					/>
+					<input
+						type="text"
+						value={editUser.firstName}
+						onChange={(e) =>
+							setEditUser({ ...editUser, firstName: e.target.value })
+						}
+					/>
+					<input
+						type="text"
+						value={editUser.lastName}
+						onChange={(e) =>
+							setEditUser({ ...editUser, lastName: e.target.value })
+						}
+					/>
+					<input
+						type="number"
+						value={editUser.phone}
+						onChange={(e) =>
+							setEditUser({ ...editUser, phone: e.target.value })
+						}
+					/>
 					<select
 						value={editUser.permission}
 						onChange={(e) =>
@@ -109,7 +166,13 @@ const UserManagement = () => {
 						<option value="user">User</option>
 						<option value="admin">Admin</option>
 					</select>
-					<button className={styles.saveButton} onClick={updateUser}>
+					<button
+						className={styles.saveButton}
+						onClick={() => {
+							updateUser(editUser);
+							setEditUser(null);
+						}}
+					>
 						Save
 					</button>
 				</div>

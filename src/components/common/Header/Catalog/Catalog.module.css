@@ -1,0 +1,111 @@
+.catalog {
+	position: fixed;
+	top: -500px; /* Начальная позиция каталога вне экрана */
+	left: 0;
+	width: 100%;
+	height: auto; /* Ограничим высоту */
+	padding: 3%;
+	background-color: #0c0124;
+	transition: top 0.2s ease-in-out;
+	display: flex;
+	justify-content: space-around;
+	z-index: 1000; /* Поверх всех элементов */
+	gap: 10px;
+}
+
+.catalogOpen {
+	top: 0; /* Каталог будет в верхней части страницы */
+}
+
+.category h3 {
+	color: white;
+}
+
+.closeButton {
+	color: white;
+	background: none;
+	border: none;
+	font-size: 24px;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+}
+
+.closeButton img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.closeButton:hover {
+	cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+	.category h3 {
+		font-size: 16px;
+	}
+	.category ul li {
+		font-size: 12px;
+	}
+	.closeButton {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	.catalog {
+		position: absolute;
+		height: 280px; /* Занять всю высоту экрана */
+		max-width: 60%;
+		left: 0;
+		padding: 20px 40px 10px;
+		top: -120vh;
+		flex-direction: column;
+		align-items: center;
+		overflow-y: auto; /* Прокрутка, если содержимое слишком большое */
+	}
+	.catalogOpen {
+		top: 120px; /* Каталог будет в верхней части страницы */
+	}
+
+	.category {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+
+	.category h3 {
+		font-size: 18px;
+		text-align: left;
+	}
+
+	.category ul li {
+		font-size: 16px;
+		text-align: left;
+	}
+
+	.closeButton {
+		display: none;
+	}
+	.catalog ul {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease;
+	}
+
+	.catalog ul.show {
+		max-height: 500px; /* Достаточно для отображения всех элементов */
+	}
+
+	.category h3 {
+		cursor: pointer;
+	}
+}
+
+@media (max-width: 425px) {
+	.catalogOpen {
+		top: 90px; /* Каталог будет в верхней части страницы */
+	}
+}

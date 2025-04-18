@@ -1,28 +1,123 @@
 @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap");
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Aoboshi One";
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Aoboshi One";
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
+}
+
+label {
+	font-size: 16px;
+	color: #e0e0e0;
 }
 
 .no-scroll {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 main {
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-
+	min-height: 70vh;
+	display: flex;
+	flex-direction: column;
 }
 
+.content {
+	max-width: 1700px;
+	align-self: center;
+	color: white;
+}
 
-.content{ 
-  max-width: 1700px;
-  align-self: center;
+input,
+select {
+	padding: 12px;
+	height: 60px;
+	border: 2px solid transparent;
+	border-radius: 10px;
+	font-size: 16px;
+	transition: 0.3s;
+	background-color: #33344a;
+	color: #e0e0e0;
+}
+
+input:focus,
+select:focus {
+	border-color: #6a5acd;
+	outline: none;
+	box-shadow: 0 4px 10px rgba(106, 90, 205, 0.5);
+}
+
+.formWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin: 20px 0 20px;
+	border-radius: 8px;
+}
+
+button {
+	height: 60px;
+	background-color: #40258f;
+	border: none;
+	color: white;
+	font-size: 20px;
+	border-radius: 10px;
+	transition: all 0.3s;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: #5539aa;
+}
+
+.gradientButton {
+	background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
+	border: 1px solid #5e26dd;
+	transition: all 0.3s ease-in-out;
+	border: none;
+	transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.2s ease;
+	cursor: pointer;
+	font-size: 1.2rem;
+	background: linear-gradient(96.08deg, #23ddd9 14.66%, #5f23dd 88.75%);
+	box-shadow: 0px 0px 10px 2px var(--button-shadow-color);
+}
+
+.gradientButton:hover {
+	background: linear-gradient(96.08deg, #5e26dd 14.66%, #23ddda 88.75%);
+	box-shadow: 0px 0px 25px 10px var(--button-shadow-color);
+}
+
+.gradientButton:active {
+	box-shadow: 0px 0px 10px 2px var(--button-shadow-color);
+}
+
+ul li {
+	list-style: none;
+	margin-bottom: 4px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 18px;
+	text-align: left;
+	color: #b1b1b1;
+	margin-top: 12px;
+}
+
+ul li:hover {
+	cursor: pointer;
+	color: #dcdcdc;
+}
+
+.gradientHover:hover {
+	cursor: pointer;
+	background: linear-gradient(
+		180deg,
+		#23ddd9 0%,
+		#5f23dd 100%
+	); /* Градиент для текста */
+	-webkit-background-clip: text; /* Обрезаем фон по форме текста */
+	background-clip: text; /* Для других браузеров */
+	-webkit-text-fill-color: transparent;
 }

@@ -1,138 +1,130 @@
 .header {
-  width: 100%;
-  height: 120px;
-  padding: 0 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
+	width: 100%;
+	height: 120px;
+	padding: 0 5%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
 }
 
 .icon {
-  width: 6rem;
-  height: auto;
+	width: 6rem;
+	height: auto;
 }
 
 .navigation {
-  flex-grow: 1;
-  max-width: 60%;
-  height: 27px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+	flex-grow: 1;
+	max-width: 60%;
+	height: 27px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
 }
 
 .navigation ul {
-  list-style: none;
-  display: flex;
-  gap: 5rem;
+	list-style: none;
+	display: flex;
+	gap: 5rem;
 }
 
 .navigation ul li a {
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: center;
-  color: white;
-}
-
-.navigation ul li:hover {
-  cursor: pointer;
-  background: linear-gradient(180deg, #23ddd9 0%, #5f23dd 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+	font-size: 1rem;
+	font-weight: 400;
+	text-align: center;
+	color: white;
 }
 
 .purchases {
-  display: flex;
-  gap: 15px;
+	display: flex;
+	gap: 15px;
 }
 
 .purchases img {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
 }
 
 /* Styles for burger menu */
 .burger {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
+	display: none;
+	background: none;
+	border: none;
+	color: white;
+	cursor: pointer;
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* opacity background */
-  z-index: 5; /* above all content */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* opacity background */
+	z-index: 5; /* above all content */
 }
 
 @media (max-width: 1044px) {
-  .navigation ul {
-    gap: 3rem;
-  }
-  .navigation ul li a {
-    font-size: 0.9rem;
-  }
+	.navigation ul {
+		gap: 3rem;
+	}
+	.navigation ul li a {
+		font-size: 0.9rem;
+	}
 }
 
 /* For 768px tablets */
 @media (max-width: 768px) {
-  .header {
-    padding: 0px 1rem;
-  }
+	.header {
+		padding: 0px 1rem;
+	}
 
-  .navigation {
-    display: none; /* hiding navigation */
-  }
+	.navigation {
+		display: none; /* hiding navigation */
+	}
 
-  .navigation ul {
-    flex-direction: column;
-    gap: 15px;
-  }
+	.navigation ul {
+		flex-direction: column;
+		gap: 15px;
+	}
 
-  .navigation ul li {
-    text-align: left;
-  }
+	.navigation ul li {
+		text-align: left;
+	}
 
-  .navigation.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 120px;
-    right: 0;
-    min-width: 200px;
-    max-width: 50%;
-    height: 280px;
-    background-color: #0c0124;
-    padding: 20px;
-    text-align: center;
-  }
+	.navigation.open {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 120px;
+		right: 0;
+		min-width: 200px;
+		max-width: 50%;
+		height: 280px;
+		background-color: #0c0124;
+		padding: 20px;
+		text-align: center;
+	}
 
-  .burger {
-    display: block;
-  }
+	.burger {
+		display: block;
+	}
 
-  .purchases {
-    display: none;
-  }
+	.purchases {
+		display: none;
+	}
 }
 
 @media (max-width: 425px) {
-  .header {
-    padding: 0 4px;
-    height: 90px;
-  }
+	.header {
+		padding: 0 4px;
+		height: 90px;
+	}
 
-  .navigation.open {
-    top: 90px;
-  }
+	.navigation.open {
+		top: 90px;
+	}
 }
