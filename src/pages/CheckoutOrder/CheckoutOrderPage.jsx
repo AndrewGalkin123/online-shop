@@ -16,6 +16,9 @@ const CheckoutOrderPage = () => {
 		address: "",
 	});
 
+	const [error, setError] = useState(""); // state for errors
+	const [successMessage, setSuccessMessage] = useState(""); // state for success
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setCustomerInfo((prevInfo) => ({
@@ -25,8 +28,22 @@ const CheckoutOrderPage = () => {
 	};
 
 	const handleOrderSubmit = () => {
+		if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
+			setError("Enter all fields");
+			setSuccessMessage("");
+			return;
+		}
+		setError("");
 		sendMessageToTelegram(customerInfo);
 		clearCart();
+
+		// Show message when success
+		setSuccessMessage("Your order was successfully sent to us");
+		setCustomerInfo({
+			name: "",
+			phone: "",
+			address: "",
+		});
 	};
 
 	return (
@@ -55,6 +72,7 @@ const CheckoutOrderPage = () => {
 					placeholder="Name"
 					value={customerInfo.name}
 					onChange={handleChange}
+					required
 				/>
 				<input
 					type="text"
@@ -62,6 +80,7 @@ const CheckoutOrderPage = () => {
 					placeholder="Phone"
 					value={customerInfo.phone}
 					onChange={handleChange}
+					required
 				/>
 				<input
 					type="text"
@@ -69,7 +88,12 @@ const CheckoutOrderPage = () => {
 					placeholder="Address"
 					value={customerInfo.address}
 					onChange={handleChange}
+					required
 				/>
+				{/* Error */}
+				{error && <p className={styles.error}>{error}</p>}
+				{/* success message */}
+				{successMessage && <p className={styles.success}>{successMessage}</p>}
 			</div>
 
 			<button

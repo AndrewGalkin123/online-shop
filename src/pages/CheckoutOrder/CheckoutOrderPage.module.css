@@ -65,6 +65,18 @@
 	width: 100%;
 }
 
+.error {
+	color: red;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+.success {
+	color: green;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
 /* Adaptive styles */
 @media (max-width: 768px) {
 	.checkoutPage {

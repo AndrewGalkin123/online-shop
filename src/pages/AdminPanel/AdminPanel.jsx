@@ -39,7 +39,6 @@ const AdminPanel = () => {
 				<ul>
 					<li onClick={() => setActiveTab("users")}>Users</li>
 					<li onClick={() => setActiveTab("cards")}>Cards</li>
-					<li onClick={() => setActiveTab("settings")}>Settings</li>
 				</ul>
 			</div>
 			<div className={styles.mainContent}>

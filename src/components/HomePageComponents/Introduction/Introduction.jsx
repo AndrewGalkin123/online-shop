@@ -12,7 +12,7 @@ const Introduction = ({ setCatalogStatus }) => {
 						onClick={() => {
 							setCatalogStatus(true);
 						}}
-						className={`gradientButton ${styles.button}`}
+						className={`gradientButton ${styles.introductionButton}`}
 					>
 						OUR CATALOG
 					</button>

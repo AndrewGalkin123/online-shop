@@ -172,19 +172,13 @@ export function UserProvider({ children }) {
 
 				try {
 					// Send the POST request to Telegram API
-					const response = await fetch(url, {
+					await fetch(url, {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json",
 						},
 						body: JSON.stringify(data),
 					});
-					const result = await response.json();
-					if (result.ok) {
-						alert("Order has been sent to us!"); // Inform the user if successful
-					} else {
-						console.error("Error:", result.description); // Log error if something goes wrong
-					}
 				} catch (error) {
 					console.error("Error:", error); // Catch and log any errors during the fetch
 				}
@@ -195,25 +189,21 @@ export function UserProvider({ children }) {
 
 	// LogIn function
 	const logIn = async (email, password) => {
-		try {
-			const userCredential = await signInWithEmailAndPassword(
-				auth,
-				email,
-				password
-			);
-			const user = userCredential.user;
+		const userCredential = await signInWithEmailAndPassword(
+			auth,
+			email,
+			password
+		);
+		const user = userCredential.user;
 
-			// Загружаем данные о пользователе из Firestore
-			const userDocRef = doc(db, "users", user.uid);
-			const userDoc = await getDoc(userDocRef);
+		// Getting data from firestore
+		const userDocRef = doc(db, "users", user.uid);
+		const userDoc = await getDoc(userDocRef);
 
-			if (userDoc.exists()) {
-				setUser({ ...userDoc.data(), email: user.email, uid: user.uid });
-			} else {
-				setUser({ email: user.email, uid: user.uid, permission: "user" });
-			}
-		} catch (error) {
-			console.error("Ошибка входа:", error);
+		if (userDoc.exists()) {
+			setUser({ ...userDoc.data(), email: user.email, uid: user.uid });
+		} else {
+			setUser({ email: user.email, uid: user.uid, permission: "user" });
 		}
 	};
 
@@ -242,8 +232,6 @@ export function UserProvider({ children }) {
 			email,
 			permission: "user",
 		});
-
-		alert("Successfully registered with permission: ");
 	};
 
 	// Return the context provider with the values to be shared across components

@@ -1,19 +1,21 @@
 import styles from "./Auth.module.css";
 import { UserContext } from "../../../context/UserContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import PoppingMenu from "../PoppingMenu/PoppingMenu";
 import defaultAvatar from "./Yori1.jpg";
 
 const Auth = () => {
 	const { isAuthVisible, setAuthStatus, logIn, signUp, user, logOut } =
 		useContext(UserContext);
-	const [isLogin, setIsLogin] = useState(false);
+	const [isLoginMode, setisLoginMode] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [error, setError] = useState("");
+	const [shake, setShake] = useState(false);
+
 	const handleClose = () => {
 		setAuthStatus(false);
 	};
@@ -22,21 +24,34 @@ const Auth = () => {
 		e.preventDefault();
 		setError("");
 		try {
-			if (isLogin) {
+			if (isLoginMode) {
 				await logIn(email, password);
 			} else {
 				await signUp(email, password, firstName, lastName, phone);
 			}
 		} catch (err) {
 			setError(err.message);
-			console.error(err);
+			setShake(true);
+			setTimeout(() => setShake(false), 500); // Delete shake after 0.5s
 		}
 	};
+
+	// close error after 5s
+	useEffect(() => {
+		if (error) {
+			const timer = setTimeout(() => setError(""), 5000);
+			return () => clearTimeout(timer);
+		}
+	}, [error]);
 
 	return (
 		<PoppingMenu
 			title={
-				user ? `Welcome, ${user.firstName}!` : isLogin ? "Log In" : "Sign Up"
+				user
+					? `Welcome, ${user.firstName}!`
+					: isLoginMode
+					? "Log In"
+					: "Sign Up"
 			}
 			isVisible={isAuthVisible}
 			onClose={handleClose}
@@ -63,10 +78,12 @@ const Auth = () => {
 				</div>
 			) : (
 				<form
-					className={`formWrapper ${styles.authForm}`}
+					className={`formWrapper ${styles.authForm} ${
+						shake ? styles.shake : ""
+					}`}
 					onSubmit={handleSubmit}
 				>
-					{!isLogin && (
+					{!isLoginMode && (
 						<>
 							<div className={styles.formGroup}>
 								<label htmlFor="firstName">First Name</label>
@@ -122,19 +139,19 @@ const Auth = () => {
 					</div>
 					{error && <p className={styles.error}>{error}</p>}
 					<button type="submit" className={styles.submitButton}>
-						{isLogin ? "Log In" : "Sign Up"}
+						{isLoginMode ? "Log In" : "Sign Up"}
 					</button>
 					<div className={styles.switchMode}>
 						<p>
-							{isLogin
+							{isLoginMode
 								? "Don't have an account? "
 								: "Already have an account? "}
 							<button
 								type="button"
-								onClick={() => setIsLogin(!isLogin)}
+								onClick={() => setisLoginMode(!isLoginMode)}
 								className={styles.switchButton}
 							>
-								{isLogin ? "Sign Up" : "Log In"}
+								{isLoginMode ? "Sign Up" : "Log In"}
 							</button>
 						</p>
 					</div>

@@ -27,7 +27,7 @@ function App() {
 	const handleCloseModal = () => {
 		setIsModalOpen(false);
 	};
-
+	console.log(process.env.REACT_APP_FIREBASE_API_KEY);
 	return (
 		<BrowserRouter>
 			<UserProvider>

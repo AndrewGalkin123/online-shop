@@ -1,20 +1,20 @@
 .catalog {
 	position: fixed;
-	top: -500px; /* Начальная позиция каталога вне экрана */
+	top: -500px; /* Position firstly */
 	left: 0;
 	width: 100%;
-	height: auto; /* Ограничим высоту */
+	height: auto;
 	padding: 3%;
 	background-color: #0c0124;
 	transition: top 0.2s ease-in-out;
 	display: flex;
 	justify-content: space-around;
-	z-index: 1000; /* Поверх всех элементов */
+	z-index: 1000;
 	gap: 10px;
 }
 
 .catalogOpen {
-	top: 0; /* Каталог будет в верхней части страницы */
+	top: 0; /* Catalog will be in top part */
 }
 
 .category h3 {
@@ -57,17 +57,17 @@
 @media (max-width: 768px) {
 	.catalog {
 		position: absolute;
-		height: 280px; /* Занять всю высоту экрана */
+		height: 280px;
 		max-width: 60%;
 		left: 0;
 		padding: 20px 40px 10px;
 		top: -120vh;
 		flex-direction: column;
 		align-items: center;
-		overflow-y: auto; /* Прокрутка, если содержимое слишком большое */
+		overflow-y: auto;
 	}
 	.catalogOpen {
-		top: 120px; /* Каталог будет в верхней части страницы */
+		top: 120px;
 	}
 
 	.category {
@@ -96,7 +96,7 @@
 	}
 
 	.catalog ul.show {
-		max-height: 500px; /* Достаточно для отображения всех элементов */
+		max-height: 500px;
 	}
 
 	.category h3 {
@@ -106,6 +106,6 @@
 
 @media (max-width: 425px) {
 	.catalogOpen {
-		top: 90px; /* Каталог будет в верхней части страницы */
+		top: 90px;
 	}
 }

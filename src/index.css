@@ -112,12 +112,8 @@ ul li:hover {
 
 .gradientHover:hover {
 	cursor: pointer;
-	background: linear-gradient(
-		180deg,
-		#23ddd9 0%,
-		#5f23dd 100%
-	); /* Градиент для текста */
-	-webkit-background-clip: text; /* Обрезаем фон по форме текста */
-	background-clip: text; /* Для других браузеров */
+	background: linear-gradient(180deg, #23ddd9 0%, #5f23dd 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
