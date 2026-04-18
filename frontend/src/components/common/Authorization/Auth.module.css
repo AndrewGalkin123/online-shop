@@ -1,0 +1,201 @@
+.authForm {
+	gap: 20px;
+	padding: 30px;
+	margin: auto;
+}
+
+.formGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.submitButton:hover {
+	box-shadow: 0 10px 20px rgba(106, 90, 205, 0.6);
+}
+
+.error {
+	color: #ff6b6b;
+	background-color: rgba(255, 107, 107, 0.1);
+	padding: 8px;
+	border-radius: 8px;
+}
+
+.switchMode {
+	text-align: center;
+	color: #bbb;
+}
+
+.switchButton {
+	background: none !important;
+	color: #5e26dd;
+	font-size: 16px;
+	transition: 0.3s;
+}
+
+.switchButton:hover {
+	color: #483d8b;
+}
+
+.deleteButton {
+	margin-top: 8px;
+	background: transparent;
+	border: 1px solid #e24b4a;
+	color: #e24b4a;
+	padding: 8px 16px;
+	border-radius: 6px;
+	cursor: pointer;
+	width: 100%;
+}
+
+.deleteButton:hover {
+	background: #e24b4a;
+	color: white;
+}
+
+.confirmDelete {
+	margin-top: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.confirmDelete p {
+	font-size: 13px;
+	color: #e24b4a;
+	text-align: center;
+}
+
+.confirmButton {
+	background: #e24b4a;
+	color: white;
+	border: none;
+	padding: 8px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.cancelButton {
+	background: transparent;
+	border: 1px solid var(--color-border-tertiary);
+	padding: 8px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+/*User Info*/
+
+.userInfo {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background: #140735;
+	padding: 25px;
+	color: #fff;
+	width: 100%;
+	height: 90%;
+	overflow: hidden;
+}
+
+/* Затемняем и размываем только фон */
+.userInfo::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url("https://cs8.pikabu.ru/post_img/big/2016/08/24/2/147200395612713356.jpg")
+		no-repeat center/cover;
+	filter: blur(4px) brightness(60%); /* Размытие и затемнение */
+	z-index: 0;
+}
+
+/* Поднимаем контент выше фильтра */
+.userInfo * {
+	position: relative;
+	z-index: 1;
+}
+
+.avatar {
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	border: 3px solid #5f23dd;
+	object-fit: cover;
+	margin-bottom: 12px;
+}
+
+.userInfo h2 {
+	font-size: 20px;
+	margin-bottom: 8px;
+	color: #c3aaf2;
+}
+
+.userInfo p {
+	font-size: 18px;
+	margin: 4px 0;
+}
+
+.userInfo strong {
+	color: #d1b3ff;
+}
+
+.logoutButton {
+	height: 50px;
+	margin-top: 15px;
+	padding: 8px 18px;
+	font-size: 18px;
+	background: linear-gradient(135deg, #5f23dd, #9a4dff);
+	border: none;
+	border-radius: 6px;
+	color: #fff;
+	cursor: pointer;
+	transition: 0.3s ease;
+}
+
+.logoutButton:hover {
+	background: linear-gradient(135deg, #9a4dff, #b58eff);
+	transform: scale(1.05);
+}
+
+/*Shake*/
+.shake {
+	animation: shake 0.3s ease-in-out;
+}
+
+.adminLink {
+	display: inline-block;
+	margin-top: 12px;
+	padding: 8px 16px;
+	background-color: #4a90e2;
+	color: white;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 500;
+	transition: background-color 0.3s ease;
+}
+
+.adminLink:hover {
+	background-color: #357ab8;
+}
+
+@keyframes shake {
+	0% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-5px);
+	}
+	50% {
+		transform: translateX(5px);
+	}
+	75% {
+		transform: translateX(-5px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
