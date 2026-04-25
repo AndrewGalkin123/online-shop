@@ -4,6 +4,7 @@ import com.andrii.nekon.dto.ProductReviewsDTO;
 import com.andrii.nekon.dto.ReviewRequestDTO;
 import com.andrii.nekon.dto.ReviewResponseDTO;
 import com.andrii.nekon.service.ReviewService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class ReviewController {
 
     @PostMapping
     public ResponseEntity<ReviewResponseDTO> createReview(
-            @RequestBody ReviewRequestDTO request
+            @Valid @RequestBody ReviewRequestDTO request
     ) {
         return ResponseEntity.ok(reviewService.createReview(request));
     }

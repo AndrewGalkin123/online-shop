@@ -170,7 +170,7 @@ public class OrderService {
                         item.getPrice(),
                         item.getPrice() * item.getQuantity()
                 ))
-                .collect(java.util.stream.Collectors.toCollection(java.util.ArrayList::new)); // ← вот так
+                .collect(java.util.stream.Collectors.toCollection(java.util.ArrayList::new));
 
         double total = items.stream()
                 .mapToDouble(OrderItemResponseDTO::getTotalPrice)
@@ -181,10 +181,12 @@ public class OrderService {
                 order.getStatus().name(),
                 order.getCreatedAt(),
                 items,
-                total
+                total,
+                order.getCustomerName(),    // ← добавляем
+                order.getCustomerPhone(),   // ← добавляем
+                order.getCustomerAddress()  // ← добавляем
         );
     }
-
     // ─── Маппинг OrderSummaryView → OrderSummaryDTO ──────────────────────────
     private OrderSummaryDTO mapToSummaryDTO(OrderSummaryView view) {
         return new OrderSummaryDTO(

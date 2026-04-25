@@ -1,0 +1,268 @@
+.container {
+    max-width: 1300px;
+}
+
+.container h1 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: white;
+}
+
+.container h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Табы внутри страницы */
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.tabs button {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.tabs button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.activeTab {
+    background: rgba(167, 139, 250, 0.15) !important;
+    color: #a78bfa !important;
+    border-color: #a78bfa !important;
+}
+
+/* Таблица */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.table th {
+    text-align: left;
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table td {
+    padding: 14px 16px;
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+}
+
+.table tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Select в таблице */
+.statusSelect,
+.roleSelect {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: white;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+}
+
+.statusSelect:focus,
+.roleSelect:focus {
+    border-color: #a78bfa;
+}
+
+/* Кнопки в таблице */
+.detailsBtn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    background: transparent;
+    color: #a78bfa;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.detailsBtn:hover {
+    background: rgba(167, 139, 250, 0.15);
+}
+
+.actionBtn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.deleteBtn {
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #ef4444;
+}
+
+.deleteBtn:hover {
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.activateBtn {
+    border: 1px solid rgba(65, 170, 54, 0.4);
+    color: #5d9a36;
+}
+
+.activateBtn:hover {
+    background: rgba(61, 110, 30, 0.15);
+}
+
+/* Детали заказа */
+.orderDetails {
+    margin-top: 24px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.orderDetails h3 {
+    margin-bottom: 12px;
+    color: white;
+}
+
+.orderDetails ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.orderDetails li {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+}
+
+.orderDetails p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.orderDetails button {
+    margin-top: 12px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.orderDetails button:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Stock input */
+.stockInput {
+    width: 80px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 13px;
+    margin-right: 8px;
+    outline: none;
+}
+
+.stockInput:focus {
+    border-color: #a78bfa;
+}
+
+.stockInput + button {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    background: transparent;
+    color: #a78bfa;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.stockInput + button:hover {
+    background: rgba(167, 139, 250, 0.15);
+}
+
+/* Кнопка создать */
+.createBtn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa);
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s;
+}
+
+.createBtn:hover {
+    opacity: 0.9;
+}
+
+/* Badge для логов */
+.badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.insert {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.update {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+}
+
+.delete {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.role_change {
+    background: rgba(167, 139, 250, 0.15);
+    color: #a78bfa;
+}

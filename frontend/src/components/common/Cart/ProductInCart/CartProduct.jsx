@@ -2,23 +2,28 @@ import styles from "./CartProduct.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../../../context/UserContext";
 import React from "react";
+import {showToast} from "../../../../utils/toast";
 
 const CartProduct = ({ product }) => {
 	const { updateQuantity, removeFromCart } = useContext(UserContext);
 
+	const handleQuantityChange = async (newQty) => {
+		try {
+			await updateQuantity(product.productId, newQty);
+		} catch (err) {
+			showToast(err.message, "error");
+		}
+	};
+
 	const QuantityControl = () => (
 		<div className={styles.quantityControl}>
-			<button onClick={() => updateQuantity(product.productId, product.quantity - 1)}>
-				&minus;
-			</button>
+			<button onClick={() => handleQuantityChange(product.quantity - 1)}>−</button>
 			<input
 				className={styles.quantityInput}
 				readOnly
 				value={product.quantity}
 			/>
-			<button onClick={() => updateQuantity(product.productId, product.quantity + 1)}>
-				+
-			</button>
+			<button onClick={() => handleQuantityChange(product.quantity + 1)}>+</button>
 		</div>
 	);
 

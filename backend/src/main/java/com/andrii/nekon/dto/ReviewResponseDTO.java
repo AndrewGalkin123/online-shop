@@ -13,4 +13,5 @@ public class ReviewResponseDTO {
     private Integer rating;
     private String authorName;
     private LocalDateTime createdAt;
+    private String authorEmail;
 }

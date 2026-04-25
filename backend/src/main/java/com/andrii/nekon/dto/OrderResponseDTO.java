@@ -14,4 +14,7 @@ public class OrderResponseDTO {
     private LocalDateTime createdAt;
     private List<OrderItemResponseDTO> items;
     private Double totalAmount;
+    private String customerName;
+    private String customerPhone;
+    private String customerAddress;
 }

@@ -16,4 +16,6 @@ public class UserAdminDTO {
     private String lastName;
     private String phone;
     private Double totalSpent; // из get_user_total_spent()
+    private String role;
+    private Boolean isActive;
 }

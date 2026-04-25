@@ -4,6 +4,7 @@ import Header from "./components/common/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
+import OrdersPage from "./pages/OrdersPage/OrdersPage";
 import Home from "./pages/HomePage/HomePage";
 import Cart from "./components/common/Cart/Cart";
 import { useState } from "react";
@@ -13,11 +14,9 @@ import Modal from "./components/Modal/Modal";
 import CheckoutOrderPage from "./pages/CheckoutOrder/CheckoutOrderPage";
 import Auth from "./components/common/Authorization/Auth";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
-
-// Component to display when a page is not found
-function NotFound() {
-	return <button>404 - Not Found</button>;
-}
+import ToastProvider from "./components/common/ToastProvider/ToastProvider";
+import ProtectedRoute from "./components/common/ProtectedRoute/ProtectedRoute";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
 	const [isCatalogOpen, setCatalogStatus] = useState(false);
@@ -40,6 +39,7 @@ function App() {
 					setCatalogStatus={setCatalogStatus}
 				/>
 
+				<ToastProvider />
 				<Cart />
 				<Auth />
 				<Routes>
@@ -59,7 +59,16 @@ function App() {
 					{/* Checkout page route */}
 					<Route path="/checkout" element={<CheckoutOrderPage />} />
 
-					<Route path="/adminPanel" element={<AdminPanel />}></Route>
+					<Route path="/orders" element={<OrdersPage />} />
+
+					<Route
+						path="/adminPanel"
+						element={
+							<ProtectedRoute roles={["ROLE_ADMIN", "ROLE_MANAGER"]}>
+								<AdminPanel />
+							</ProtectedRoute>
+						}
+					/>
 				</Routes>
 
 				{/* Footer component */}

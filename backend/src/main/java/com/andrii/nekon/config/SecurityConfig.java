@@ -17,7 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-// Включаем @PreAuthorize аннотации — пригодится для ролей (TASK 6)
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {

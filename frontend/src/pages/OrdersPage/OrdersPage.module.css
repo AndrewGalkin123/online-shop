@@ -1,0 +1,219 @@
+.main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+    min-height: 60vh;
+}
+
+.title {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 32px;
+    font-weight: 500;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 80px 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+}
+
+.shopLink {
+    padding: 12px 28px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity 0.2s;
+}
+
+.shopLink:hover { opacity: 0.85; }
+
+/* Карточка заказа */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.orderInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.orderId {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+}
+
+.date {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.orderMeta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.status {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
+    background: transparent;
+}
+
+.total {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+}
+
+.arrow {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Тело карточки */
+.cardBody {
+    padding: 0 22px 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Прогресс бар */
+.progressBar {
+    display: flex;
+    align-items: flex-start;
+    padding: 24px 0 20px;
+    position: relative;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
+
+.stepDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.stepLabel {
+    font-size: 11px;
+    text-align: center;
+}
+
+.stepLine {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    z-index: 0;
+}
+
+/* Товары */
+.items {
+    margin-bottom: 16px;
+}
+
+.itemsTitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+}
+
+.itemName {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.itemQty {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+}
+
+.itemPrice {
+    color: white;
+    font-weight: 500;
+}
+
+/* Доставка */
+.delivery {
+    margin-bottom: 16px;
+}
+
+.delivery p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+}
+
+/* Итого */
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.totalAmount {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+}

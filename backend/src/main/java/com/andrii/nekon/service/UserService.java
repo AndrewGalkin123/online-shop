@@ -50,6 +50,14 @@ public class UserService {
         userRepository.deleteUserById(user.getId());
     }
 
+    private String getUserRole(User user) {
+        // Берём первую роль пользователя
+        return user.getRoles().stream()
+                .findFirst()
+                .map(role -> role.getName())
+                .orElse("ROLE_USER");
+    }
+
     // ─── Для ADMIN/MANAGER: профиль любого пользователя с суммой трат ────────
     // GET /api/admin/users/{id}  или  GET /api/manager/users/{id}
     public UserAdminDTO getUserById(Long userId) {
@@ -65,14 +73,16 @@ public class UserService {
                 user.getFirstName(),
                 user.getLastName(),
                 user.getPhone(),
-                totalSpent
+                totalSpent,
+                getUserRole(user),
+                user.getIsActive()
         );
     }
 
     // ─── Для ADMIN/MANAGER: все пользователи с суммой трат ───────────────────
     // GET /api/admin/users
     public List<UserAdminDTO> getAllUsers() {
-        return userRepository.findByIsActiveTrue()
+        return userRepository.findAllByOrderByIsActiveDesc()
                 .stream()
                 .map(user -> new UserAdminDTO(
                         user.getId(),
@@ -81,7 +91,9 @@ public class UserService {
                         user.getLastName(),
                         user.getPhone(),
                         // для каждого пользователя вызываем функцию БД
-                        userRepository.getUserTotalSpent(user.getId())
+                        userRepository.getUserTotalSpent(user.getId()),
+                        getUserRole(user),
+                        user.getIsActive()
                 ))
                 .collect(Collectors.toList());
     }

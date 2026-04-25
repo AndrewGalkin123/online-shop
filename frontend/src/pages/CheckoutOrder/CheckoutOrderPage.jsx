@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
 import styles from "./CheckoutOrderPage.module.css";
 import { useNavigate } from "react-router-dom";
+import {showToast} from "../../utils/toast";
 
 const CheckoutOrderPage = () => {
 	useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -18,31 +19,38 @@ const CheckoutOrderPage = () => {
 	const [error, setError] = useState("");
 	const [successMessage, setSuccessMessage] = useState("");
 
+	const validate = () => {
+		if (!customerInfo.name.trim()) return "Name is required";
+		if (customerInfo.name.trim().length < 2) return "Name is too short";
+		if (!customerInfo.phone.trim()) return "Phone is required";
+		if (!/^[+]?[0-9]{7,15}$/.test(customerInfo.phone)) return "Invalid phone number";
+		if (!customerInfo.address.trim()) return "Address is required";
+		if (customerInfo.address.trim().length < 5) return "Address is too short";
+		return null;
+	};
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setCustomerInfo(prev => ({ ...prev, [name]: value }));
 	};
 
 	const handleOrderSubmit = async () => {
-		if (!customerInfo.name || !customerInfo.surname || !customerInfo.phone || !customerInfo.address) {
-			setError("Enter all fields");
+		const validationError = validate();
+		if (validationError) {
+			showToast(validationError, "error");
 			return;
 		}
-		setError("");
 
 		try {
 			await placeOrder(
 				customerInfo.name,
-				customerInfo.surname,
 				customerInfo.phone,
 				customerInfo.address
 			);
-			setSuccessMessage("Your order was successfully placed!");
-			setCustomerInfo({ name: "", surname: "", phone: "", address: "" });
-			// Через 2 секунды перенаправляем на главную
+			showToast("Order placed successfully!", "success");
 			setTimeout(() => navigate("/"), 2000);
 		} catch (err) {
-			setError(err.message || "Failed to place order");
+			showToast(err.message, "error");
 		}
 	};
 

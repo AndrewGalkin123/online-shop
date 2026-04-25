@@ -65,13 +65,13 @@ const Header = ({ isCatalogOpen, setCatalogStatus }) => {
 					<li className="gradientHover">
 						<Link onClick={toggleCatalog}>Catalog</Link>
 					</li>
-					<li>
+					<li className="gradientHover">
 						<Link to="/new-collection">New collection</Link>
 					</li>
-					<li>
-						<Link to="/bestSellings">Best Sellings</Link>
+					<li className="gradientHover">
+						<Link to="/best-sellings">Best Sellings</Link>
 					</li>
-					<li>
+					<li className="gradientHover">
 						<Link to="/sale">Sale</Link>
 					</li>
 					{/* Showing cart and favourites only on mobiles */}

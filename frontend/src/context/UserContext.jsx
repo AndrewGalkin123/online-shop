@@ -116,7 +116,6 @@ export function UserProvider({ children }) {
 			await apiAddToCart(product.id, 1);
 			await loadCart();
 		} catch (error) {
-			console.error("Failed to add to cart:", error);
 			throw error;
 		}
 	}, [loadCart]);

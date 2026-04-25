@@ -3,6 +3,7 @@ package com.andrii.nekon.controller;
 import com.andrii.nekon.dto.ProductDetailDTO;
 import com.andrii.nekon.dto.ProductListDTO;
 import com.andrii.nekon.dto.TopRatedProductDTO;
+import com.andrii.nekon.repository.CategoryRepository;
 import com.andrii.nekon.service.ProductService;
 import com.andrii.nekon.service.ReviewService;
 import org.springframework.data.domain.*;
@@ -18,10 +19,12 @@ public class ProductController {
 
     private final ProductService productService;
     private final ReviewService reviewService;
+    private final CategoryRepository categoryRepository;
 
-    public ProductController(ProductService productService, ReviewService reviewService) {
+    public ProductController(ProductService productService, ReviewService reviewService, CategoryRepository categoryRepository) {
         this.productService = productService;
         this.reviewService = reviewService;
+        this.categoryRepository = categoryRepository;
     }
 
     @PostMapping("/by-ids")
@@ -37,6 +40,14 @@ public class ProductController {
             @PageableDefault(size = 12) Pageable pageable
     ) {
         return productService.getProductsByCategory(slug, pageable);
+    }
+
+    @GetMapping("/categories/{slug}")
+    public ResponseEntity<?> getCategoryBySlug(@PathVariable String slug) {
+        return ResponseEntity.ok(
+                categoryRepository.findBySlug(slug)
+                        .orElseThrow(() -> new RuntimeException("Category not found"))
+        );
     }
 
     // Топ товаров по рейтингу — публичный, без токена

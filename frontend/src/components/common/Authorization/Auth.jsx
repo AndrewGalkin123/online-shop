@@ -18,6 +18,20 @@ const Auth = () => {
 	const [shake, setShake] = useState(false);
 	const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
+	const validate = () => {
+		if (!email.trim()) return "Email is required";
+		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Invalid email format";
+		if (!password) return "Password is required";
+		if (password.length < 6) return "Password must be at least 6 characters";
+		if (!isLoginMode) {
+			if (!firstName.trim()) return "First name is required";
+			if (!lastName.trim()) return "Last name is required";
+			if (!phone.trim()) return "Phone is required";
+			if (!/^[+]?[0-9]{7,15}$/.test(phone)) return "Invalid phone number";
+		}
+		return null;
+	};
+
 	const handleClose = () => {
 		setAuthStatus(false);
 	};
@@ -25,6 +39,16 @@ const Auth = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setError("");
+
+		// Валидация перед отправкой
+		const validationError = validate();
+		if (validationError) {
+			setError(validationError);
+			setShake(true);
+			setTimeout(() => setShake(false), 500);
+			return;
+		}
+
 		try {
 			if (isLoginMode) {
 				await logIn(email, password);
@@ -35,7 +59,7 @@ const Auth = () => {
 		} catch (err) {
 			setError(err.message);
 			setShake(true);
-			setTimeout(() => setShake(false), 500); // Delete shake after 0.5s
+			setTimeout(() => setShake(false), 500);
 		}
 	};
 
@@ -61,55 +85,99 @@ const Auth = () => {
 		>
 			{user ? (
 				<div className={styles.userInfo}>
-					<img
-						src={user.avatar || defaultAvatar}
-						alt="User Avatar"
-						className={styles.avatar}
-					/>
-					<h2>
-						{user.firstName} {user.lastName}
-					</h2>
-					<p>
-						<strong>Email:</strong> {user.email}
-					</p>
-					<p>
-						<strong>Phone:</strong> {user.phone}
-					</p>
-					{user.permission === "admin" && (
-						<Link to="/adminPanel" className={styles.adminLink}>
-							Go to Admin Panel
-						</Link>
-					)}
-					<button onClick={() => logOut()} className={styles.logoutButton}>
-						Log Out
-					</button>
-					{!showDeleteConfirm ? (
-						<button
-							onClick={() => setShowDeleteConfirm(true)}
-							className={styles.deleteButton}
-						>
-							Delete Account
-						</button>
-					) : (
-						<div className={styles.confirmDelete}>
-							<p>Are you sure? This cannot be undone.</p>
-							<button
-								onClick={async () => {
-									await deleteAccount();
-									setAuthStatus(false);
-								}}
-								className={styles.confirmButton}
-							>
-								Yes, delete
-							</button>
-							<button
-								onClick={() => setShowDeleteConfirm(false)}
-								className={styles.cancelButton}
-							>
-								Cancel
-							</button>
+
+					{/* Шапка */}
+					{/* Шапка */}
+					<div className={styles.profileHeader}>
+						<div className={styles.profileBg} />
+						<div className={styles.avatarWrapper}>
+							<img
+								src={user.avatar || defaultAvatar}
+								alt="Avatar"
+								className={styles.avatar}
+							/>
 						</div>
-					)}
+						<div className={styles.profileName}>
+							{user.firstName} {user.lastName}
+						</div>
+						{/* Показываем роль красиво */}
+						<div className={styles.profileRole}>
+							{user.role === "ROLE_ADMIN" ? "Administrator"
+								: user.role === "ROLE_MANAGER" ? "Manager"
+									: "Member"}
+						</div>
+					</div>
+
+					{/* Инфо */}
+					<div className={styles.profileBody}>
+						<div className={styles.infoRow}>
+							<span className={styles.infoIcon}>📧</span>
+							<span className={styles.infoLabel}>Email</span>
+							<span className={styles.infoValue}>{user.email}</span>
+						</div>
+						<div className={styles.infoRow}>
+							<span className={styles.infoIcon}>👤</span>
+							<span className={styles.infoLabel}>Name</span>
+							<span className={styles.infoValue}>
+                    {user.firstName} {user.lastName}
+                </span>
+						</div>
+						<div className={styles.infoRow}>
+							<span className={styles.infoIcon}>📱</span>
+							<span className={styles.infoLabel}>Phone</span>
+							<span className={styles.infoValue}>
+                    {user.phone || "—"}
+                </span>
+						</div>
+					</div>
+
+					{/* Кнопки */}
+					<div className={styles.actions}>
+						<Link
+							to="/orders"
+							onClick={() => setAuthStatus(false)}
+							className={styles.ordersLink}
+						>
+							📦 My Orders
+						</Link>
+
+						<button
+							onClick={() => logOut()}
+							className={styles.logoutButton}
+						>
+							Log Out
+						</button>
+
+						{!showDeleteConfirm ? (
+							<button
+								onClick={() => setShowDeleteConfirm(true)}
+								className={styles.deleteButton}
+							>
+								Delete Account
+							</button>
+						) : (
+							<div className={styles.confirmDelete}>
+								<p>Are you sure? This cannot be undone.</p>
+								<div className={styles.confirmRow}>
+									<button
+										onClick={async () => {
+											await deleteAccount();
+											setAuthStatus(false);
+										}}
+										className={styles.confirmButton}
+									>
+										Yes, delete
+									</button>
+									<button
+										onClick={() => setShowDeleteConfirm(false)}
+										className={styles.cancelButton}
+									>
+										Cancel
+									</button>
+								</div>
+							</div>
+						)}
+					</div>
 				</div>
 			) : (
 				<form

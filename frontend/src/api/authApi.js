@@ -23,6 +23,7 @@ export const login = async (email, password) => {
             firstName: data.firstName,
             lastName: data.lastName,
             phone: data.phone,
+            role: data.role,
         }));
     }
 

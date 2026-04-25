@@ -14,3 +14,7 @@ export const getProductsByIds = async (ids) => {
         body: JSON.stringify(ids),
     });
 };
+
+export const getCategoryBySlug = async (slug) => {
+    return request(`/categories/${slug}`);
+};

@@ -3,12 +3,14 @@ package com.andrii.nekon.service;
 import com.andrii.nekon.dto.ProductDetailDTO;
 import com.andrii.nekon.dto.ProductListDTO;
 import com.andrii.nekon.model.Product;
+import com.andrii.nekon.model.ProductImage;
 import com.andrii.nekon.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -67,10 +69,13 @@ public class ProductService {
 
     private ProductDetailDTO mapToDetailDTO(Product product) {
 
-        List<String> images = product.getImages()
-                .stream()
-                .map(img -> img.getImageUrl())
-                .toList();
+        List<String> images = product.getImages().stream()
+                .sorted((a, b) -> Boolean.compare(
+                        !Boolean.TRUE.equals(a.getIsMain()),
+                        !Boolean.TRUE.equals(b.getIsMain())
+                ))
+                .map(ProductImage::getImageUrl)
+                .collect(Collectors.toList());
 
         return new ProductDetailDTO(
                 product.getId(),

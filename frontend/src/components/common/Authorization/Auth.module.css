@@ -1,201 +1,370 @@
+/* ─── Форма ─────────────────────────────────────────────────────────────────── */
 .authForm {
-	gap: 20px;
-	padding: 30px;
+	gap: 16px;
+	padding: 28px 24px;
 	margin: auto;
 }
 
 .formGroup {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 6px;
+}
+
+.formGroup label {
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.4);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.formGroup input {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	color: white;
+	padding: 11px 14px;
+	font-size: 14px;
+	outline: none;
+	transition: border-color 0.2s;
+}
+
+.formGroup input:focus {
+	border-color: rgba(94, 38, 221, 0.7);
+	background: rgba(94, 38, 221, 0.06);
+}
+
+.submitButton {
+	width: 100%;
+	padding: 13px;
+	border-radius: 12px;
+	border: none;
+	background: linear-gradient(135deg, #5e26dd, #9a4dff);
+	color: white;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s;
+	margin-top: 4px;
+	letter-spacing: 0.02em;
 }
 
 .submitButton:hover {
-	box-shadow: 0 10px 20px rgba(106, 90, 205, 0.6);
+	transform: translateY(-1px);
+	box-shadow: 0 8px 24px rgba(94, 38, 221, 0.4);
 }
 
 .error {
 	color: #ff6b6b;
-	background-color: rgba(255, 107, 107, 0.1);
-	padding: 8px;
-	border-radius: 8px;
+	background: rgba(255, 107, 107, 0.08);
+	border: 1px solid rgba(255, 107, 107, 0.2);
+	padding: 10px 14px;
+	border-radius: 10px;
+	font-size: 13px;
 }
 
 .switchMode {
 	text-align: center;
-	color: #bbb;
+	color: rgba(255, 255, 255, 0.35);
+	font-size: 13px;
+	padding-top: 4px;
 }
 
 .switchButton {
 	background: none !important;
-	color: #5e26dd;
-	font-size: 16px;
-	transition: 0.3s;
-}
-
-.switchButton:hover {
-	color: #483d8b;
-}
-
-.deleteButton {
-	margin-top: 8px;
-	background: transparent;
-	border: 1px solid #e24b4a;
-	color: #e24b4a;
-	padding: 8px 16px;
-	border-radius: 6px;
+	border: none;
+	color: #a78bfa;
+	font-size: 13px;
 	cursor: pointer;
+	padding: 0;
+	transition: color 0.2s;
+}
+
+.switchButton:hover { color: #c4b5fd; }
+
+.shake { animation: shake 0.3s ease-in-out; }
+
+@keyframes shake {
+	0%, 100% { transform: translateX(0); }
+	20%       { transform: translateX(-6px); }
+	60%       { transform: translateX(6px); }
+}
+
+/* ─── Профиль ────────────────────────────────────────────────────────────────── */
+.userInfo {
+	display: flex;
+	flex-direction: column;
 	width: 100%;
+	overflow: hidden;
 }
 
-.deleteButton:hover {
-	background: #e24b4a;
+/* Шапка */
+.profileHeader {
+	position: relative;
+	padding: 36px 24px 28px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	overflow: hidden;
+}
+
+/* Анимированный фон вместо внешней картинки */
+.profileBg {
+	position: absolute;
+	inset: 0;
+	background:
+			radial-gradient(ellipse at 20% 50%, rgba(94, 38, 221, 0.35) 0%, transparent 60%),
+			radial-gradient(ellipse at 80% 20%, rgba(35, 221, 217, 0.2) 0%, transparent 50%),
+			radial-gradient(ellipse at 60% 80%, rgba(154, 77, 255, 0.25) 0%, transparent 50%),
+			linear-gradient(160deg, #0d0520 0%, #110a2e 50%, #0a1a2e 100%);
+	z-index: 0;
+}
+
+/* Декоративные линии на фоне */
+.profileBg::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+			repeating-linear-gradient(
+					0deg,
+					transparent,
+					transparent 40px,
+					rgba(255,255,255,0.02) 40px,
+					rgba(255,255,255,0.02) 41px
+			);
+}
+
+.profileHeader > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Кольцо вокруг аватара */
+.avatarWrapper {
+	position: relative;
+	width: 96px;
+	height: 96px;
+}
+
+.avatarWrapper::before {
+	content: "";
+	position: absolute;
+	inset: -3px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #5e26dd, #23ddd9, #9a4dff);
+	z-index: 0;
+	animation: rotateBorder 4s linear infinite;
+}
+
+@keyframes rotateBorder {
+	from { transform: rotate(0deg); }
+	to   { transform: rotate(360deg); }
+}
+
+.avatar {
+	position: relative;
+	z-index: 1;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 3px solid #0d0520;
+	display: block;
+	margin: 3px;
+}
+
+.profileName {
+	font-size: 20px;
+	font-weight: 700;
 	color: white;
+	text-align: center;
+	letter-spacing: 0.01em;
+	margin-top: 4px;
 }
 
-.confirmDelete {
-	margin-top: 8px;
+.profileRole {
+	font-size: 11px;
+	color: #23ddd9;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	font-weight: 500;
+	background: rgba(35, 221, 217, 0.1);
+	border: 1px solid rgba(35, 221, 217, 0.25);
+	padding: 3px 10px;
+	border-radius: 20px;
+}
+
+/* Инфо строки */
+.profileBody {
+	padding: 16px 20px 4px;
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
 }
 
-.confirmDelete p {
-	font-size: 13px;
-	color: #e24b4a;
+.infoRow {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 14px;
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	transition: background 0.2s;
+}
+
+.infoRow:hover {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.infoIcon {
+	font-size: 14px;
+	width: 18px;
 	text-align: center;
+	flex-shrink: 0;
+	opacity: 0.7;
 }
 
-.confirmButton {
-	background: #e24b4a;
-	color: white;
-	border: none;
-	padding: 8px;
-	border-radius: 6px;
-	cursor: pointer;
+.infoLabel {
+	font-size: 10px;
+	color: rgba(255, 255, 255, 0.3);
+	width: 46px;
+	flex-shrink: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
 }
 
-.cancelButton {
-	background: transparent;
-	border: 1px solid var(--color-border-tertiary);
-	padding: 8px;
-	border-radius: 6px;
-	cursor: pointer;
+.infoValue {
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.8);
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
-/*User Info*/
-
-.userInfo {
-	position: relative;
+/* Кнопки */
+.actions {
+	padding: 16px 20px 20px;
 	display: flex;
 	flex-direction: column;
+	gap: 8px;
+}
+
+.ordersLink {
+	display: flex;
 	align-items: center;
-	text-align: center;
-	background: #140735;
-	padding: 25px;
-	color: #fff;
-	width: 100%;
-	height: 90%;
-	overflow: hidden;
+	justify-content: center;
+	gap: 8px;
+	padding: 12px;
+	border-radius: 12px;
+	border: 1px solid rgba(35, 221, 217, 0.3);
+	color: #23ddd9;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all 0.2s;
+	background: rgba(35, 221, 217, 0.05);
+	letter-spacing: 0.01em;
 }
 
-/* Затемняем и размываем только фон */
-.userInfo::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: url("https://cs8.pikabu.ru/post_img/big/2016/08/24/2/147200395612713356.jpg")
-		no-repeat center/cover;
-	filter: blur(4px) brightness(60%); /* Размытие и затемнение */
-	z-index: 0;
-}
-
-/* Поднимаем контент выше фильтра */
-.userInfo * {
-	position: relative;
-	z-index: 1;
-}
-
-.avatar {
-	width: 140px;
-	height: 140px;
-	border-radius: 50%;
-	border: 3px solid #5f23dd;
-	object-fit: cover;
-	margin-bottom: 12px;
-}
-
-.userInfo h2 {
-	font-size: 20px;
-	margin-bottom: 8px;
-	color: #c3aaf2;
-}
-
-.userInfo p {
-	font-size: 18px;
-	margin: 4px 0;
-}
-
-.userInfo strong {
-	color: #d1b3ff;
+.ordersLink:hover {
+	background: rgba(35, 221, 217, 0.12);
+	border-color: rgba(35, 221, 217, 0.6);
+	transform: translateY(-1px);
 }
 
 .logoutButton {
-	height: 50px;
-	margin-top: 15px;
-	padding: 8px 18px;
-	font-size: 18px;
-	background: linear-gradient(135deg, #5f23dd, #9a4dff);
+	padding: 12px;
+	font-size: 14px;
+	font-weight: 600;
+	background: linear-gradient(135deg, #5e26dd, #9a4dff);
 	border: none;
-	border-radius: 6px;
-	color: #fff;
+	border-radius: 12px;
+	color: white;
 	cursor: pointer;
-	transition: 0.3s ease;
+	transition: all 0.2s;
+	width: 100%;
+	letter-spacing: 0.02em;
 }
 
 .logoutButton:hover {
-	background: linear-gradient(135deg, #9a4dff, #b58eff);
-	transform: scale(1.05);
+	transform: translateY(-1px);
+	box-shadow: 0 8px 20px rgba(94, 38, 221, 0.4);
 }
 
-/*Shake*/
-.shake {
-	animation: shake 0.3s ease-in-out;
+/* Удаление */
+.deleteButton {
+	background: transparent;
+	border: 1px solid rgba(239, 68, 68, 0.2);
+	color: rgba(239, 68, 68, 0.5);
+	padding: 10px;
+	border-radius: 12px;
+	cursor: pointer;
+	width: 100%;
+	font-size: 12px;
+	transition: all 0.2s;
+	letter-spacing: 0.03em;
 }
 
-.adminLink {
-	display: inline-block;
-	margin-top: 12px;
-	padding: 8px 16px;
-	background-color: #4a90e2;
+.deleteButton:hover {
+	border-color: rgba(239, 68, 68, 0.5);
+	color: #ef4444;
+	background: rgba(239, 68, 68, 0.05);
+}
+
+.confirmDelete {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 12px;
+	background: rgba(239, 68, 68, 0.05);
+	border: 1px solid rgba(239, 68, 68, 0.15);
+	border-radius: 12px;
+}
+
+.confirmDelete p {
+	font-size: 12px;
+	color: rgba(239, 68, 68, 0.7);
+	text-align: center;
+	margin: 0;
+}
+
+.confirmRow {
+	display: flex;
+	gap: 8px;
+}
+
+.confirmButton {
+	flex: 1;
+	background: #ef4444;
 	color: white;
+	border: none;
+	padding: 9px;
 	border-radius: 8px;
-	text-decoration: none;
+	cursor: pointer;
+	font-size: 13px;
 	font-weight: 500;
-	transition: background-color 0.3s ease;
+	transition: opacity 0.2s;
 }
 
-.adminLink:hover {
-	background-color: #357ab8;
+.confirmButton:hover { opacity: 0.85; }
+
+.cancelButton {
+	flex: 1;
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	color: rgba(255, 255, 255, 0.5);
+	padding: 9px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 13px;
+	transition: all 0.2s;
 }
 
-@keyframes shake {
-	0% {
-		transform: translateX(0);
-	}
-	25% {
-		transform: translateX(-5px);
-	}
-	50% {
-		transform: translateX(5px);
-	}
-	75% {
-		transform: translateX(-5px);
-	}
-	100% {
-		transform: translateX(0);
-	}
+.cancelButton:hover {
+	border-color: rgba(255, 255, 255, 0.25);
+	color: white;
 }

@@ -18,4 +18,5 @@ public class AuthResponseDTO {
     private String firstName;  // для приветствия "Привет, Andrii!"
     private String lastName;
     private String phone;
+    private String role; // ROLE_USER, ROLE_MANAGER, ROLE_ADMIN
 }

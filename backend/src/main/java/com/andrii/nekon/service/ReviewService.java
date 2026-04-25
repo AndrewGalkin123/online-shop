@@ -116,7 +116,8 @@ public class ReviewService {
                 review.getMessage(),
                 review.getRating(),
                 review.getUser().getFirstName(),
-                review.getCreatedAt()
+                review.getCreatedAt(),
+                review.getUser().getEmail()
         );
     }
 }

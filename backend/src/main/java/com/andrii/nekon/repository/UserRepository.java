@@ -31,6 +31,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // Только активные пользователи
     List<User> findByIsActiveTrue();
 
+    List<User> findAllByOrderByIsActiveDesc();
+
     @Modifying
     @Transactional
     @Query(

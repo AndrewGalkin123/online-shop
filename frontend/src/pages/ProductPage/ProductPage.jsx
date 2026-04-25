@@ -3,6 +3,14 @@ import styles from "./ProductPage.module.css";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
 import {getProductById} from "../../api/productsApi";
+import {showToast} from "../../utils/toast";
+import ReviewSection from "../../components/common/ReviewSection/ReviewSection";
+
+// "size": "Big","Small" , "Medium" , "Large"
+//     "rarity": "Common", "Uncommon" "Rare" "Limited"
+//     "quality": "Medium", "High" "Normal" "Bad"
+//     "manufacturer": "GoodSmile Company",
+//     "animatedCartoon": "Demon Slayer"
 
 const ProductPage = () => {
   const { product: productId } = useParams();
@@ -21,7 +29,7 @@ const ProductPage = () => {
         setProduct(data);
         setMainImageSrc(data.images[0]);
       } catch (error) {
-        console.error("Error fetching product:", error);
+        showToast("Error fetching product:", error);
       }
     };
     fetchProduct();
@@ -121,34 +129,45 @@ const ProductPage = () => {
               <img
                   onClick={async () => {
                     if (isInCart) {
-                      await removeFromCart({ id: product.id });
+                      await removeFromCart({id: product.id});
                     } else {
-                      await addToCart(product);
+                      try {
+                        await addToCart(product);
+                        showToast("Added to cart!", "success");
+                      } catch (err) {
+                        showToast(err.message, "error");
+                      }
                     }
                   }}
-                src={
-                  isInCart
-                    ? "/images/bag-cross-saved.png"
-                    : "/images/bag-cross-gradient.png"
-                }
-                alt="bag"
+                  src={isInCart ? "/images/bag-cross-saved.png" : "/images/bag-cross-gradient.png"}
+                  alt="bag"
               />
+
               <img
-                onClick={() => addToSelected(productId)}
-                src={
-                  isSelected
-                    ? "/images/heart-saved.png"
-                    : "/images/heart-gradient.png"
-                }
-                alt="heart"
+                  onClick={() => addToSelected(productId)}
+                  src={
+                    isSelected
+                        ? "/images/heart-saved.png"
+                        : "/images/heart-gradient.png"
+                  }
+                  alt="heart"
               />
             </div>
           </div>
 
           {/* Buy now button */}
-          <button onClick={async () => await buyNow(product)}>BUY NOW</button>
+          <button onClick={async () => {
+            try {
+              await buyNow(product);
+            } catch (err) {
+              showToast(err.message, "error");
+            }
+          }}>
+            BUY NOW
+          </button>
         </div>
       </section>
+      <ReviewSection productId={product?.id} />
 
       {/* Section for additional products (currently empty) */}
       <div className={styles.additionalProducts}></div>

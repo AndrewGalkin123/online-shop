@@ -7,8 +7,8 @@ const categories = [
     title: "Figures",
     links: [
       { to: "/nendoroids", label: "Nendoroids" },
-      { to: "/animeDolls", label: "Anime dolls" },
-      { to: "/forAdults", label: "For Adults (18+)" },
+      { to: "/anime-dolls", label: "Anime dolls" },
+      { to: "/for-adults", label: "For Adults (18+)" },
     ],
   },
   {
@@ -24,7 +24,7 @@ const categories = [
     links: [
       { to: "/t-shirts", label: "T-shirts with anime prints" },
       { to: "/bags", label: "Backpacks and bags" },
-      { to: "/additionalClothes", label: "Scarves, gloves, and socks" },
+      { to: "/accessories", label: "Scarves, gloves, and socks" },
     ],
   },
   {
@@ -32,14 +32,14 @@ const categories = [
     links: [
       { to: "/manga", label: "Manga" },
       { to: "/artbooks", label: "Anime and manga artbooks" },
-      { to: "/posters", label: "Illustrations and posters" },
+      { to: "/illustrations", label: "Illustrations" },
     ],
   },
   {
     title: "Collectibles",
     links: [
       { to: "/rare", label: "Rare" },
-      { to: "/limitedEditionFigures", label: "Limited edition figures" },
+      { to: "/limited-edition", label: "Limited edition figures" },
       { to: "/autographs", label: "Autographs from creators" },
     ],
   },

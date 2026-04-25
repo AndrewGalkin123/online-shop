@@ -4,6 +4,7 @@ import com.andrii.nekon.dto.*;
 import com.andrii.nekon.service.ManagerService;
 import com.andrii.nekon.service.ReviewService;
 import com.andrii.nekon.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,9 +28,31 @@ public class ManagerController {
     // POST /api/manager/products
     @PostMapping("/products")
     public ResponseEntity<ProductDetailDTO> createProduct(
-            @RequestBody CreateProductDTO request
+            @Valid @RequestBody CreateProductDTO request
     ) {
         return ResponseEntity.ok(managerService.createProduct(request));
+    }
+
+    // Все продукты
+    @GetMapping("/products")
+    public ResponseEntity<List<ProductDetailDTO>> getAllProducts() {
+        return ResponseEntity.ok(managerService.getAllProducts());
+    }
+
+    // Обновить продукт
+    @PutMapping("/products/{id}")
+    public ResponseEntity<ProductDetailDTO> updateProduct(
+            @PathVariable Long id,
+            @RequestBody UpdateProductDTO request
+    ) {
+        return ResponseEntity.ok(managerService.updateProduct(id, request));
+    }
+
+    // Удалить продукт
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        managerService.deleteProduct(id);
+        return ResponseEntity.ok("Product deleted");
     }
 
     // Обновить остаток

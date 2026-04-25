@@ -39,6 +39,12 @@ public class AdminController {
         return ResponseEntity.ok("User deleted");
     }
 
+    @PatchMapping("/users/{id}")
+    public ResponseEntity<?> activateUser(@PathVariable Long id) {
+        managerService.activateUser(id);
+        return ResponseEntity.ok("User activated");
+    }
+
     // Логи действий — триггер log_user_action пишет автоматически
     // GET /api/admin/logs
     @GetMapping("/logs")

@@ -49,12 +49,20 @@ public class JwtService {
     // Достаём email из токена.
     // Вызывается при каждом запросе в JwtAuthenticationFilter.
     public String extractEmail(String token) {
-        return Jwts.parser()
-                .verifyWith(getKey())  // проверяем подпись нашим ключом
-                .build()
-                .parseSignedClaims(token) // парсим токен
-                .getPayload()
-                .getSubject();
+        try {
+            return Jwts.parser()
+                    .verifyWith(getKey())
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload()
+                    .getSubject();
+        } catch (ExpiredJwtException e) {
+            // Возвращаем null — фильтр пропустит запрос без аутентификации
+            // Spring Security вернёт 401 через JwtAuthenticationEntryPoint
+            return null;
+        } catch (JwtException e) {
+            return null;
+        }
     }
 
     // Проверяем что токен валидный:
@@ -64,9 +72,11 @@ public class JwtService {
         try {
             String email = extractEmail(token);
             return email.equals(userDetails.getUsername());
+        } catch (ExpiredJwtException e) {
+            // Токен истёк — это нормальная ситуация, не 500
+            return false;
         } catch (JwtException e) {
-            // JwtException бросается если токен просрочен,
-            // подпись неверна, или токен повреждён
+            // Токен невалидный
             return false;
         }
     }

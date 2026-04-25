@@ -39,6 +39,7 @@
 
 .closeButton:hover {
 	cursor: pointer;
+	background: none;
 }
 
 @media (max-width: 1300px) {

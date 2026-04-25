@@ -96,8 +96,13 @@ public class AuthService {
         // Загружаем User чтобы достать firstName для ответа
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
 
+        String role = user.getRoles().stream()
+                .findFirst()
+                .map(r -> r.getName())
+                .orElse("ROLE_USER");
+
         // Возвращаем токен + базовую инфу о пользователе
-        return new AuthResponseDTO(token, user.getEmail(), user.getFirstName(), user.getLastName(), user.getPhone());
+        return new AuthResponseDTO(token, user.getEmail(), user.getFirstName(), user.getLastName(), user.getPhone(),role);
 
     }
 }
